@@ -10,7 +10,7 @@ function toast(message) {
 async function request(path, options) {
   const response = await fetch(path, options);
   const data = await response.json();
-  if (response.status === 401) { window.location.replace("/login"); throw new Error("Your session has ended."); }
+  if (response.status === 401) { window.location.replace("/growth/login.html"); throw new Error("Your session has ended."); }
   if (!response.ok) throw new Error(data.error || `Request failed: ${response.status}`);
   return data;
 }
@@ -77,7 +77,7 @@ $("#runAll").addEventListener("click", async () => {
 
 $("#signOut").addEventListener("click", async () => {
   await request("/api/logout", { method: "POST" });
-  window.location.replace("/login");
+  window.location.replace("/growth/login.html");
 });
 
 refresh().catch((error) => toast(error.message));

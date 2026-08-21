@@ -5,7 +5,7 @@ const setupNote = document.querySelector("#setupNote");
 async function sessionState() {
   const response = await fetch("/api/session");
   const data = await response.json();
-  if (data.authenticated) window.location.replace("/");
+  if (data.authenticated) window.location.replace("/growth/");
   setupNote.hidden = !data.setupRequired;
   form.hidden = data.setupRequired;
 }
@@ -25,7 +25,7 @@ form.addEventListener("submit", async (event) => {
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || "Sign in failed.");
     status.textContent = "Access granted. Opening dashboard…";
-    window.location.replace("/");
+    window.location.replace("/growth/");
   } catch (error) {
     status.textContent = error.message;
     document.querySelector("#password").value = "";
