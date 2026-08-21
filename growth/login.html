@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e12">
+  <title>Artist Access — Taymah Hendi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="login-page">
+  <header class="topbar login-topbar">
+    <a class="brand" href="/login">Taymah <span>Hendi</span></a>
+    <div class="system"><i aria-hidden="true"></i><span>Private control</span></div>
+    <a class="back-to-site" href="file:///Volumes/256/zero-to-40/index.html">Back to site ↗</a>
+  </header>
+  <main class="login-shell">
+    <section class="login-intro" aria-labelledby="loginTitle">
+      <p class="eyebrow">Zero To 40 · Operator access</p>
+      <h1 id="loginTitle">Artist<br><span>access.</span></h1>
+      <p class="login-copy">One private place for Taymah to review campaigns, approve agent actions and see what the growth engine is doing.</p>
+    </section>
+    <section class="login-panel" aria-label="Sign in">
+      <div class="panel-gauge"><span>Secure session</span><i aria-hidden="true"></i></div>
+      <form id="loginForm">
+        <label for="username">Artist username</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="login-submit" type="submit">Enter dashboard <span aria-hidden="true">→</span></button>
+        <p class="login-status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+      <div class="setup-note" id="setupNote" hidden>
+        <strong>One-time setup required</strong>
+        <p>On this Mac, open Terminal in <code>growth-engine</code> and run <code>npm run setup-admin</code>. Taymah chooses her password there; it never enters the website source.</p>
+      </div>
+      <p class="security-note">12-hour private session · password stored as a salted hash · five-attempt lockout</p>
+    </section>
+  </main>
+  <script type="module" src="login.js"></script>
+</body>
+</html>

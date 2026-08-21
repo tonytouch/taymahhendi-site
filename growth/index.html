@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e12">
+  <title>Growth Control — Taymah Hendi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Taymah <span>Hendi</span></a>
+    <div class="system"><i aria-hidden="true"></i><span>Growth control</span></div>
+    <div class="operator-actions">
+      <a href="file:///Volumes/256/zero-to-40/index.html">View site</a>
+      <button class="sign-out" id="signOut" type="button">Sign out</button>
+      <button class="run-all" id="runAll" type="button">Run all agents <span aria-hidden="true">→</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Private operator dashboard</p>
+        <h1>Six agents.<br><span>One signal.</span></h1>
+      </div>
+      <div class="hero-meta">
+        <div><strong id="activeCount">0/6</strong><span>Agents initialized</span></div>
+        <div><strong id="pendingCount">0</strong><span>Pending approvals</span></div>
+        <div><strong>£0</strong><span>Autonomous spend cap</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="agentsTitle">
+      <div class="section-head"><p>Operations grid</p><h2 id="agentsTitle">Agent status</h2></div>
+      <div class="agents" id="agents"><p class="loading">Loading agents…</p></div>
+    </section>
+
+    <section class="section approvals-section" aria-labelledby="approvalsTitle">
+      <div class="section-head"><p>Human checkpoint</p><h2 id="approvalsTitle">Approval queue</h2></div>
+      <div class="approval-list" id="approvals"><p class="empty">No pending actions.</p></div>
+    </section>
+
+    <section class="section" aria-labelledby="integrationsTitle">
+      <div class="section-head"><p>Connection bay</p><h2 id="integrationsTitle">Integrations</h2></div>
+      <div class="integrations" id="integrations"></div>
+    </section>
+
+    <section class="section" aria-labelledby="activityTitle">
+      <div class="section-head"><p>Audit trail</p><h2 id="activityTitle">Recent runs</h2></div>
+      <div class="activity" id="activity"><p class="empty">No runs yet.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Local control plane · 127.0.0.1</span>
+    <span>External actions require approval</span>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
