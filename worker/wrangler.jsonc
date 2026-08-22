@@ -1,0 +1,9 @@
+{
+  "name": "taymahhendi-router",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-01",
+  "routes": [
+    { "pattern": "taymahhendi.com/*", "zone_name": "taymahhendi.com" },
+    { "pattern": "www.taymahhendi.com/*", "zone_name": "taymahhendi.com" }
+  ]
+}
