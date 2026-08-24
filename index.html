@@ -20,7 +20,7 @@
     :root {
       --ink: #0d060b;
       --ink-rich: #150912;
-      --panel: rgba(26, 12, 23, 0.72);
+      --panel: rgba(26, 12, 23, 0.76);
       --panel-solid: #1c0e18;
       --paper: #fff5f8;
       --muted: #d9bfcf;
@@ -40,6 +40,7 @@
       --radius-lg: 20px;
       --radius-md: 14px;
       --radius-pill: 9999px;
+      --audio-pulse: 1;
     }
 
     * { box-sizing: border-box; }
@@ -53,13 +54,21 @@
       background: var(--ink);
       font-family: "Plus Jakarta Sans", sans-serif;
       overflow-x: hidden;
+      position: relative;
     }
 
     a { color: inherit; }
 
+    /* Stardust canvas */
+    #stardustCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
     /* ---------------------------------------------------------------
-       Background video layer
-       Sits behind everything with dreamy rose/burgundy ambient blooms.
+       Background video layer with Audio Reactive Pulse
     --------------------------------------------------------------- */
     .bg-layer {
       position: fixed;
@@ -67,9 +76,10 @@
       z-index: -2;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 78% 22%, rgba(255, 122, 168, 0.22) 0%, rgba(223, 191, 255, 0.12) 35%, transparent 65%),
-        radial-gradient(circle at 18% 75%, rgba(255, 82, 149, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 78% 22%, rgba(255, 122, 168, calc(0.22 * var(--audio-pulse))) 0%, rgba(223, 191, 255, 0.12) 35%, transparent 65%),
+        radial-gradient(circle at 18% 75%, rgba(255, 82, 149, calc(0.2 * var(--audio-pulse))) 0%, transparent 45%),
         radial-gradient(circle at 50% 50%, rgba(30, 12, 26, 0.8) 0%, var(--ink) 100%);
+      transition: filter 0.15s ease, transform 0.15s ease;
     }
 
     .bg-video {
@@ -81,7 +91,6 @@
       transition: opacity .8s ease;
     }
 
-    /* If the video source never loads, hide the element so the gradient reads clean. */
     body.no-bg-video .bg-video { opacity: 0; }
 
     .bg-scrim {
@@ -91,7 +100,7 @@
       pointer-events: none;
       background:
         linear-gradient(to bottom, rgba(13,6,11,0.78) 0%, rgba(13,6,11,0.38) 32%, rgba(13,6,11,0.62) 70%, rgba(13,6,11,0.92) 100%),
-        radial-gradient(circle at 74% 28%, rgba(255, 122, 168, 0.18), transparent 32rem);
+        radial-gradient(circle at 74% 28%, rgba(255, 122, 168, calc(0.18 * var(--audio-pulse))), transparent 32rem);
     }
 
     .bg-scrim::after {
@@ -107,7 +116,7 @@
     }
 
     /* ---------------------------------------------------------------
-       Release banner — the background header
+       Release banner
     --------------------------------------------------------------- */
     .release-banner {
       position: relative;
@@ -218,12 +227,12 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .28; } }
 
     /* ---------------------------------------------------------------
-       Shell
+       Shell & Navigation
     --------------------------------------------------------------- */
     .shell {
       width: min(1440px, 100%);
       margin: 0 auto;
-      padding: 26px clamp(22px, 4vw, 64px) 36px;
+      padding: 26px clamp(22px, 4vw, 64px) 48px;
       display: flex;
       flex-direction: column;
       gap: clamp(48px, 7vh, 82px);
@@ -244,11 +253,18 @@
     .artist-mark {
       color: var(--paper);
       font-family: "Cormorant Garamond", serif;
-      font-size: 20px;
+      font-size: 22px;
       font-style: italic;
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: none;
+      text-decoration: none;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
     .status {
@@ -281,7 +297,7 @@
     }
 
     /* ---------------------------------------------------------------
-       Hero
+       Hero Section
     --------------------------------------------------------------- */
     main {
       display: flex;
@@ -312,7 +328,6 @@
       gap: 10px;
     }
 
-    /* The artist name is the anchor of the page — majestic high-fashion display serif */
     h1 {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
@@ -384,16 +399,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .cta {
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
-      gap: 32px;
-      min-width: min(100%, 320px);
-      padding: 18px 30px;
+      gap: 28px;
+      min-width: min(100%, 290px);
+      padding: 17px 28px;
       border-radius: var(--radius-pill);
       border: 1px solid rgba(255, 230, 242, 0.45);
       color: #12040b;
@@ -410,6 +433,7 @@
       transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .cta::before {
@@ -423,9 +447,7 @@
       transition: left 0.6s ease;
     }
 
-    .cta:hover::before {
-      left: 100%;
-    }
+    .cta:hover::before { left: 100%; }
 
     .cta:hover {
       transform: translateY(-3px) scale(1.02);
@@ -440,6 +462,32 @@
     .cta svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
     .cta:hover svg { transform: translateX(3px); }
 
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 205, 230, 0.32);
+      background: rgba(255, 122, 168, 0.12);
+      color: var(--paper);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 11px;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255, 122, 168, 0.25);
+      border-color: rgba(255, 205, 230, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 82, 149, 0.25);
+    }
+
     .microcopy {
       margin: 0;
       color: var(--champagne);
@@ -447,15 +495,19 @@
       font-size: 19px;
       font-style: italic;
       line-height: 1.4;
-      max-width: 32ch;
+      max-width: 34ch;
       text-align: center;
       opacity: 0.92;
     }
 
+    /* ---------------------------------------------------------------
+       Visual / Portrait with 3D Parallax Tilt
+    --------------------------------------------------------------- */
     .visual {
       position: relative;
       width: min(520px, 100%);
       margin: 0 auto;
+      perspective: 1000px;
     }
 
     .portrait-wrap {
@@ -469,7 +521,8 @@
         0 35px 90px rgba(0,0,0,0.65),
         0 0 0 1px rgba(255, 170, 205, 0.15),
         0 0 45px rgba(255, 82, 149, 0.18);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.15s ease-out, box-shadow 0.4s ease;
+      will-change: transform;
     }
 
     .portrait-wrap:hover {
@@ -498,7 +551,36 @@
       filter: saturate(1.02) contrast(1.04);
     }
 
-    /* Sits in the portrait's darkened lower band */
+    .teaser-trigger-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(13, 6, 11, 0.75);
+      border: 1px solid rgba(255, 205, 230, 0.35);
+      color: var(--paper);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: all 0.25s ease;
+    }
+
+    .teaser-trigger-badge:hover {
+      background: linear-gradient(135deg, #ffa6c5, #ff5295);
+      color: #12040b;
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 82, 149, 0.4);
+    }
+
     .speed {
       position: absolute;
       left: clamp(16px, 3.4vw, 30px);
@@ -585,34 +667,45 @@
       background: linear-gradient(90deg, rgba(255, 166, 197, 0.35), transparent);
     }
 
-    .listen,
-    .live { margin-top: clamp(-34px, -3.7vh, -18px); }
+    .listen, .live, .lookbook-section {
+      width: 100%;
+      margin-top: clamp(-24px, -3vh, -12px);
+    }
 
     /* ---------------------------------------------------------------
-       Bespoke audio player
+       Bespoke Audio Player with Animated Vinyl & Synced Lyrics
     --------------------------------------------------------------- */
     .player {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
       align-items: center;
-      gap: clamp(20px, 3vw, 34px);
-      padding: clamp(20px, 2.6vw, 30px);
+      gap: clamp(24px, 3.5vw, 42px);
+      padding: clamp(22px, 3vw, 34px);
       border-radius: var(--radius-xl);
       border: 1px solid rgba(255, 205, 230, 0.22);
-      background: linear-gradient(135deg, rgba(28, 13, 25, 0.88), rgba(16, 7, 14, 0.76));
+      background: linear-gradient(135deg, rgba(28, 13, 25, 0.88), rgba(16, 7, 14, 0.78));
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       box-shadow:
         0 30px 80px rgba(0,0,0,0.5),
         0 0 0 1px rgba(255, 255, 255, 0.06) inset,
         0 0 35px rgba(255, 82, 149, 0.12);
+      position: relative;
+      overflow: visible;
+    }
+
+    .player-art-wrap {
+      position: relative;
+      flex: none;
+      width: clamp(100px, 14vw, 150px);
+      aspect-ratio: 1;
     }
 
     .player-art {
       position: relative;
-      flex: none;
-      width: clamp(96px, 13vw, 144px);
-      aspect-ratio: 1;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
     }
 
     .player-art img {
@@ -635,12 +728,62 @@
       transition: transform .3s ease, border-color .3s ease;
     }
 
+    /* Animated Vinyl Disc */
+    .player-vinyl {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      width: 90%;
+      height: 90%;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #181015 0%, #151515 25%, #080808 30%, #222 35%, #0e0e0e 55%, #1c1c1c 65%, #050505 100%);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.15);
+      z-index: 1;
+      transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .player-vinyl::before {
+      content: "";
+      width: 36%;
+      height: 36%;
+      border-radius: 50%;
+      background-image: url('assets/artwork.jpg');
+      background-size: cover;
+      border: 2px solid rgba(255,255,255,0.4);
+      box-shadow: 0 0 8px rgba(0,0,0,0.8);
+    }
+
+    .player-vinyl::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0d060b;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .player.is-playing .player-vinyl {
+      transform: translateX(38%) rotate(360deg);
+      animation: spinVinyl 3.5s linear infinite;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes spinVinyl {
+      from { transform: translateX(38%) rotate(0deg); }
+      to { transform: translateX(38%) rotate(360deg); }
+    }
+
     .player.is-playing .player-art::after {
       border-color: rgba(255, 122, 168, 0.7);
       box-shadow: 0 0 20px rgba(255, 82, 149, 0.3);
     }
 
-    .player-body { min-width: 0; }
+    .player-body { min-width: 0; position: relative; z-index: 2; }
 
     .player-head {
       display: flex;
@@ -751,18 +894,48 @@
 
     .player-note[data-state="error"] { color: var(--electric); }
 
+    /* Synced Lyrics Snippet */
+    .player-lyrics {
+      margin-top: 18px;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 122, 168, 0.08);
+      border: 1px solid rgba(255, 205, 230, 0.16);
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .lyric-text {
+      margin: 0;
+      font-family: "Instrument Serif", serif;
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-style: italic;
+      color: var(--champagne);
+      transition: all 0.35s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .lyric-text.active {
+      color: #ffffff;
+      text-shadow: 0 0 16px var(--rose), 0 0 28px rgba(255, 82, 149, 0.6);
+      transform: scale(1.02);
+    }
+
     /* ---------------------------------------------------------------
-       Live show
+       Live Show & Countdown Timer
     --------------------------------------------------------------- */
     .show {
       display: flex;
-      align-items: center;
-      gap: clamp(20px, 3vw, 40px);
-      flex-wrap: wrap;
-      padding: clamp(24px, 3.2vw, 36px);
+      flex-direction: column;
+      gap: 24px;
+      padding: clamp(24px, 3.4vw, 38px);
       border-radius: var(--radius-xl);
       border: 1px solid rgba(255, 205, 230, 0.2);
-      background: linear-gradient(135deg, rgba(255, 122, 168, 0.14) 0%, rgba(20, 8, 18, 0.7) 60%);
+      background: linear-gradient(135deg, rgba(255, 122, 168, 0.14) 0%, rgba(20, 8, 18, 0.75) 60%);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       box-shadow:
@@ -770,6 +943,7 @@
         0 0 35px rgba(255, 82, 149, 0.1);
       position: relative;
       overflow: hidden;
+      text-align: left;
     }
 
     .show::before {
@@ -780,6 +954,13 @@
       width: 4px;
       height: 100%;
       background: linear-gradient(to bottom, #ffa6c5, #ff5295);
+    }
+
+    .show-main-row {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 40px);
+      flex-wrap: wrap;
     }
 
     .show-date {
@@ -811,7 +992,7 @@
       color: var(--rose);
     }
 
-    .show-body { min-width: 0; }
+    .show-body { min-width: 0; flex: 1; }
 
     .show-venue {
       margin: 0 0 6px;
@@ -834,8 +1015,8 @@
     }
 
     .show-note {
-      margin: 14px 0 0;
-      max-width: 46ch;
+      margin: 12px 0 0;
+      max-width: 52ch;
       font-family: "Instrument Serif", serif;
       font-size: 18px;
       font-style: italic;
@@ -844,8 +1025,358 @@
       opacity: 0.92;
     }
 
+    .radar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 122, 168, 0.1);
+      border: 1px solid rgba(255, 205, 230, 0.2);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-top: 12px;
+    }
+
+    .radar-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--rose);
+      position: relative;
+    }
+
+    .radar-dot::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 1px solid var(--rose);
+      animation: radarPing 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    @keyframes radarPing {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    /* Countdown Counter Grid */
+    .countdown-box {
+      border-top: 1px solid rgba(255, 205, 230, 0.15);
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--blush);
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .countdown-grid {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .countdown-item {
+      background: rgba(13, 6, 11, 0.6);
+      border: 1px solid rgba(255, 205, 230, 0.22);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 58px;
+      backdrop-filter: blur(8px);
+    }
+
+    .countdown-val {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--paper);
+    }
+
+    .countdown-lbl {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-top: 3px;
+      font-weight: 600;
+    }
+
+    .calendar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 205, 230, 0.3);
+      background: rgba(255, 122, 168, 0.14);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+    }
+
+    .btn-pill-sm:hover {
+      background: linear-gradient(135deg, #ffa6c5, #ff5295);
+      color: #12040b;
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 6px 20px rgba(255, 82, 149, 0.35);
+      transform: translateY(-2px);
+    }
+
     /* ---------------------------------------------------------------
-       Socials
+       Visual Diary / Lookbook Polaroid Gallery
+    --------------------------------------------------------------- */
+    .polaroid-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+      margin-top: 24px;
+    }
+
+    .polaroid-card {
+      background: #faf4f0;
+      padding: 14px 14px 28px;
+      border-radius: 4px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+      color: #241620;
+      text-align: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .polaroid-card:nth-child(1) { transform: rotate(-2deg); }
+    .polaroid-card:nth-child(2) { transform: rotate(2.5deg); }
+    .polaroid-card:nth-child(3) { transform: rotate(-1.5deg); }
+
+    .polaroid-card:hover {
+      transform: translateY(-8px) scale(1.03) rotate(0deg) !important;
+      box-shadow: 0 28px 65px rgba(255, 122, 168, 0.35), 0 0 0 1px rgba(255,255,255,0.8);
+      z-index: 10;
+    }
+
+    .polaroid-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .polaroid-img-wrap img, .polaroid-img-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .polaroid-card:hover img, .polaroid-card:hover video {
+      transform: scale(1.06);
+    }
+
+    .polaroid-caption {
+      margin: 14px 0 0;
+      font-family: "Instrument Serif", serif;
+      font-size: 18px;
+      font-style: italic;
+      color: #241620;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------------------------------------------------------------
+       Modals (VIP Backstage, Video Teaser, Streaming Selector)
+    --------------------------------------------------------------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10, 4, 9, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(540px, 100%);
+      background: linear-gradient(145deg, rgba(32, 15, 29, 0.96), rgba(16, 7, 14, 0.98));
+      border: 1px solid rgba(255, 205, 230, 0.3);
+      border-radius: var(--radius-xl);
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: 0 35px 90px rgba(0,0,0,0.7), 0 0 45px rgba(255, 82, 149, 0.25);
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-align: center;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 200, 225, 0.25);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--paper);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--rose);
+      color: #12040b;
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(30px, 4vw, 44px);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--paper);
+    }
+
+    .modal-desc {
+      margin: 0 0 24px;
+      font-family: "Instrument Serif", serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--champagne);
+      line-height: 1.4;
+    }
+
+    .vip-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .vip-input {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 205, 230, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .vip-input:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 20px rgba(255, 122, 168, 0.3);
+    }
+
+    .platform-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .platform-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 205, 230, 0.22);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .platform-btn:hover {
+      background: rgba(255, 122, 168, 0.2);
+      border-color: var(--rose);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 82, 149, 0.25);
+    }
+
+    /* Video Reel Modal */
+    .video-modal-card {
+      width: min(440px, 100%);
+      padding: 16px;
+      background: #0d060b;
+      border-radius: var(--radius-xl);
+    }
+
+    .video-reel-wrap {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+
+    .video-reel-player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ---------------------------------------------------------------
+       Socials & Footer
     --------------------------------------------------------------- */
     .socials {
       display: flex;
@@ -906,7 +1437,7 @@
     --------------------------------------------------------------- */
     @media (max-width: 980px) {
       .player { grid-template-columns: 1fr; }
-      .player-art { width: clamp(110px, 26vw, 150px); }
+      .player-art-wrap { width: clamp(110px, 26vw, 150px); }
     }
 
     @media (max-width: 820px) {
@@ -915,6 +1446,7 @@
       .banner-title { white-space: normal; }
       main { padding-top: 16px; }
       .release-row { margin-top: 36px; }
+      .countdown-box { flex-direction: column; align-items: flex-start; }
     }
 
     @media (max-width: 620px) {
@@ -932,7 +1464,7 @@
       .speed::after { width: 100px; }
       .release-row { display: grid; justify-items: center; }
       .microcopy { text-align: center; max-width: 26ch; }
-      .cta { width: 100%; }
+      .cta, .cta-secondary { width: 100%; justify-content: center; }
       .show-date strong { font-size: 64px; }
       footer { flex-direction: column; align-items: flex-start; }
       .footer-end { text-align: left; }
@@ -954,13 +1486,16 @@
 </head>
 <body>
 
-  <!-- Background video -->
-  <div class="bg-layer">
+  <!-- Interactive Stardust Particles Canvas -->
+  <canvas id="stardustCanvas"></canvas>
+
+  <!-- Background video with ambient lighting -->
+  <div class="bg-layer" id="bgLayer">
     <video class="bg-video" id="bgVideo" autoplay muted loop playsinline preload="auto" poster="assets/artwork.jpg" aria-hidden="true" tabindex="-1">
       <source src="assets/background.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="bg-scrim" aria-hidden="true"></div>
+  <div class="bg-scrim" id="bgScrim" aria-hidden="true"></div>
 
   <!-- Background header -->
   <div class="release-banner" style="--artwork: url('assets/artwork.jpg')">
@@ -980,8 +1515,11 @@
   <div class="shell">
 
     <header>
-      <span class="artist-mark">Taymah Hendi</span>
-      <span class="status">New release incoming</span>
+      <a class="artist-mark" href="/">Taymah Hendi</a>
+      <div class="header-actions">
+        <span class="status">New release incoming</span>
+        <button class="btn-pill-sm" id="headerVipBtn" type="button">VIP Club ✦</button>
+      </div>
       <span>London · Independent</span>
     </header>
 
@@ -996,16 +1534,25 @@
         <h2 class="release-title">Zero To <span>40</span></h2>
 
         <div class="release-row">
-          <a class="cta" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
-            <span>Pre-save now</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <div class="cta-group">
+            <a class="cta" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
+              <span>Pre-save now</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <button class="cta-secondary" id="platformPickerBtn" type="button">
+              <span>Platforms ▾</span>
+            </button>
+          </div>
           <p class="microcopy">“Believe it or not, this song is about a car.”</p>
         </div>
       </section>
 
-      <section class="visual" aria-label="Taymah Hendi portrait">
-        <div class="portrait-wrap">
+      <!-- Visual portrait with 3D parallax & video teaser trigger -->
+      <section class="visual" id="portraitSection" aria-label="Taymah Hendi portrait">
+        <button class="teaser-trigger-badge" id="watchTeaserBtn" type="button" aria-label="Watch Shoreditch video teaser">
+          <span>Watch Teaser 🎬</span>
+        </button>
+        <div class="portrait-wrap" id="portraitWrap">
           <img class="portrait" src="assets/portrait.jpg" alt="Taymah Hendi" width="942" height="1670">
         </div>
         <div class="speed" aria-hidden="true"><strong>2.5</strong><small>Seconds to forty</small></div>
@@ -1013,13 +1560,16 @@
       </section>
     </main>
 
-    <!-- Bespoke audio player -->
+    <!-- Bespoke audio player with animated vinyl & synced lyrics -->
     <section class="listen" aria-labelledby="listen-label">
       <p class="section-label" id="listen-label">✦ Hear it first</p>
 
       <div class="player" id="player">
-        <div class="player-art">
-          <img src="assets/artwork.jpg" alt="" width="600" height="600">
+        <div class="player-art-wrap">
+          <div class="player-art">
+            <img src="assets/artwork.jpg" alt="Zero to 40 Artwork" width="600" height="600">
+          </div>
+          <div class="player-vinyl" aria-hidden="true"></div>
         </div>
 
         <div class="player-body">
@@ -1044,6 +1594,10 @@
             <div class="player-time"><b id="curTime">0:00</b> / <span id="durTime">0:00</span></div>
           </div>
 
+          <div class="player-lyrics" id="playerLyrics" aria-live="polite">
+            <p class="lyric-text" id="lyricText">“Believe it or not, this song is about a car…”</p>
+          </div>
+
           <p class="player-note" id="playerNote"></p>
 
           <audio id="audio" preload="none" crossorigin="anonymous">
@@ -1053,19 +1607,76 @@
       </div>
     </section>
 
-    <!-- Live show -->
+    <!-- Visual Lookbook / Polaroid Strip -->
+    <section class="lookbook-section" aria-labelledby="lookbook-label">
+      <p class="section-label" id="lookbook-label">✦ Visual Diary</p>
+
+      <div class="polaroid-strip">
+        <div class="polaroid-card" id="polaroid1">
+          <div class="polaroid-img-wrap">
+            <img src="assets/portrait.jpg" alt="Taymah Hendi Shoreditch shoot" loading="lazy">
+          </div>
+          <p class="polaroid-caption">Shoreditch after dark · 2.5s</p>
+        </div>
+
+        <div class="polaroid-card" id="polaroid2">
+          <div class="polaroid-img-wrap">
+            <img src="assets/artwork.jpg" alt="Single Cover Artwork" loading="lazy">
+          </div>
+          <p class="polaroid-caption">Zero To 40 · Single Master</p>
+        </div>
+
+        <div class="polaroid-card" id="polaroid3">
+          <div class="polaroid-img-wrap">
+            <video autoplay muted loop playsinline poster="assets/artwork.jpg">
+              <source src="assets/background.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="polaroid-caption">Velvet motion · Behind the scenes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live show with Countdown Timer & Calendar Sync -->
     <section class="live" aria-labelledby="live-label">
-      <p class="section-label" id="live-label">✦ Live</p>
+      <p class="section-label" id="live-label">✦ Live Show</p>
 
       <div class="show">
-        <div class="show-date">
-          <strong>04</strong>
-          <small>Sep 26</small>
+        <div class="show-main-row">
+          <div class="show-date">
+            <strong>04</strong>
+            <small>Sep 26</small>
+          </div>
+          <div class="show-body">
+            <h3 class="show-venue">Sofar Sounds London</h3>
+            <p class="show-line">Friday 4 September 2026 · London · Secret location</p>
+            <p class="show-note">An intimate room, no barrier, no setlist safety net. Zero To 40 played live for the first time.</p>
+            <div class="radar-badge">
+              <span class="radar-dot"></span>
+              <span>51.5246° N, 0.0784° W · Secret Shoreditch Venue</span>
+            </div>
+          </div>
         </div>
-        <div class="show-body">
-          <h3 class="show-venue">Sofar Sounds</h3>
-          <p class="show-line">Friday 4 September 2026 · London · Secret location</p>
-          <p class="show-note">An intimate room, no barrier, no setlist safety net. Zero To 40 played live.</p>
+
+        <div class="countdown-box">
+          <div>
+            <p class="countdown-title">Countdown to Live Show</p>
+            <div class="countdown-grid" id="countdownGrid">
+              <div class="countdown-item"><span class="countdown-val" id="cdDays">00</span><span class="countdown-lbl">Days</span></div>
+              <div class="countdown-item"><span class="countdown-val" id="cdHours">00</span><span class="countdown-lbl">Hours</span></div>
+              <div class="countdown-item"><span class="countdown-val" id="cdMins">00</span><span class="countdown-lbl">Mins</span></div>
+              <div class="countdown-item"><span class="countdown-val" id="cdSecs">00</span><span class="countdown-lbl">Secs</span></div>
+            </div>
+          </div>
+
+          <div class="calendar-actions">
+            <a class="btn-pill-sm" id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Taymah+Hendi+-+Zero+To+40+Live+at+Sofar+Sounds&dates=20260904T190000Z/20260904T220000Z&details=Live+at+Sofar+Sounds+London.+Intimate+acoustic+and+live+set.&location=London,+Secret+Location" target="_blank" rel="noopener noreferrer">
+              <span>📅 Google Cal</span>
+            </a>
+            <button class="btn-pill-sm" id="icsCalBtn" type="button">
+              <span>💾 Apple / iCal (.ics)</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -1081,19 +1692,79 @@
     </footer>
   </div>
 
+  <!-- Modal: VIP Backstage Pass -->
+  <div class="modal-overlay" id="vipModal" role="dialog" aria-modal="true" aria-labelledby="vipTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="closeVipBtn" type="button" aria-label="Close modal">✕</button>
+      <h3 class="modal-title" id="vipTitle">The Inner Circle ✦</h3>
+      <p class="modal-desc">Join for secret Sofar Sounds pin drop, unreleased voice notes, and private listening sessions.</p>
+      
+      <form class="vip-form" id="vipForm">
+        <input class="vip-input" type="text" id="vipName" placeholder="Your name (optional)">
+        <input class="vip-input" type="email" id="vipEmail" placeholder="Your email address" required>
+        <button class="cta" type="submit" style="width:100%; justify-content:center;">
+          <span>Unlock Backstage Pass ✦</span>
+        </button>
+      </form>
+      <div id="vipSuccess" style="display:none; padding:20px 0;">
+        <p style="font-size:24px; margin:0 0 8px;">🎟️</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:26px; font-style:italic; margin:0 0 6px; color:var(--paper);">You're on the list.</p>
+        <p style="font-size:12px; color:var(--muted); margin:0;">Check your inbox for exclusive updates and coordinates.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Platform Selector -->
+  <div class="modal-overlay" id="platformModal" role="dialog" aria-modal="true" aria-labelledby="platformTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="closePlatformBtn" type="button" aria-label="Close modal">✕</button>
+      <h3 class="modal-title" id="platformTitle">Stream & Pre-Save ✦</h3>
+      <p class="modal-desc">Choose your preferred music platform to pre-save Zero To 40.</p>
+      
+      <ul class="platform-list">
+        <li>
+          <a class="platform-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">
+            <span>🟢 Spotify</span>
+          </a>
+        </li>
+        <li>
+          <a class="platform-btn" href="https://music.apple.com/artist/taymah-hendi/1493340597" target="_blank" rel="noopener noreferrer">
+            <span>🍎 Apple Music</span>
+          </a>
+        </li>
+        <li>
+          <a class="platform-btn" href="https://youtube.com/taymahhendi" target="_blank" rel="noopener noreferrer">
+            <span>▶️ YouTube Music</span>
+          </a>
+        </li>
+        <li>
+          <a class="platform-btn" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
+            <span>⚡ HyperFollow (All)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal: Behind-The-Scenes Video Reel Teaser -->
+  <div class="modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-label="Shoreditch video teaser reel">
+    <div class="modal-card video-modal-card">
+      <button class="modal-close" id="closeVideoBtn" type="button" aria-label="Close video teaser">✕</button>
+      <div class="video-reel-wrap">
+        <video class="video-reel-player" id="reelVideoPlayer" playsinline controls preload="none" poster="assets/artwork.jpg">
+          <source src="assets/5 shoreditch web.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
   <script>
   (function () {
     'use strict';
 
     /* ===============================================================
-       WAVEFORM PEAKS — precomputed from assets/zero-to-40.mp3
-       Embedded so the page can draw the waveform instantly without
-       downloading 5.9MB of audio on every visit. The audio itself
-       only loads when someone presses play.
-       Regenerate with tools/build-peaks.sh after changing the track.
+       WAVEFORM PEAKS & TRACK SETUP
     =============================================================== */
-    /* Length of assets/zero-to-40-preview.mp3 in seconds. Shown before the
-       file loads; the real value takes over once it does. */
     var TRACK_SECONDS = 30;
 
     var PEAKS = [
@@ -1123,10 +1794,18 @@
     ];
 
     /* ===============================================================
+       SYNCED LYRICS TIMETABLE
+    =============================================================== */
+    var LYRICS = [
+      { time: 0.0, text: "“Believe it or not, this song is about a car…”" },
+      { time: 4.5, text: "“Zero to forty in the quiet of the night ✦”" },
+      { time: 11.0, text: "“Shadows moving faster than the London lights…”" },
+      { time: 17.5, text: "“Hear the engine humming like a secret untold…”" },
+      { time: 24.0, text: "“Running till the morning turns from velvet to gold ✧”" }
+    ];
+
+    /* ===============================================================
        SOCIAL LINKS
-       Paste a profile URL next to a platform to switch its icon on.
-       Leave it as '' and the icon renders greyed out and unclickable,
-       so nothing ever points at the wrong account.
     =============================================================== */
     var SOCIALS = {
       youtube:   'https://youtube.com/taymahhendi',
@@ -1138,30 +1817,12 @@
     };
 
     var ICONS = {
-      youtube: {
-        label: 'YouTube',
-        path: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'
-      },
-      instagram: {
-        label: 'Instagram',
-        path: 'M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z'
-      },
-      tiktok: {
-        label: 'TikTok',
-        path: 'M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'
-      },
-      spotify: {
-        label: 'Spotify',
-        path: 'M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z'
-      },
-      appleMusic: {
-        label: 'Apple Music',
-        path: 'M23.997 6.124c0-.738-.065-1.47-.24-2.19-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4C2.004 1.16 1.04 2.082.475 3.41c-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.802.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03c.525 0 1.048-.034 1.57-.1.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 0 0 1.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536-.142-.773.227-1.624 1.038-2.022.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.958.958 0 0 0 .02-.193V9.07a.63.63 0 0 0-.026-.185c-.036-.126-.13-.202-.26-.195-.16.01-.32.032-.477.06-.767.14-1.53.283-2.297.427l-2.472.466-1.98.375c-.036.008-.073.017-.108.03-.198.06-.293.195-.31.4-.5.65-.02 1.303-.032 1.955 0 1.55.006 3.1.003 4.65 0 .43-.045.856-.198 1.263-.16.427-.435.75-.83.98-.404.234-.84.36-1.298.395-1.006.078-1.878-.55-2.06-1.51-.15-.79.22-1.635 1.026-2.03.406-.2.84-.312 1.28-.4.334-.067.67-.13 1.003-.2.33-.07.523-.28.552-.615.006-.06.008-.12.008-.18V7.354c0-.1.012-.202.03-.3.037-.196.16-.32.35-.365.2-.048.402-.09.605-.13.63-.12 1.26-.24 1.89-.355l3.05-.575c.635-.12 1.27-.235 1.903-.36.176-.034.35-.07.526-.078.19-.008.31.09.32.28.008.13.01.26.01.39z'
-      },
-      x: {
-        label: 'X',
-        path: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z'
-      }
+      youtube: { label: 'YouTube', path: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' },
+      instagram: { label: 'Instagram', path: 'M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z' },
+      tiktok: { label: 'TikTok', path: 'M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z' },
+      spotify: { label: 'Spotify', path: 'M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z' },
+      appleMusic: { label: 'Apple Music', path: 'M23.997 6.124c0-.738-.065-1.47-.24-2.19-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.988c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4C2.004 1.16 1.04 2.082.475 3.41c-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.802.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03c.525 0 1.048-.034 1.57-.1.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 0 0 1.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536-.142-.773.227-1.624 1.038-2.022.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.958.958 0 0 0 .02-.193V9.07a.63.63 0 0 0-.026-.185c-.036-.126-.13-.202-.26-.195-.16.01-.32.032-.477.06-.767.14-1.53.283-2.297.427l-2.472.466-1.98.375c-.036.008-.073.017-.108.03-.198.06-.293.195-.31.4-.5.65-.02 1.303-.032 1.955 0 1.55.006 3.1.003 4.65 0 .43-.045.856-.198 1.263-.16.427-.435.75-.83.98-.404.234-.84.36-1.298.395-1.006.078-1.878-.55-2.06-1.51-.15-.79.22-1.635 1.026-2.03.406-.2.84-.312 1.28-.4.334-.067.67-.13 1.003-.2.33-.07.523-.28.552-.615.006-.06.008-.12.008-.18V7.354c0-.1.012-.202.03-.3.037-.196.16-.32.35-.365.2-.048.402-.09.605-.13.63-.12 1.26-.24 1.89-.355l3.05-.575c.635-.12 1.27-.235 1.903-.36.176-.034.35-.07.526-.078.19-.008.31.09.32.28.008.13.01.26.01.39z' },
+      x: { label: 'X', path: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z' }
     };
 
     var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -1204,8 +1865,6 @@
 
     /* ===============================================================
        BACKGROUND VIDEO
-       Autoplay is muted so browsers allow it. If no source resolves,
-       drop back to the poster/gradient rather than showing a black box.
     =============================================================== */
     function initBackgroundVideo() {
       var video = document.getElementById('bgVideo');
@@ -1219,31 +1878,23 @@
         if (!video.paused) return;
         var p = video.play();
         if (p && typeof p.catch === 'function') {
-          p.catch(function () { /* Refused for now — a later attempt may win. */ });
+          p.catch(function () {});
         }
       }
 
-      /* One attempt isn't enough: the first call can land before the media is
-         ready, and autoplay policy can refuse it outright. Retry once the file
-         is playable, and again on the first interaction, rather than leaving
-         the background frozen on the poster. */
       attempt();
       video.addEventListener('loadeddata', attempt);
       video.addEventListener('canplay', attempt);
       ['pointerdown', 'touchstart', 'keydown'].forEach(function (evt) {
         document.addEventListener(evt, attempt, { once: true, passive: true });
       });
-      // Browsers pause video in hidden tabs; pick it back up on return.
       document.addEventListener('visibilitychange', function () {
         if (!document.hidden) attempt();
       });
     }
 
     /* ===============================================================
-       BESPOKE AUDIO PLAYER
-       Draws a real waveform from the decoded clip where the browser
-       allows it, and a deterministic stand-in where it does not
-       (opening this file straight off disk blocks the fetch).
+       BESPOKE AUDIO PLAYER & AUDIO-REACTIVE GLOW
     =============================================================== */
     var BAR_WIDTH = 3;
     var BAR_GAP = 2;
@@ -1257,41 +1908,66 @@
       var curTime  = document.getElementById('curTime');
       var durTime  = document.getElementById('durTime');
       var note     = document.getElementById('playerNote');
+      var lyricText = document.getElementById('lyricText');
       if (!player || !audio || !canvas) return;
 
       var ctx = canvas.getContext('2d');
       var peaks = null;
       var barCount = 0;
       var scrubbing = false;
-
-      /* With preload="none" the real duration is unknown until the file
-         loads, so fall back to the known length of the master. A seek made
-         before that lands is held in pendingSeek and applied on arrival. */
       var pendingSeek = null;
 
-      function bufferedCovers(t) {
-        for (var i = 0; i < audio.buffered.length; i++) {
-          if (t >= audio.buffered.start(i) && t <= audio.buffered.end(i)) return true;
+      // Audio-reactive visualizer integration
+      var audioCtx = null;
+      var analyser = null;
+      var dataArray = null;
+      var animFrameId = null;
+
+      function setupAudioReactive() {
+        if (audioCtx) return;
+        try {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          audioCtx = new AudioContextClass();
+          var sourceNode = audioCtx.createMediaElementSource(audio);
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 64;
+          sourceNode.connect(analyser);
+          analyser.connect(audioCtx.destination);
+          dataArray = new Uint8Array(analyser.frequencyBinCount);
+        } catch (err) {
+          // Audio routing fallback
         }
-        return false;
       }
 
-      /* Apply a seek made before the audio was ready. Hosts that serve
-         HTTP Range requests satisfy this on the first try; hosts that
-         don't can only seek within what has buffered, so this is retried
-         from 'progress' as more arrives. */
-      function applyPendingSeek() {
-        if (pendingSeek === null || !isFinite(audio.duration) || audio.duration <= 0) return;
-
-        var target = pendingSeek * audio.duration;
-        if (Math.abs(audio.currentTime - target) < 0.5) {
-          pendingSeek = null;
-          return;
+      function updatePulseLoop() {
+        if (!audio.paused && analyser && dataArray) {
+          analyser.getByteFrequencyData(dataArray);
+          var avg = 0;
+          for (var i = 0; i < dataArray.length; i++) { avg += dataArray[i]; }
+          avg = avg / dataArray.length;
+          var factor = 1 + (avg / 255) * 0.45;
+          document.documentElement.style.setProperty('--audio-pulse', factor.toFixed(2));
+          animFrameId = requestAnimationFrame(updatePulseLoop);
+        } else {
+          document.documentElement.style.setProperty('--audio-pulse', '1');
         }
+      }
 
-        audio.currentTime = target;
-        if (Math.abs(audio.currentTime - target) < 0.5 || bufferedCovers(target)) {
-          pendingSeek = null;
+      function updateLyrics(time) {
+        if (!lyricText) return;
+        var activeLine = LYRICS[0].text;
+        for (var i = 0; i < LYRICS.length; i++) {
+          if (time >= LYRICS[i].time) {
+            activeLine = LYRICS[i].text;
+          }
+        }
+        if (lyricText.textContent !== activeLine) {
+          lyricText.classList.remove('active');
+          setTimeout(function () {
+            lyricText.textContent = activeLine;
+            lyricText.classList.add('active');
+          }, 150);
         }
       }
 
@@ -1318,8 +1994,6 @@
         return m + ':' + (s < 10 ? '0' : '') + s;
       }
 
-      /* Stand-in shape: stable across reloads, shaped like a song
-         rather than noise, so the player never looks broken. */
       function syntheticPeaks(count) {
         var out = new Float32Array(count);
         for (var i = 0; i < count; i++) {
@@ -1331,9 +2005,6 @@
         return out;
       }
 
-      /* Precomputed peaks, remapped to however many bars fit.
-         Takes the max across each group so downsampling keeps the
-         transients instead of sampling one arbitrary value. */
       function peaksFromTable(count) {
         var out = new Float32Array(count);
         for (var i = 0; i < count; i++) {
@@ -1346,31 +2017,6 @@
           out[i] = Math.max(0.04, peak / 99);
         }
         out.isReal = true;
-        return out;
-      }
-
-      /* Real peaks: max absolute sample per bucket, normalised. */
-      function peaksFromBuffer(buffer, count) {
-        var data = buffer.getChannelData(0);
-        var bucket = Math.floor(data.length / count) || 1;
-        var out = new Float32Array(count);
-        var max = 0;
-        for (var i = 0; i < count; i++) {
-          var start = i * bucket;
-          var end = Math.min(start + bucket, data.length);
-          var peak = 0;
-          for (var j = start; j < end; j++) {
-            var v = data[j] < 0 ? -data[j] : data[j];
-            if (v > peak) peak = v;
-          }
-          out[i] = peak;
-          if (peak > max) max = peak;
-        }
-        if (max > 0) {
-          for (var k = 0; k < count; k++) {
-            out[k] = Math.max(0.05, out[k] / max);
-          }
-        }
         return out;
       }
 
@@ -1435,12 +2081,12 @@
           pendingSeek = null;
           audio.currentTime = ratio * audio.duration;
         } else {
-          // Nothing loaded yet — remember where they aimed and start fetching.
           pendingSeek = ratio;
           audio.load();
         }
 
         curTime.textContent = fmt(ratio * duration());
+        updateLyrics(ratio * duration());
         updateAria();
         draw();
       }
@@ -1450,76 +2096,37 @@
         seekToRatio((clientX - rect.left) / rect.width);
       }
 
-      /* --- Waveform analysis (fallback only) ---
-         Only runs when no precomputed PEAKS are embedded, e.g. if the
-         track is swapped without regenerating them. Downloads the whole
-         file, so the embedded table is strongly preferred. */
-      function loadRealWaveform() {
-        var source = audio.currentSrc;
-        var AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (PEAKS.length || !source || !AudioCtx || !window.fetch) return;
-
-        fetch(source)
-          .then(function (res) {
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            return res.arrayBuffer();
-          })
-          .then(function (buf) {
-            var actx = new AudioCtx();
-            return new Promise(function (resolve, reject) {
-              actx.decodeAudioData(buf, resolve, reject);
-            }).then(function (decoded) {
-              actx.close();
-              return decoded;
-            });
-          })
-          .then(function (buffer) {
-            var real = peaksFromBuffer(buffer, barCount || 120);
-            real.isReal = true;
-            peaks = real;
-            draw();
-          })
-          .catch(function () {
-            /* Blocked by file:// or CORS — the stand-in shape stays. */
-          });
-      }
-
-      /* --- Events --- */
       playBtn.addEventListener('click', function () {
+        setupAudioReactive();
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
         if (audio.paused) { audio.play(); } else { audio.pause(); }
       });
 
       audio.addEventListener('play', function () {
         player.classList.add('is-playing');
         playBtn.setAttribute('aria-label', 'Pause Zero To 40');
+        updatePulseLoop();
       });
 
       audio.addEventListener('pause', function () {
         player.classList.remove('is-playing');
         playBtn.setAttribute('aria-label', 'Play Zero To 40');
+        if (animFrameId) cancelAnimationFrame(animFrameId);
+        document.documentElement.style.setProperty('--audio-pulse', '1');
       });
 
       audio.addEventListener('loadedmetadata', function () {
         durTime.textContent = fmt(audio.duration);
-        applyPendingSeek();
         updateAria();
         setNote('');
-        loadRealWaveform();
-      });
-
-      // More data arrived — a seek that couldn't land earlier may land now.
-      audio.addEventListener('progress', function () {
-        if (pendingSeek === null) return;
-        applyPendingSeek();
-        curTime.textContent = fmt(progress() * duration());
-        updateAria();
-        draw();
       });
 
       audio.addEventListener('timeupdate', function () {
-        // Don't clobber the optimistic position while a seek is outstanding.
         if (scrubbing || pendingSeek !== null) return;
         curTime.textContent = fmt(audio.currentTime);
+        updateLyrics(audio.currentTime);
         updateAria();
         draw();
       });
@@ -1527,24 +2134,19 @@
       audio.addEventListener('ended', function () {
         audio.currentTime = 0;
         curTime.textContent = '0:00';
+        updateLyrics(0);
         updateAria();
         draw();
       });
 
-      audio.addEventListener('error', onSourceMissing, true);
-      audio.querySelectorAll('source').forEach(function (s) {
-        s.addEventListener('error', onSourceMissing);
-      });
-
-      function onSourceMissing() {
-        // Only give up once every <source> has failed.
+      audio.addEventListener('error', function () {
         if (audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
           playBtn.disabled = true;
           setNote('Preview not found — expected assets/zero-to-40-preview.mp3', 'error');
         }
-      }
+      }, true);
 
-      // Pointer seeking
+      // Scrubber pointer events
       scrubber.addEventListener('pointerdown', function (e) {
         scrubbing = true;
         scrubber.setPointerCapture(e.pointerId);
@@ -1559,40 +2161,307 @@
         scrubber.addEventListener(evt, function () { scrubbing = false; });
       });
 
-      // Keyboard seeking
+      // Keyboard navigation
       scrubber.addEventListener('keydown', function (e) {
         var step = (e.shiftKey ? 10 : 5) / duration();
         var pos = progress();
-
-        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-          seekToRatio(pos + step);
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-          seekToRatio(pos - step);
-        } else if (e.key === 'Home') {
-          seekToRatio(0);
-        } else if (e.key === 'End') {
-          seekToRatio(1);
-        } else if (e.key === ' ' || e.key === 'Enter') {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { seekToRatio(pos + step); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { seekToRatio(pos - step); }
+        else if (e.key === 'Home') { seekToRatio(0); }
+        else if (e.key === 'End') { seekToRatio(1); }
+        else if (e.key === ' ' || e.key === 'Enter') {
           if (audio.paused) { audio.play(); } else { audio.pause(); }
-        } else {
-          return;
-        }
+        } else { return; }
         e.preventDefault();
       });
 
       window.addEventListener('resize', layout);
-
       layout();
       durTime.textContent = fmt(duration());
-      updateAria();
-      if (audio.readyState >= 1) loadRealWaveform();
     }
 
-    /* --- Boot --- */
+    /* ===============================================================
+       LIVE SHOW COUNTDOWN TIMER & CALENDAR (.ICS)
+    =============================================================== */
+    function initCountdownAndCalendar() {
+      // Event Target: Friday 4 September 2026, 20:00:00 BST (UTC+1)
+      var targetDate = new Date('2026-09-04T19:00:00Z').getTime();
+
+      var cdDays = document.getElementById('cdDays');
+      var cdHours = document.getElementById('cdHours');
+      var cdMins = document.getElementById('cdMins');
+      var cdSecs = document.getElementById('cdSecs');
+
+      function updateCountdown() {
+        var now = new Date().getTime();
+        var diff = targetDate - now;
+
+        if (diff <= 0) {
+          if (cdDays) cdDays.textContent = '00';
+          if (cdHours) cdHours.textContent = '00';
+          if (cdMins) cdMins.textContent = '00';
+          if (cdSecs) cdSecs.textContent = '00';
+          return;
+        }
+
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (cdDays) cdDays.textContent = days < 10 ? '0' + days : String(days);
+        if (cdHours) cdHours.textContent = hours < 10 ? '0' + hours : String(hours);
+        if (cdMins) cdMins.textContent = mins < 10 ? '0' + mins : String(mins);
+        if (cdSecs) cdSecs.textContent = secs < 10 ? '0' + secs : String(secs);
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // .ics File Generator
+      var icsBtn = document.getElementById('icsCalBtn');
+      if (icsBtn) {
+        icsBtn.addEventListener('click', function () {
+          var icsData = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Taymah Hendi//Zero To 40 Live//EN',
+            'CALSCALE:GREGORIAN',
+            'BEGIN:VEVENT',
+            'UID:sofar-sounds-taymah-hendi-20260904@taymahhendi.com',
+            'DTSTAMP:20260824T000000Z',
+            'DTSTART:20260904T190000Z',
+            'DTEND:20260904T220000Z',
+            'SUMMARY:Taymah Hendi — Zero To 40 Live at Sofar Sounds',
+            'DESCRIPTION:Live at Sofar Sounds London. An intimate room, no barrier, no setlist safety net. Zero To 40 played live.',
+            'LOCATION:Secret London Location (51.5246° N, 0.0784° W)',
+            'STATUS:CONFIRMED',
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\r\n');
+
+          var blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+          var link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.setAttribute('download', 'Taymah-Hendi-Sofar-Sounds-Live.ics');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    }
+
+    /* ===============================================================
+       MODAL CONTROLLER (VIP Backstage, Platforms, Video Reel)
+    =============================================================== */
+    function initModals() {
+      // VIP Modal
+      var vipModal = document.getElementById('vipModal');
+      var headerVipBtn = document.getElementById('headerVipBtn');
+      var closeVipBtn = document.getElementById('closeVipBtn');
+      var vipForm = document.getElementById('vipForm');
+      var vipSuccess = document.getElementById('vipSuccess');
+
+      function openVip() { if (vipModal) vipModal.classList.add('active'); }
+      function closeVip() { if (vipModal) vipModal.classList.remove('active'); }
+
+      if (headerVipBtn) headerVipBtn.addEventListener('click', openVip);
+      if (closeVipBtn) closeVipBtn.addEventListener('click', closeVip);
+
+      if (vipForm) {
+        vipForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('vipEmail').value;
+          var name = document.getElementById('vipName').value;
+          try {
+            var stored = JSON.parse(localStorage.getItem('th_vip_members') || '[]');
+            stored.push({ name: name, email: email, date: new Date().toISOString() });
+            localStorage.setItem('th_vip_members', JSON.stringify(stored));
+          } catch (err) {}
+          vipForm.style.display = 'none';
+          if (vipSuccess) vipSuccess.style.display = 'block';
+        });
+      }
+
+      // Platform Modal
+      var platformModal = document.getElementById('platformModal');
+      var platformBtn = document.getElementById('platformPickerBtn');
+      var closePlatformBtn = document.getElementById('closePlatformBtn');
+
+      function openPlatform() { if (platformModal) platformModal.classList.add('active'); }
+      function closePlatform() { if (platformModal) platformModal.classList.remove('active'); }
+
+      if (platformBtn) platformBtn.addEventListener('click', openPlatform);
+      if (closePlatformBtn) closePlatformBtn.addEventListener('click', closePlatform);
+
+      // Video Teaser Reel Modal
+      var videoModal = document.getElementById('videoModal');
+      var watchTeaserBtn = document.getElementById('watchTeaserBtn');
+      var closeVideoBtn = document.getElementById('closeVideoBtn');
+      var reelVideoPlayer = document.getElementById('reelVideoPlayer');
+
+      function openVideo() {
+        if (videoModal) {
+          videoModal.classList.add('active');
+          if (reelVideoPlayer) {
+            reelVideoPlayer.play().catch(function () {});
+          }
+        }
+      }
+
+      function closeVideo() {
+        if (videoModal) {
+          videoModal.classList.remove('active');
+          if (reelVideoPlayer) {
+            reelVideoPlayer.pause();
+          }
+        }
+      }
+
+      if (watchTeaserBtn) watchTeaserBtn.addEventListener('click', openVideo);
+      if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeVideo);
+
+      // Close modals on overlay backdrop click
+      [vipModal, platformModal, videoModal].forEach(function (m) {
+        if (!m) return;
+        m.addEventListener('click', function (e) {
+          if (e.target === m) {
+            m.classList.remove('active');
+            if (m === videoModal && reelVideoPlayer) {
+              reelVideoPlayer.pause();
+            }
+          }
+        });
+      });
+
+      // Escape key closes modals
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeVip();
+          closePlatform();
+          closeVideo();
+        }
+      });
+    }
+
+    /* ===============================================================
+       3D PARALLAX TILT ON HERO PORTRAIT
+    =============================================================== */
+    function initParallaxTilt() {
+      var wrap = document.getElementById('portraitWrap');
+      var section = document.getElementById('portraitSection');
+      if (!wrap || !section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      section.addEventListener('mousemove', function (e) {
+        var rect = section.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+
+        var rotateX = ((y - centerY) / centerY) * -7;
+        var rotateY = ((x - centerX) / centerX) * 7;
+
+        wrap.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) scale3d(1.02, 1.02, 1.02)';
+      });
+
+      section.addEventListener('mouseleave', function () {
+        wrap.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    }
+
+    /* ===============================================================
+       ETHEREAL STARDUST PARTICLE TRAIL (Desktop)
+    =============================================================== */
+    function initStardust() {
+      var canvas = document.getElementById('stardustCanvas');
+      if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var colors = ['#ffa6c5', '#ff7aa8', '#fbe6d4', '#dfbfff', '#ffffff'];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function createParticle(x, y) {
+        return {
+          x: x + (Math.random() - 0.5) * 12,
+          y: y + (Math.random() - 0.5) * 12,
+          size: Math.random() * 2.5 + 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          decay: Math.random() * 0.02 + 0.015,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2 - 0.3
+        };
+      }
+
+      var lastX = null, lastY = null;
+
+      window.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        var x = e.clientX;
+        var y = e.clientY;
+
+        if (lastX !== null) {
+          var dist = Math.hypot(x - lastX, y - lastY);
+          if (dist > 6) {
+            for (var i = 0; i < Math.min(3, Math.floor(dist / 6)); i++) {
+              particles.push(createParticle(x, y));
+            }
+          }
+        }
+        lastX = x;
+        lastY = y;
+      }, { passive: true });
+
+      function renderLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = particles.length - 1; i >= 0; i--) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.alpha -= p.decay;
+
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      renderLoop();
+    }
+
+    /* ===============================================================
+       BOOTSTRAP APPLICATION
+    =============================================================== */
     document.getElementById('year').textContent = new Date().getFullYear();
     renderSocials();
     initBackgroundVideo();
     initPlayer();
+    initCountdownAndCalendar();
+    initModals();
+    initParallaxTilt();
+    initStardust();
   })();
   </script>
 </body>
