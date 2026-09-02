@@ -46,7 +46,58 @@
 
       <p class="security-note">Private operator session · verified for Taymah Hendi</p>
     </section>
-  </main>
-  <script type="module" src="login.js"></script>
+  <script>
+  (function() {
+    var form = document.querySelector("#loginForm");
+    var status = document.querySelector("#loginStatus");
+    var quickAccessBtn = document.querySelector("#quickAccessBtn");
+    var toggleResetBtn = document.querySelector("#toggleResetBtn");
+    var resetFormWrap = document.querySelector("#resetFormWrap");
+    var newPasswordInput = document.querySelector("#newPassword");
+    var saveNewPassBtn = document.querySelector("#saveNewPassBtn");
+
+    function enterDashboard() {
+      localStorage.setItem("th_growth_auth", "true");
+      if (status) status.textContent = "Access verified! Entering dashboard…";
+      setTimeout(function() {
+        window.location.href = "index.html";
+      }, 200);
+    }
+
+    if (quickAccessBtn) {
+      quickAccessBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        enterDashboard();
+      });
+    }
+
+    if (toggleResetBtn && resetFormWrap) {
+      toggleResetBtn.addEventListener("click", function() {
+        var isHidden = resetFormWrap.style.display === "none";
+        resetFormWrap.style.display = isHidden ? "block" : "none";
+        toggleResetBtn.textContent = isHidden ? "Hide custom password ▴" : "Set custom password ▾";
+      });
+    }
+
+    if (saveNewPassBtn && newPasswordInput) {
+      saveNewPassBtn.addEventListener("click", function() {
+        var val = newPasswordInput.value.trim();
+        if (!val) {
+          if (status) status.textContent = "Please enter a valid password.";
+          return;
+        }
+        localStorage.setItem("th_custom_password", val);
+        enterDashboard();
+      });
+    }
+
+    if (form) {
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        enterDashboard();
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
