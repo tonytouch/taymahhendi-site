@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taymah Hendi - Zero To 40 (30s Chorus Preview)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff5295;
+      --primary-glow: rgba(255, 82, 149, 0.4);
+      --bg-dark: #0d060b;
+      --card-bg: rgba(26, 12, 23, 0.85);
+      --text: #ffffff;
+      --text-muted: #d9bfcf;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #260f20 0%, #0d060b 100%);
+      color: var(--text);
+      font-family: 'Outfit', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .player-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 82, 149, 0.35);
+      border-radius: 24px;
+      padding: 36px 32px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--primary-glow);
+      backdrop-filter: blur(16px);
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(255, 82, 149, 0.4);
+    }
+
+    .artwork-container {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 24px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px var(--primary-glow);
+      border: 2px solid var(--primary);
+    }
+
+    .artwork-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .track-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .artist-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      color: var(--primary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .clip-range {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Waveform & Scrubber */
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff5295, #ff8cb7);
+      border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Big Play/Pause Button */
+    .play-btn {
+      background: linear-gradient(135deg, #ff5295 0%, #d62262 100%);
+      color: #fff;
+      border: none;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px auto;
+      box-shadow: 0 10px 25px rgba(255, 82, 149, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 30px rgba(255, 82, 149, 0.7);
+    }
+
+    .play-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+
+    /* Download Master Button */
+    .download-btn {
+      display: inline-block;
+      width: 100%;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 20px var(--primary-glow);
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player-card">
+    <div class="badge">Exclusive DJ Preview</div>
+
+    <div class="artwork-container">
+      <img src="https://raw.githubusercontent.com/tonytouch/taymahhendi-site/main/assets/artwork.jpg" alt="Taymah Hendi - Zero To 40">
+    </div>
+
+    <h1 class="track-title">Zero To 40</h1>
+    <div class="artist-name">TAYMAH HENDI</div>
+    <div class="clip-range">Official Chorus Hook &bull; 00:47 &ndash; 01:15</div>
+
+    <audio id="audioPlayer" preload="auto">
+      <source src="assets/zero-to-40-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="progress-bar-container" id="progressContainer">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="time-display">
+      <span id="currentTime">0:00</span>
+      <span id="duration">0:28</span>
+    </div>
+
+    <button class="play-btn" id="playBtn" title="Play / Pause">
+      <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <a href="assets/zero-to-40.mp3" download="Taymah_Hendi_-_Zero_To_40.mp3" class="download-btn">
+      Download Full MP3 (320kbps Club Mix)
+    </a>
+
+    <div class="footer-note">
+      Club & Radio Ready &bull; Tagged ID3 &bull; taymahhendi.com
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const progressFill = document.getElementById('progressFill');
+    const progressContainer = document.getElementById('progressContainer');
+    const currentTimeEl = document.getElementById('currentTime');
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          playIcon.style.display = 'none';
+          pauseIcon.style.display = 'block';
+        }).catch(err => {
+          console.log('Playback require user gesture:', err);
+        });
+      } else {
+        audio.pause();
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+      }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = percent + '%';
+        const mins = Math.floor(audio.currentTime / 60);
+        const secs = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+        currentTimeEl.textContent = `${mins}:${secs}`;
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      progressFill.style.width = '0%';
+      currentTimeEl.textContent = '0:00';
+    });
+
+    progressContainer.addEventListener('click', (e) => {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      audio.currentTime = (clickX / width) * audio.duration;
+    });
+
+    // Auto-play immediately when page opens
+    window.addEventListener('DOMContentLoaded', () => {
+      audio.play().then(() => {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+      }).catch(() => {
+        // If browser blocks non-gesture autoplay, user clicks the pulsing big play button
+      });
+    });
+  </script>
+</body>
+</html>
