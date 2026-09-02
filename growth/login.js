@@ -59,7 +59,15 @@ form.addEventListener("submit", async (event) => {
   const customPassword = localStorage.getItem("th_custom_password");
 
   // Check against master default passcode or custom passcode
-  const isMasterKey = (enteredPassword === "zeroto40" || enteredPassword === "taymah" || enteredPassword === "admin" || (customPassword && enteredPassword === customPassword));
+  const passClean = enteredPassword.toLowerCase().replace(/[\s\-_]/g, '');
+  const isMasterKey = (
+    passClean === "zeroto40" ||
+    passClean === "0to40" ||
+    passClean === "taymah" ||
+    passClean === "taymahhendi" ||
+    passClean === "admin" ||
+    (customPassword && enteredPassword === customPassword)
+  );
 
   if (isMasterKey) {
     localStorage.setItem("th_growth_auth", "true");
