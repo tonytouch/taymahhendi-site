@@ -14,7 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/artwork.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/portrait.jpg" fetchpriority="high">
 
   <style>
     :root {
@@ -1478,6 +1480,367 @@
       }
     }
 
+    /* ---------------------------------------------------------------
+       DJ Cue Bar & Controls
+    --------------------------------------------------------------- */
+    .dj-cue-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 200, 225, 0.12);
+    }
+
+    .dj-cue-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--blush);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .cue-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 215, 235, 0.18);
+      color: var(--paper);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 34px;
+    }
+
+    .cue-btn:hover {
+      background: rgba(255, 82, 149, 0.2);
+      border-color: var(--rose);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .cue-btn.is-active {
+      background: linear-gradient(135deg, rgba(255, 82, 149, 0.35), rgba(214, 34, 98, 0.35));
+      border-color: var(--electric);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(255, 82, 149, 0.35);
+    }
+
+    .cue-btn.cue-vip {
+      margin-left: auto;
+      background: linear-gradient(135deg, #ff5295, #d62262);
+      border-color: transparent;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(255, 82, 149, 0.3);
+    }
+
+    .cue-btn.cue-vip:hover {
+      box-shadow: 0 6px 22px rgba(255, 82, 149, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .dj-pill-btn {
+      background: rgba(255, 82, 149, 0.16) !important;
+      border-color: var(--rose) !important;
+      color: var(--paper) !important;
+      margin-right: 6px;
+    }
+    .dj-pill-btn:hover {
+      background: linear-gradient(135deg, #ffa6c5, #ff5295) !important;
+      color: #150912 !important;
+    }
+
+    /* ---------------------------------------------------------------
+       VIP DJ Promo Modal & Feedback Widget
+    --------------------------------------------------------------- */
+    .dj-modal-card {
+      width: min(520px, 100%);
+    }
+
+    .dj-badge-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(255, 82, 149, 0.2);
+      border: 1px solid var(--rose);
+      border-radius: var(--radius-pill);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 12px;
+    }
+
+    .dj-download-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 200, 225, 0.2);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+
+    .dj-reaction-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 14px 0 10px;
+    }
+
+    .dj-reaction-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 215, 235, 0.2);
+      color: var(--paper);
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .dj-reaction-btn:hover, .dj-reaction-btn.is-selected {
+      background: var(--electric);
+      border-color: var(--blush);
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(255, 82, 149, 0.4);
+    }
+
+    /* ---------------------------------------------------------------
+       Floating AI Storytelling Assistant ("Ask Taymah AI")
+    --------------------------------------------------------------- */
+    .ai-story-trigger {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 900;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, rgba(30, 12, 26, 0.9), rgba(214, 34, 98, 0.9));
+      border: 1px solid var(--rose);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 82, 149, 0.4);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: all .25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ai-story-trigger:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.7), 0 0 28px rgba(255, 82, 149, 0.6);
+      border-color: #fff;
+    }
+
+    .ai-drawer {
+      position: fixed;
+      bottom: 84px;
+      right: 24px;
+      width: min(390px, calc(100vw - 32px));
+      height: 520px;
+      max-height: calc(100vh - 120px);
+      background: rgba(22, 10, 19, 0.96);
+      border: 1px solid rgba(255, 200, 225, 0.28);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 82, 149, 0.25);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 950;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.96);
+      transition: all .28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ai-drawer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .ai-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255, 215, 235, 0.14);
+      background: rgba(36, 14, 31, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ai-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ai-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--rose);
+      box-shadow: 0 0 10px rgba(255, 82, 149, 0.4);
+    }
+
+    .ai-title-wrap h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .ai-status {
+      font-size: 10px;
+      color: var(--blush);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .ai-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00ff88;
+      box-shadow: 0 0 8px #00ff88;
+    }
+
+    .ai-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 50%;
+      transition: color .2s;
+    }
+
+    .ai-close-btn:hover { color: #fff; }
+
+    .ai-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+
+    .ai-bubble {
+      max-width: 86%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .ai-bubble-bot {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 205, 230, 0.18);
+      color: var(--paper);
+      border-bottom-left-radius: 4px;
+    }
+
+    .ai-bubble-user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #ff5295, #d62262);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 4px 15px rgba(255, 82, 149, 0.3);
+    }
+
+    .ai-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding: 0 16px 12px;
+    }
+
+    .ai-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 200, 225, 0.2);
+      color: var(--blush);
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .ai-chip:hover {
+      background: rgba(255, 82, 149, 0.25);
+      border-color: var(--rose);
+      color: #fff;
+    }
+
+    .ai-input-wrap {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(255, 215, 235, 0.14);
+      background: rgba(26, 12, 23, 0.85);
+      display: flex;
+      gap: 8px;
+    }
+
+    .ai-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 205, 230, 0.2);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      padding: 10px 16px;
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .ai-input:focus {
+      border-color: var(--rose);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .ai-send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffa6c5, #ff5295);
+      border: none;
+      color: #12040b;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .2s;
+      flex-shrink: 0;
+    }
+
+    .ai-send-btn:hover {
+      transform: scale(1.08);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
@@ -1518,6 +1881,7 @@
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
         <span class="status">New release incoming</span>
+        <button class="btn-pill-sm dj-pill-btn" id="headerDjBtn" type="button">🎧 DJ Promo</button>
         <button class="btn-pill-sm" id="headerVipBtn" type="button">VIP Club ✦</button>
       </div>
       <span>London · Independent</span>
@@ -1592,6 +1956,15 @@
             </div>
 
             <div class="player-time"><b id="curTime">0:00</b> / <span id="durTime">0:00</span></div>
+          </div>
+
+          <!-- DJ Hot-Cues & Master Access -->
+          <div class="dj-cue-bar" aria-label="DJ Cue points and loop control">
+            <span class="dj-cue-label">DJ Cues:</span>
+            <button class="cue-btn" id="cueIntroBtn" type="button" title="Jump to start">0:00 Verse</button>
+            <button class="cue-btn" id="cueDropBtn" type="button" title="Jump to drop hook">0:15 Drop / Hook</button>
+            <button class="cue-btn is-active" id="loopToggleBtn" type="button" aria-pressed="true" title="Toggle 30s audio loop">🔁 Loop: ON</button>
+            <button class="cue-btn cue-vip" id="openDjModalBtn" type="button" title="Open DJ VIP Master Download">⬇ 320k DJ Master</button>
           </div>
 
           <div class="player-lyrics" id="playerLyrics" aria-live="polite">
@@ -1756,6 +2129,86 @@
         </video>
       </div>
     </div>
+  </div>
+
+  <!-- Modal: VIP DJ & Radio Promo Gate -->
+  <div class="modal-overlay" id="djModal" role="dialog" aria-modal="true" aria-labelledby="djTitle">
+    <div class="modal-card dj-modal-card">
+      <button class="modal-close" id="closeDjBtn" type="button" aria-label="Close DJ modal">✕</button>
+      <span class="dj-badge-tag">🎧 Exclusive DJ Service</span>
+      <h3 class="modal-title" id="djTitle">DJ &amp; Radio Promo Master</h3>
+      <p class="modal-desc">Instant access to the 320kbps MP3 promo master for club sets, mixtapes, and radio broadcast.</p>
+      
+      <form class="vip-form" id="djForm">
+        <input class="vip-input" type="text" id="djName" placeholder="DJ / Presenter Name" required>
+        <input class="vip-input" type="text" id="djStation" placeholder="Station / Club Residency (e.g. 1Xtra, Rinse, Club)" required>
+        <input class="vip-input" type="email" id="djEmail" placeholder="DJ Email Address" required>
+        <button class="cta" type="submit" style="width:100%; justify-content:center;">
+          <span>Unlock 320kbps Master ⬇️</span>
+        </button>
+      </form>
+
+      <div id="djSuccess" style="display:none; padding:10px 0;">
+        <div class="dj-download-box">
+          <p style="font-size:24px; margin:0 0 6px;">🎧</p>
+          <p style="font-family:'Space Mono',monospace; font-size:18px; font-weight:700; text-transform:uppercase; margin:0 0 4px; color:#fff;">Access Granted</p>
+          <p style="font-size:12px; color:var(--blush); margin:0 0 14px;">Serato / Rekordbox 320kbps MP3 Master (44.1kHz)</p>
+          <a class="cta" id="directDjDownloadLink" href="assets/zero-to-40.mp3" download="Taymah_Hendi_-_Zero_To_40_320kbps.mp3" style="width:100%; justify-content:center;">
+            <span>⬇️ Download Master MP3 (320kbps)</span>
+          </a>
+        </div>
+
+        <div style="margin-top:18px; text-align:center;">
+          <p style="font-size:12px; text-transform:uppercase; letter-spacing:.15em; font-weight:700; color:var(--blush); margin:0 0 8px;">
+            Quick DJ Reaction:
+          </p>
+          <div class="dj-reaction-row" id="djReactionRow">
+            <button class="dj-reaction-btn" type="button" data-react="🔥 Club Banger">🔥 Banger</button>
+            <button class="dj-reaction-btn" type="button" data-react="📻 Radio Ready">📻 Radio Ready</button>
+            <button class="dj-reaction-btn" type="button" data-react="🎧 Peak Time">🎧 Peak Time</button>
+          </div>
+          <p id="djFeedbackConfirm" style="font-size:11px; color:#00ff88; margin:6px 0 0; display:none;">Reaction logged — Thank you for your support!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Trigger: Ask Taymah AI -->
+  <button class="ai-story-trigger" id="aiStoryTrigger" type="button" aria-label="Open Ask Taymah AI Storyteller">
+    <span>✦ Ask Taymah AI</span>
+  </button>
+
+  <!-- Interactive AI Storytelling Drawer -->
+  <div class="ai-drawer" id="aiDrawer" role="region" aria-label="Ask Taymah AI Storyteller">
+    <div class="ai-header">
+      <div class="ai-header-left">
+        <img class="ai-avatar" src="assets/portrait.jpg" alt="Taymah Hendi AI" width="38" height="38">
+        <div class="ai-title-wrap">
+          <h4>Ask Taymah AI</h4>
+          <span class="ai-status"><span class="ai-status-dot"></span> Online · London Lore &amp; Storyteller</span>
+        </div>
+      </div>
+      <button class="ai-close-btn" id="aiCloseBtn" type="button" aria-label="Close AI Assistant">✕</button>
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-bubble ai-bubble-bot">
+        Hey! I'm Taymah's interactive storyteller. Ask me anything about <em>Zero To 40</em>, the lyrics, the London night drive inspiration, or our upcoming Sofar Sounds secret show! ✦
+      </div>
+    </div>
+
+    <div class="ai-chips" id="aiChips">
+      <button class="ai-chip" type="button" data-question="What inspired Zero To 40?">✦ What inspired the track?</button>
+      <button class="ai-chip" type="button" data-question="Why 40 mph?">🚗 Why 40 mph?</button>
+      <button class="ai-chip" type="button" data-question="What genre is this?">🎵 What genre is this?</button>
+      <button class="ai-chip" type="button" data-question="Tell me about the Sofar Sounds show">🎟️ Sofar Sounds show</button>
+      <button class="ai-chip" type="button" data-question="How can DJs support this track?">🎧 DJ &amp; Radio info</button>
+    </div>
+
+    <form class="ai-input-wrap" id="aiForm">
+      <input class="ai-input" id="aiInput" type="text" placeholder="Ask about lyrics, backstory, or shows..." autocomplete="off">
+      <button class="ai-send-btn" type="submit" aria-label="Send question">✦</button>
+    </form>
   </div>
 
   <script>
@@ -2131,12 +2584,50 @@
         draw();
       });
 
+      // DJ Hot-Cue and Looping Controls
+      var cueIntroBtn = document.getElementById('cueIntroBtn');
+      var cueDropBtn  = document.getElementById('cueDropBtn');
+      var loopToggleBtn = document.getElementById('loopToggleBtn');
+      var isLooping = true;
+
+      if (cueIntroBtn) {
+        cueIntroBtn.addEventListener('click', function () {
+          setupAudioReactive();
+          seekToRatio(0);
+          if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+          audio.play();
+        });
+      }
+
+      if (cueDropBtn) {
+        cueDropBtn.addEventListener('click', function () {
+          setupAudioReactive();
+          seekToRatio(0.5); // Jump to 0:15 drop
+          if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+          audio.play();
+        });
+      }
+
+      if (loopToggleBtn) {
+        loopToggleBtn.addEventListener('click', function () {
+          isLooping = !isLooping;
+          loopToggleBtn.setAttribute('aria-pressed', String(isLooping));
+          loopToggleBtn.classList.toggle('is-active', isLooping);
+          loopToggleBtn.textContent = isLooping ? '🔁 Loop: ON' : '🔁 Loop: OFF';
+        });
+      }
+
       audio.addEventListener('ended', function () {
-        audio.currentTime = 0;
-        curTime.textContent = '0:00';
-        updateLyrics(0);
-        updateAria();
-        draw();
+        if (isLooping) {
+          audio.currentTime = 0;
+          audio.play();
+        } else {
+          audio.currentTime = 0;
+          curTime.textContent = '0:00';
+          updateLyrics(0);
+          updateAria();
+          draw();
+        }
       });
 
       audio.addEventListener('error', function () {
@@ -2321,8 +2812,64 @@
       if (watchTeaserBtn) watchTeaserBtn.addEventListener('click', openVideo);
       if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeVideo);
 
+      // DJ Modal
+      var djModal = document.getElementById('djModal');
+      var headerDjBtn = document.getElementById('headerDjBtn');
+      var openDjModalBtn = document.getElementById('openDjModalBtn');
+      var closeDjBtn = document.getElementById('closeDjBtn');
+      var djForm = document.getElementById('djForm');
+      var djSuccess = document.getElementById('djSuccess');
+      var directDjDownloadLink = document.getElementById('directDjDownloadLink');
+      var djReactionRow = document.getElementById('djReactionRow');
+      var djFeedbackConfirm = document.getElementById('djFeedbackConfirm');
+
+      function openDj() { if (djModal) djModal.classList.add('active'); }
+      function closeDj() { if (djModal) djModal.classList.remove('active'); }
+
+      if (headerDjBtn) headerDjBtn.addEventListener('click', openDj);
+      if (openDjModalBtn) openDjModalBtn.addEventListener('click', openDj);
+      if (closeDjBtn) closeDjBtn.addEventListener('click', closeDj);
+
+      if (djForm) {
+        djForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = document.getElementById('djName').value;
+          var station = document.getElementById('djStation').value;
+          var email = document.getElementById('djEmail').value;
+          try {
+            var stored = JSON.parse(localStorage.getItem('th_dj_roster') || '[]');
+            stored.push({ name: name, station: station, email: email, date: new Date().toISOString() });
+            localStorage.setItem('th_dj_roster', JSON.stringify(stored));
+          } catch (err) {}
+          
+          djForm.style.display = 'none';
+          if (djSuccess) djSuccess.style.display = 'block';
+          
+          // Auto-trigger direct download of the master MP3
+          if (directDjDownloadLink) {
+            setTimeout(function () { directDjDownloadLink.click(); }, 600);
+          }
+        });
+      }
+
+      if (djReactionRow) {
+        djReactionRow.addEventListener('click', function (e) {
+          var btn = e.target.closest('.dj-reaction-btn');
+          if (!btn) return;
+          djReactionRow.querySelectorAll('.dj-reaction-btn').forEach(function (b) { b.classList.remove('is-selected'); });
+          btn.classList.add('is-selected');
+          var react = btn.getAttribute('data-react');
+          try {
+            var reactions = JSON.parse(localStorage.getItem('th_dj_reactions') || '[]');
+            reactions.push({ reaction: react, date: new Date().toISOString() });
+            localStorage.setItem('th_dj_reactions', JSON.stringify(reactions));
+          } catch (err) {}
+          if (djFeedbackConfirm) djFeedbackConfirm.style.display = 'block';
+        });
+      }
+
       // Close modals on overlay backdrop click
-      [vipModal, platformModal, videoModal].forEach(function (m) {
+      [vipModal, platformModal, videoModal, djModal].forEach(function (m) {
         if (!m) return;
         m.addEventListener('click', function (e) {
           if (e.target === m) {
@@ -2340,6 +2887,7 @@
           closeVip();
           closePlatform();
           closeVideo();
+          closeDj();
         }
       });
     }
@@ -2421,6 +2969,11 @@
       }, { passive: true });
 
       function renderLoop() {
+        if (document.hidden) {
+          requestAnimationFrame(renderLoop);
+          return;
+        }
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         for (var i = particles.length - 1; i >= 0; i--) {
@@ -2452,6 +3005,104 @@
     }
 
     /* ===============================================================
+       AI STORYTELLER & LORE ASSISTANT ("Ask Taymah AI")
+    =============================================================== */
+    function initAiStoryteller() {
+      var trigger = document.getElementById('aiStoryTrigger');
+      var drawer = document.getElementById('aiDrawer');
+      var closeBtn = document.getElementById('aiCloseBtn');
+      var messages = document.getElementById('aiMessages');
+      var chips = document.getElementById('aiChips');
+      var form = document.getElementById('aiForm');
+      var input = document.getElementById('aiInput');
+
+      if (!trigger || !drawer) return;
+
+      function toggleDrawer() {
+        drawer.classList.toggle('is-open');
+        if (drawer.classList.contains('is-open') && input) {
+          setTimeout(function () { input.focus(); }, 300);
+        }
+      }
+
+      trigger.addEventListener('click', toggleDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', function () { drawer.classList.remove('is-open'); });
+
+      function appendMessage(sender, text) {
+        var bubble = document.createElement('div');
+        bubble.className = 'ai-bubble ' + (sender === 'user' ? 'ai-bubble-user' : 'ai-bubble-bot');
+        bubble.innerHTML = text;
+        messages.appendChild(bubble);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      function answerQuestion(q) {
+        var query = (q || '').toLowerCase();
+        appendMessage('user', escapeHtml(q));
+
+        var thinking = document.createElement('div');
+        thinking.className = 'ai-bubble ai-bubble-bot';
+        thinking.textContent = 'Thinking…';
+        messages.appendChild(thinking);
+        messages.scrollTop = messages.scrollHeight;
+
+        setTimeout(function () {
+          thinking.remove();
+          var reply = generateTaymahAnswer(query);
+          appendMessage('bot', reply);
+        }, 320);
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function generateTaymahAnswer(q) {
+        if (q.includes('inspire') || q.includes('car') || q.includes('about') || q.includes('story')) {
+          return "“Believe it or not, this song is about a car!” 🚗<br><br>It was born on late-night London drives through Shoreditch and the city ring roads. The feeling of going from zero to forty isn't just about speed—it’s about that sudden, electric shift in momentum, confidence, and emotion when you hit the gas after standing still.";
+        }
+        if (q.includes('why 40') || q.includes('speed') || q.includes('forty') || q.includes('2.5')) {
+          return "In central London, 40 mph feels like flying when the city streets empty out at 2 AM. Plus, in an EV, that 0 to 40 burst takes 2.5 seconds—instant torque. That rush matches the adrenaline in the chorus drop!";
+        }
+        if (q.includes('genre') || q.includes('sound') || q.includes('style') || q.includes('afro') || q.includes('dancehall')) {
+          return "The sound is an unapologetic blend of <strong>Dancehall, contemporary R&amp;B, and Afro-Fusion</strong>. Think soulful UK vocal storytelling paired with heavy club-ready basslines and syncopated percussion.";
+        }
+        if (q.includes('live') || q.includes('show') || q.includes('ticket') || q.includes('sofar') || q.includes('september')) {
+          return "We're performing live at <strong>Sofar Sounds London on Friday, 4 September 2026</strong>! It's a secret, intimate Shoreditch room with zero barriers. You can sync the date to your Apple or Google Calendar right from the live section of the site!";
+        }
+        if (q.includes('dj') || q.includes('radio') || q.includes('download') || q.includes('serato') || q.includes('320') || q.includes('stem')) {
+          return "Calling all DJs and tastemakers! You can download the official <strong>320kbps MP3 promo master</strong> right now via the <em>DJ Promo</em> button in the header or the cue bar on the audio player. It’s Serato and Rekordbox ready.";
+        }
+        if (q.includes('lyric') || q.includes('words') || q.includes('verse')) {
+          return "Key lyric from the track:<br><em>“Midnight asphalt, pulse on the wheel / You think it’s about you, but you don’t know what I feel…”</em><br><br>It’s all about independence, reclaiming control, and driving your own lane.";
+        }
+        if (q.includes('contact') || q.includes('book') || q.includes('email') || q.includes('press') || q.includes('label')) {
+          return "For press, bookings, and sync inquiries, reach out to <strong>Hendi Records</strong> at <a href='mailto:hendirecords@gmail.com' style='color:#ff7aa8; text-decoration:underline;'>hendirecords@gmail.com</a>.";
+        }
+        return "That’s love! <em>Zero To 40</em> represents moving forward with conviction—whether that's music, London life, or relationships. If you haven't pre-saved yet, hit the Pre-Save button to be first when it drops!";
+      }
+
+      if (chips) {
+        chips.addEventListener('click', function (e) {
+          var btn = e.target.closest('.ai-chip');
+          if (!btn) return;
+          var question = btn.getAttribute('data-question');
+          if (question) answerQuestion(question);
+        });
+      }
+
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var val = (input.value || '').trim();
+          if (!val) return;
+          input.value = '';
+          answerQuestion(val);
+        });
+      }
+    }
+
+    /* ===============================================================
        BOOTSTRAP APPLICATION
     =============================================================== */
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -2462,6 +3113,7 @@
     initModals();
     initParallaxTilt();
     initStardust();
+    initAiStoryteller();
   })();
   </script>
 </body>
