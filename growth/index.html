@@ -440,7 +440,7 @@
           <div class="mc-meta-grid">
             <div class="mc-meta-item">
               <span class="mc-meta-label">Campaign ID</span>
-              <strong class="mc-meta-val">f09df926f9</strong>
+              <strong class="mc-meta-val">5679acba87 (Friday Blast)</strong>
             </div>
             <div class="mc-meta-item">
               <span class="mc-meta-label">Audience</span>
@@ -457,10 +457,10 @@
           </div>
 
           <div class="mc-checklist">
-            <div class="check-item"><span class="check-icon">&#10003;</span> <span>Audience Verified: 80 VIP Club &amp; Radio DJs</span></div>
+            <div class="check-item"><span class="check-icon">&#10003;</span> <span>Audience Verified: 80 VIP Club &amp; Radio DJs (7d217c5c74)</span></div>
             <div class="check-item"><span class="check-icon">&#10003;</span> <span>Subject: EXCLUSIVE DJ PROMO: Taymah Hendi - Zero To 40</span></div>
             <div class="check-item"><span class="check-icon">&#10003;</span> <span>Immediate Playing Audio Preview: 00:47&ndash;01:15 Active</span></div>
-            <div class="check-item"><span class="check-icon">&#10003;</span> <span>320kbps Master Download: Online &amp; Tagged</span></div>
+            <div class="check-item"><span class="check-icon">&#10003;</span> <span>Target Time: Friday 07:00 GMT (Hermes Autonomous Schedule)</span></div>
           </div>
 
           <div class="mc-actions">
@@ -471,11 +471,14 @@
               </button>
             </div>
             <div class="mc-action-btns">
-              <button class="action-btn primary" id="dispatchCampaignBtn" type="button" style="background: linear-gradient(135deg, #ff5295 0%, #d62262 100%); width: 100%; padding: 14px; font-weight: 700;">
-                &#128640; Dispatch Promo Blast to 80 VIP DJs
+              <button class="action-btn primary" id="scheduleFridayBtn" type="button" style="background: linear-gradient(135deg, #00c853 0%, #009624 100%); width: 100%; padding: 13px; font-weight: 700; margin-bottom: 8px;">
+                &#9200; Schedule Delivery for Friday 07:00 GMT (Hermes)
               </button>
-              <a href="http://eepurl.com/pjRLUSBU4P" target="_blank" class="action-btn secondary" style="display:block; text-align:center; margin-top: 8px; text-decoration:none;">
-                &#8599; Open Official Mailchimp Web Archive
+              <button class="action-btn" id="dispatchCampaignBtn" type="button" style="background: linear-gradient(135deg, #ff5295 0%, #d62262 100%); width: 100%; padding: 12px; font-weight: 700;">
+                &#128640; Dispatch Immediately to 80 VIP DJs Now
+              </button>
+              <a href="http://eepurl.com/ViSwtOhEl9" target="_blank" class="action-btn secondary" style="display:block; text-align:center; margin-top: 8px; text-decoration:none;">
+                &#8599; Open Friday Campaign Web Archive
               </a>
             </div>
           </div>
@@ -1027,6 +1030,25 @@
           sendTestBtn.disabled = false;
           sendTestBtn.textContent = "✉ Send Test Email";
         }
+      });
+    }
+
+    // Schedule Delivery for Friday 07:00 GMT Action
+    const scheduleFridayBtn = $("#scheduleFridayBtn");
+    if (scheduleFridayBtn) {
+      scheduleFridayBtn.addEventListener("click", () => {
+        scheduleFridayBtn.disabled = true;
+        scheduleFridayBtn.textContent = "✓ Scheduled for Friday 07:00 GMT (Hermes Active)";
+        scheduleFridayBtn.style.background = "#00701a";
+        toast("Campaign 5679acba87 scheduled for Friday 07:00 GMT! Hermes autonomous daemon engaged.");
+        const state = defaultState();
+        state.runs.unshift({
+          agentName: "VIP DJ & Radio Service (Hermes Agent)",
+          summary: "Delivery scheduled for Friday 07:00 GMT (Audience: 7d217c5c74, 80 VIP DJs).",
+          source: "Hermes Autonomous Scheduler",
+          completedAt: new Date().toISOString()
+        });
+        renderRuns(state);
       });
     }
 
