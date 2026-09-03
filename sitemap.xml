@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://taymahhendi.com/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://taymahhendi.com/assets/artwork.jpg</image:loc>
+      <image:title>Zero To 40 single cover artwork — Taymah Hendi</image:title>
+      <image:caption>Official cover artwork for Zero To 40 by London artist Taymah Hendi</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://taymahhendi.com/assets/portrait.jpg</image:loc>
+      <image:title>Taymah Hendi portrait in Shoreditch London</image:title>
+      <image:caption>London R&amp;B singer-songwriter Taymah Hendi</image:caption>
+    </image:image>
+  </url>
+</urlset>

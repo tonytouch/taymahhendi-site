@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /growth/
+Disallow: /growth/*
+
+Sitemap: https://taymahhendi.com/sitemap.xml
