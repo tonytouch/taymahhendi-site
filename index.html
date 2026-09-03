@@ -1422,6 +1422,83 @@
     }
 
     /* ---------------------------------------------------------------
+       Midnight Urgency & Spotify Pre-Save Styles
+    --------------------------------------------------------------- */
+    .midnight-timer {
+      display: inline-block;
+      font-family: "Space Mono", monospace;
+      font-size: clamp(12px, 1.4vw, 16px);
+      font-style: normal;
+      color: var(--champagne);
+      background: rgba(255, 82, 149, 0.2);
+      border: 1px solid rgba(255, 122, 168, 0.4);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-left: 10px;
+      vertical-align: middle;
+      letter-spacing: 0.05em;
+    }
+
+    .midnight-countdown-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(32, 14, 28, 0.95), rgba(18, 7, 16, 0.9));
+      border: 1px solid rgba(255, 122, 168, 0.4);
+      box-shadow: 0 10px 30px rgba(255, 82, 149, 0.25), 0 0 20px rgba(255, 82, 149, 0.15);
+      margin-top: 14px;
+      backdrop-filter: blur(12px);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1db954;
+      box-shadow: 0 0 12px #1db954;
+      animation: blink 1.6s ease-in-out infinite;
+    }
+
+    .pill-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-weight: 700;
+      color: var(--blush);
+    }
+
+    .pill-countdown {
+      font-family: "Space Mono", monospace;
+      font-size: 14px;
+      color: #ffffff;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 12px rgba(255, 122, 168, 0.5);
+    }
+
+    .pill-sub {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    .cta-spotify {
+      background: linear-gradient(135deg, #1db954 0%, #169343 50%, #116f32 100%) !important;
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+      box-shadow: 0 12px 35px rgba(29, 185, 84, 0.45), 0 0 25px rgba(29, 185, 84, 0.25) !important;
+    }
+
+    .cta-spotify:hover {
+      background: linear-gradient(135deg, #24d662 0%, #1cb04f 50%, #169343 100%) !important;
+      box-shadow: 0 18px 45px rgba(29, 185, 84, 0.6), 0 0 35px rgba(29, 185, 84, 0.4) !important;
+      transform: translateY(-3px) scale(1.03) !important;
+    }
+
+    /* ---------------------------------------------------------------
        Modals (VIP Backstage, Video Teaser, Streaming Selector)
     --------------------------------------------------------------- */
     .modal-overlay {
@@ -2071,12 +2148,12 @@
     <div class="banner-inner">
       <img class="banner-art" src="assets/artwork.jpg" alt="Zero To 40 single artwork — Taymah Hendi" width="600" height="600">
       <div class="banner-text">
-        <p class="banner-eyebrow">✦ Upcoming release</p>
-        <p class="banner-title">Zero To <em>40</em></p>
+        <p class="banner-eyebrow" style="color:var(--rose);">⚡ DROPS TONIGHT AT MIDNIGHT (00:00 BST)</p>
+        <p class="banner-title">Zero To <em>40</em> <span class="midnight-timer" id="bannerMidnightTimer">--h : --m : --s</span></p>
       </div>
       <div class="banner-meta">
         <div>Taymah Hendi</div>
-        <div>Pre-save open now</div>
+        <a href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer" style="color:var(--blush); font-weight:700; text-decoration:underline;">Pre-Save on Spotify ➜</a>
       </div>
     </div>
   </div>
@@ -2086,7 +2163,7 @@
     <header>
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
-        <span class="status">New release incoming</span>
+        <span class="status">⚡ Drops Tonight 00:00</span>
         <button class="btn-pill-sm dj-pill-btn" id="headerDjBtn" type="button">🎧 DJ Promo</button>
         <button class="btn-pill-sm" id="headerVipBtn" type="button">VIP Club ✦</button>
       </div>
@@ -2105,14 +2182,22 @@
 
         <div class="release-row">
           <div class="cta-group">
-            <a class="cta" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
-              <span>Pre-save now</span>
+            <a class="cta cta-spotify" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
+              <span>Pre-save on Spotify ✦</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <button class="cta-secondary" id="platformPickerBtn" type="button">
-              <span>Platforms ▾</span>
+              <span>Other Platforms ▾</span>
             </button>
           </div>
+
+          <div class="midnight-countdown-pill" id="heroMidnightPill">
+            <span class="pill-dot"></span>
+            <span class="pill-label">MIDNIGHT RELEASE:</span>
+            <strong class="pill-countdown" id="heroCountdownVal">--h : --m : --s</strong>
+            <span class="pill-sub">· Saves directly to your Spotify library at 00:00</span>
+          </div>
+
           <p class="microcopy">“Believe it or not, this song is about a car.”</p>
         </div>
       </section>
@@ -2407,6 +2492,24 @@
           </div>
           <p id="djFeedbackConfirm" style="font-size:11px; color:#00ff88; margin:6px 0 0; display:none;">Reaction logged — Thank you for your support!</p>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Post-Preview Pre-Save Prompt -->
+  <div class="modal-overlay" id="presavePromptModal" role="dialog" aria-modal="true" aria-labelledby="presavePromptTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="closePresavePromptBtn" type="button" aria-label="Close modal">✕</button>
+      <div style="font-size: 40px; margin-bottom: 6px;">🚗💨</div>
+      <h3 class="modal-title" id="presavePromptTitle">Hear the Full Track at Midnight</h3>
+      <p class="modal-desc">You just heard the 30-second preview of <strong>Zero To 40</strong>. The full master drops tonight at midnight (00:00 BST). Pre-save on Spotify to have it land directly in your music library.</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 18px;">
+        <a class="cta cta-spotify" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer" style="width: 100%; justify-content: center;">
+          <span>Pre-Save on Spotify Now ✦</span>
+        </a>
+        <button class="cta-secondary" id="dismissPresavePromptBtn" type="button" style="width: 100%; justify-content: center;">
+          <span>Close &amp; Keep Exploring</span>
+        </button>
       </div>
     </div>
   </div>
@@ -2865,6 +2968,9 @@
           updateLyrics(0);
           updateAria();
           draw();
+          if (typeof window.showPreSavePrompt === 'function') {
+            setTimeout(window.showPreSavePrompt, 400);
+          }
         }
       });
 
@@ -2946,6 +3052,29 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
+
+      // Single Release Target: Friday 4 September 2026, 00:00:00 BST (23:00:00 UTC Sept 3)
+      var midnightTarget = new Date('2026-09-03T23:00:00Z').getTime();
+      var bannerTimer = document.getElementById('bannerMidnightTimer');
+      var heroTimer = document.getElementById('heroCountdownVal');
+
+      function updateMidnightCountdown() {
+        var now = new Date().getTime();
+        var diff = midnightTarget - now;
+        if (diff <= 0) {
+          if (bannerTimer) bannerTimer.textContent = 'OUT NOW!';
+          if (heroTimer) heroTimer.textContent = 'OUT NOW!';
+          return;
+        }
+        var h = Math.floor(diff / (1000 * 60 * 60));
+        var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((diff % (1000 * 60)) / 1000);
+        var formatted = (h < 10 ? '0' + h : h) + 'h : ' + (m < 10 ? '0' + m : m) + 'm : ' + (s < 10 ? '0' + s : s) + 's';
+        if (bannerTimer) bannerTimer.textContent = formatted;
+        if (heroTimer) heroTimer.textContent = formatted;
+      }
+      updateMidnightCountdown();
+      setInterval(updateMidnightCountdown, 1000);
 
       // .ics File Generator
       var icsBtn = document.getElementById('icsCalBtn');
@@ -3106,8 +3235,24 @@
         });
       }
 
+      // Post-Preview Pre-Save Prompt Modal
+      var presavePromptModal = document.getElementById('presavePromptModal');
+      var closePresavePromptBtn = document.getElementById('closePresavePromptBtn');
+      var dismissPresavePromptBtn = document.getElementById('dismissPresavePromptBtn');
+
+      function openPresavePrompt() {
+        if (presavePromptModal) presavePromptModal.classList.add('active');
+      }
+      function closePresavePrompt() {
+        if (presavePromptModal) presavePromptModal.classList.remove('active');
+      }
+
+      if (closePresavePromptBtn) closePresavePromptBtn.addEventListener('click', closePresavePrompt);
+      if (dismissPresavePromptBtn) dismissPresavePromptBtn.addEventListener('click', closePresavePrompt);
+      window.showPreSavePrompt = openPresavePrompt;
+
       // Close modals on overlay backdrop click
-      [vipModal, platformModal, videoModal, djModal].forEach(function (m) {
+      [vipModal, platformModal, videoModal, djModal, presavePromptModal].forEach(function (m) {
         if (!m) return;
         m.addEventListener('click', function (e) {
           if (e.target === m) {
@@ -3126,6 +3271,7 @@
           closePlatform();
           closeVideo();
           closeDj();
+          closePresavePrompt();
         }
       });
     }
