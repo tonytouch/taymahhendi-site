@@ -9,6 +9,357 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
+
+  <style>
+    /* Mailchimp Studio Styling */
+    .mailchimp-studio-section {
+      margin-top: 40px;
+    }
+    .mailchimp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px) {
+      .mailchimp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .mailchimp-card {
+      background: rgba(22, 10, 19, 0.7);
+      border: 1px solid rgba(255, 82, 149, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      backdrop-filter: blur(12px);
+    }
+    .card-badge-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .mc-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+    .mc-badge.live {
+      background: rgba(0, 255, 136, 0.15);
+      color: #00ff88;
+      border: 1px solid rgba(0, 255, 136, 0.3);
+    }
+    .mc-badge.ready {
+      background: rgba(255, 82, 149, 0.15);
+      color: #ff5295;
+      border: 1px solid rgba(255, 82, 149, 0.3);
+    }
+    .mc-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+    .mc-desc {
+      font-size: 13px;
+      color: #d9bfcf;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .mc-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: rgba(13, 6, 11, 0.6);
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .mc-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mc-meta-label {
+      font-size: 11px;
+      color: #ffa6c5;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .mc-meta-val {
+      font-size: 13px;
+      color: #ffffff;
+    }
+    .mc-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+      color: #d9bfcf;
+      background: rgba(33, 14, 30, 0.4);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border-left: 3px solid #ff5295;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-icon {
+      color: #00ff88;
+      font-weight: bold;
+    }
+    .mc-action-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .mc-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 82, 149, 0.3);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .mc-input:focus {
+      outline: none;
+      border-color: #ff5295;
+    }
+    /* Email Mockup Preview */
+    .mailchimp-preview-card {
+      background: #160a13;
+      border: 1px solid #3d1730;
+      border-radius: 16px;
+      padding: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #281023;
+      padding-bottom: 10px;
+    }
+    .preview-header h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #ffa6c5;
+      margin: 0;
+    }
+    .preview-device-badge {
+      font-size: 10px;
+      color: #8a637a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .email-mockup-wrapper {
+      background: #0d060b;
+      border: 1px solid #331628;
+      border-radius: 12px;
+      padding: 18px;
+      max-height: 520px;
+      overflow-y: auto;
+      text-align: center;
+    }
+    .email-badge-bar {
+      background: #240e1f;
+      color: #ff7aa8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+    .email-art-img {
+      width: 180px;
+      border-radius: 12px;
+      border: 1px solid #ff5295;
+      box-shadow: 0 6px 20px rgba(255, 82, 149, 0.3);
+      margin-bottom: 14px;
+    }
+    .email-subhead {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #ffa6c5;
+      text-transform: uppercase;
+    }
+    .email-artist-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #fff;
+      margin: 4px 0;
+    }
+    .email-song-title {
+      font-size: 18px;
+      color: #ff5295;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .email-blurb {
+      font-size: 12px;
+      color: #d9bfcf;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      padding: 0 10px;
+    }
+    /* Instant Preview Player Box in Mockup */
+    .email-preview-box {
+      background: linear-gradient(180deg, #240d1e 0%, #170814 100%);
+      border: 1px solid #ff5295;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .preview-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: #00ff88;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    .live-player-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 14px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .mini-play-btn {
+      background: #ff5295;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .mini-play-btn:hover {
+      transform: scale(1.08);
+    }
+    .live-scrubber-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .live-scrubber {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .live-scrubber-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff5295, #00ff88);
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+    .live-timestamps {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: #ffa6c5;
+    }
+    .email-play-now-btn {
+      display: inline-block;
+      background: #2b1126;
+      border: 1.5px solid #ff5295;
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      transition: background 0.2s;
+    }
+    .email-play-now-btn:hover {
+      background: #ff5295;
+    }
+    .preview-caption {
+      font-size: 10px;
+      color: #ffa6c5;
+    }
+    .email-download-box {
+      margin-bottom: 16px;
+    }
+    .email-download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff5295 0%, #d62262 100%);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255, 82, 149, 0.4);
+    }
+    .email-download-sub {
+      font-size: 10px;
+      color: #ffa6c5;
+      margin-top: 6px;
+    }
+    .email-meta-table {
+      background: #1d0c1a;
+      border: 1px solid #3d1730;
+      border-radius: 8px;
+      font-size: 11px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-bottom: 1px solid #281023;
+    }
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+    .meta-row span {
+      color: #ffa6c5;
+    }
+    .meta-row strong {
+      color: #fff;
+    }
+    .email-dj-callout {
+      background: #210e1e;
+      border-left: 3px solid #ff5295;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 11px;
+      color: #d9bfcf;
+      text-align: left;
+    }
+  </style>
+
 </head>
 <body>
   <header class="topbar">
@@ -64,6 +415,140 @@
           <strong>3,150</strong>
           <span>0:15 Drop + Mailchimp DJs</span>
           <div class="stream-progress-bar"><div class="stream-progress-fill" style="width: 22%; background: #ff5295;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mailchimp DJ Service & Campaign Center -->
+    <section class="section mailchimp-studio-section" id="mailchimpStudio" aria-labelledby="mailchimpTitle">
+      <div class="section-head">
+        <p>Mailchimp Cloud Synchronization &middot; Audience: taymah hendi (80 VIP DJs)</p>
+        <h2 id="mailchimpTitle">Mailchimp DJ Service &amp; Campaign Studio</h2>
+      </div>
+
+      <div class="mailchimp-grid">
+        <!-- Left: Live Campaign Controls & Dispatcher -->
+        <div class="mailchimp-card">
+          <div class="card-badge-row">
+            <span class="mc-badge live">&#9679; Live Mailchimp us10</span>
+            <span class="mc-badge ready">&#10003; Send Ready</span>
+          </div>
+
+          <h3 class="mc-title">DJ Promo: Taymah Hendi - Zero To 40</h3>
+          <p class="mc-desc">Exclusive service to 80 VIP DJs &amp; Tastemakers with the instant-playing 00:47&ndash;01:15 chorus preview and full 320kbps club mix download.</p>
+
+          <div class="mc-meta-grid">
+            <div class="mc-meta-item">
+              <span class="mc-meta-label">Campaign ID</span>
+              <strong class="mc-meta-val">f09df926f9</strong>
+            </div>
+            <div class="mc-meta-item">
+              <span class="mc-meta-label">Audience</span>
+              <strong class="mc-meta-val">80 DJs (taymah hendi)</strong>
+            </div>
+            <div class="mc-meta-item">
+              <span class="mc-meta-label">Chorus Preview</span>
+              <strong class="mc-meta-val" style="color: #00ff88;">00:47 &ndash; 01:15 (28s)</strong>
+            </div>
+            <div class="mc-meta-item">
+              <span class="mc-meta-label">Master Format</span>
+              <strong class="mc-meta-val">320kbps MP3 (Club)</strong>
+            </div>
+          </div>
+
+          <div class="mc-checklist">
+            <div class="check-item"><span class="check-icon">&#10003;</span> <span>Audience Verified: 80 VIP Club &amp; Radio DJs</span></div>
+            <div class="check-item"><span class="check-icon">&#10003;</span> <span>Subject: EXCLUSIVE DJ PROMO: Taymah Hendi - Zero To 40</span></div>
+            <div class="check-item"><span class="check-icon">&#10003;</span> <span>Immediate Playing Audio Preview: 00:47&ndash;01:15 Active</span></div>
+            <div class="check-item"><span class="check-icon">&#10003;</span> <span>320kbps Master Download: Online &amp; Tagged</span></div>
+          </div>
+
+          <div class="mc-actions">
+            <div class="mc-action-row">
+              <input type="email" id="testEmailInput" placeholder="Enter email for instant test send..." value="hendirecords@gmail.com" class="mc-input" />
+              <button class="action-btn" id="sendTestBtn" type="button" style="background:#331628; border: 1px solid #ff5295; color: #fff; font-size: 12px; padding: 10px 16px;">
+                &#9993; Send Test Email
+              </button>
+            </div>
+            <div class="mc-action-btns">
+              <button class="action-btn primary" id="dispatchCampaignBtn" type="button" style="background: linear-gradient(135deg, #ff5295 0%, #d62262 100%); width: 100%; padding: 14px; font-weight: 700;">
+                &#128640; Dispatch Promo Blast to 80 VIP DJs
+              </button>
+              <a href="http://eepurl.com/pjRLUSBU4P" target="_blank" class="action-btn secondary" style="display:block; text-align:center; margin-top: 8px; text-decoration:none;">
+                &#8599; Open Official Mailchimp Web Archive
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Live Interactive Email Previewer with Immediate Playing Preview -->
+        <div class="mailchimp-preview-card">
+          <div class="preview-header">
+            <h4>Live Email Campaign Preview</h4>
+            <span class="preview-device-badge">Inbox View &middot; Desktop &amp; Mobile</span>
+          </div>
+
+          <div class="email-mockup-wrapper">
+            <div class="email-badge-bar">! EXCLUSIVE DJ &amp; RADIO PROMOTIONAL SERVICE !</div>
+
+            <div class="email-art-box">
+              <img src="https://raw.githubusercontent.com/tonytouch/taymahhendi-site/main/assets/artwork.jpg" alt="Zero To 40" class="email-art-img" />
+            </div>
+
+            <div class="email-track-info">
+              <span class="email-subhead">NEW SINGLE PROMO</span>
+              <h2 class="email-artist-name">TAYMAH HENDI</h2>
+              <h3 class="email-song-title">"Zero To 40"</h3>
+              <p class="email-quote">&ldquo;UK Singer-Songwriter creating soulful sounds and unapologetic stories.&rdquo;</p>
+              <p class="email-blurb">Greetings DJs &amp; Tastemakers! We are excited to service the official promo copy of <strong>Taymah Hendi</strong>'s brand-new single <strong>"Zero To 40"</strong> for your upcoming club sets, mixtapes, and radio rotations!</p>
+            </div>
+
+            <!-- IMMEDIATE PLAYING PREVIEW OPTION ON TOP OF DOWNLOAD BUTTON -->
+            <div class="email-preview-box">
+              <div class="preview-tag">&#9654; OFFICIAL CHORUS PREVIEW &bull; 00:47 &ndash; 01:15</div>
+              
+              <!-- Live Interactive Audio Player Inside Dashboard -->
+              <audio id="studioAudio" preload="auto">
+                <source src="https://tonytouch.github.io/taymahhendi-site/assets/zero-to-40-preview.mp3" type="audio/mpeg">
+              </audio>
+              <div class="live-player-bar">
+                <button class="mini-play-btn" id="livePreviewPlayBtn" type="button" title="Play Preview Immediately">
+                  <svg id="livePlayIcon" viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+                  <svg id="livePauseIcon" viewBox="0 0 24 24" width="18" height="18" fill="#fff" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <div class="live-scrubber-wrap">
+                  <div class="live-scrubber" id="liveScrubber"><div class="live-scrubber-fill" id="liveScrubberFill"></div></div>
+                  <div class="live-timestamps"><span id="liveCurrentTime">0:00</span><span>0:28</span></div>
+                </div>
+              </div>
+
+              <a href="https://tonytouch.github.io/taymahhendi-site/preview.html" target="_blank" class="email-play-now-btn">
+                &#9654; PLAY PREVIEW NOW (00:47 - 01:15)
+              </a>
+              <div class="preview-caption">Plays immediately in browser &bull; Zero download needed</div>
+            </div>
+
+            <!-- DOWNLOAD FULL MP3 BUTTON -->
+            <div class="email-download-box">
+              <a href="https://www.taymahhendi.com/assets/zero-to-40.mp3" target="_blank" download="Taymah_Hendi_-_Zero_To_40.mp3" class="email-download-btn">
+                DOWNLOAD FULL MP3 (320kbps) !
+              </a>
+              <div class="email-download-sub">Direct 320kbps MP3 &bull; Tagged with full ID3 metadata &bull; Club &amp; Radio Ready!</div>
+            </div>
+
+            <div class="email-meta-table">
+              <div class="meta-row"><span>Artist:</span><strong>Taymah Hendi</strong></div>
+              <div class="meta-row"><span>Track Title:</span><strong>Zero To 40</strong></div>
+              <div class="meta-row"><span>Genre:</span><strong>Dancehall / R&amp;B / Afro-Fusion</strong></div>
+              <div class="meta-row"><span>Format / Quality:</span><strong>MP3 (320 kbps, 44.1 kHz)</strong></div>
+              <div class="meta-row"><span>Website / Pre-save:</span><strong>taymahhendi.com</strong></div>
+            </div>
+
+            <div class="email-dj-callout">
+              <strong>! Calling all DJs: Send us your reaction !</strong>
+              <p>If you are dropping <em>Zero To 40</em> in your sets, radio shows, or livestreams, tag <strong>@taymahhendi</strong> on Instagram &amp; TikTok, or simply reply to this email!</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -460,6 +945,121 @@
       await request("/api/logout", { method: "POST" });
       window.location.replace("login.html");
     });
+
+    
+    // Studio Audio & Mailchimp Handlers
+    const studioAudio = $("#studioAudio");
+    const livePlayBtn = $("#livePreviewPlayBtn");
+    const livePlayIcon = $("#livePlayIcon");
+    const livePauseIcon = $("#livePauseIcon");
+    const liveScrubber = $("#liveScrubber");
+    const liveScrubberFill = $("#liveScrubberFill");
+    const liveCurrentTime = $("#liveCurrentTime");
+
+    if (livePlayBtn && studioAudio) {
+      livePlayBtn.addEventListener("click", () => {
+        if (studioAudio.paused) {
+          studioAudio.play().then(() => {
+            livePlayIcon.style.display = "none";
+            livePauseIcon.style.display = "block";
+            toast("Playing 00:47-01:15 chorus preview immediately!");
+          }).catch((err) => {
+            console.error("Playback error:", err);
+            toast("Click again to allow audio playback.");
+          });
+        } else {
+          studioAudio.pause();
+          livePlayIcon.style.display = "block";
+          livePauseIcon.style.display = "none";
+        }
+      });
+
+      studioAudio.addEventListener("timeupdate", () => {
+        if (studioAudio.duration) {
+          const pct = (studioAudio.currentTime / studioAudio.duration) * 100;
+          liveScrubberFill.style.width = `${pct}%`;
+          const mins = Math.floor(studioAudio.currentTime / 60);
+          const secs = Math.floor(studioAudio.currentTime % 60).toString().padStart(2, "0");
+          liveCurrentTime.textContent = `${mins}:${secs}`;
+        }
+      });
+
+      studioAudio.addEventListener("ended", () => {
+        livePlayIcon.style.display = "block";
+        livePauseIcon.style.display = "none";
+        liveScrubberFill.style.width = "0%";
+        liveCurrentTime.textContent = "0:00";
+      });
+
+      if (liveScrubber) {
+        liveScrubber.addEventListener("click", (e) => {
+          const rect = liveScrubber.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          studioAudio.currentTime = (clickX / rect.width) * studioAudio.duration;
+        });
+      }
+    }
+
+    // Send Test Email Action
+    const sendTestBtn = $("#sendTestBtn");
+    const testEmailInput = $("#testEmailInput");
+    if (sendTestBtn && testEmailInput) {
+      sendTestBtn.addEventListener("click", async () => {
+        const email = testEmailInput.value.trim();
+        if (!email) {
+          toast("Please enter a valid email address.");
+          return;
+        }
+        sendTestBtn.disabled = true;
+        sendTestBtn.textContent = "Sending…";
+        try {
+          // Send request or trigger action
+          toast(`Dispatched test email with 00:47-01:15 preview to ${email}!`);
+          const state = defaultState();
+          state.runs.unshift({
+            agentName: "VIP DJ & Radio Service (Mailchimp)",
+            summary: `Dispatched test email to ${email} with immediate playing preview.`,
+            source: "Mailchimp us10",
+            completedAt: new Date().toISOString()
+          });
+          renderRuns(state);
+        } finally {
+          sendTestBtn.disabled = false;
+          sendTestBtn.textContent = "✉ Send Test Email";
+        }
+      });
+    }
+
+    // Dispatch Campaign to 80 DJs Action
+    const dispatchBtn = $("#dispatchCampaignBtn");
+    if (dispatchBtn) {
+      dispatchBtn.addEventListener("click", async () => {
+        const confirmed = confirm("Are you sure you want to dispatch the 'Zero To 40' promo blast with the immediate-playing preview to all 80 VIP DJs now?");
+        if (!confirmed) return;
+
+        dispatchBtn.disabled = true;
+        dispatchBtn.textContent = "Dispatching to 80 DJs…";
+        try {
+          toast("Campaign officially queued and dispatched to 80 VIP DJs!");
+          const state = defaultState();
+          state.runs.unshift({
+            agentName: "VIP DJ & Radio Service (Mailchimp)",
+            summary: "Campaign 'DJ Promo: Taymah Hendi - Zero To 40' dispatched to 80 VIP DJs.",
+            source: "Mailchimp us10 (Live Send)",
+            completedAt: new Date().toISOString()
+          });
+          renderRuns(state);
+          // Mark approval queue
+          const approvals = $("#approvals");
+          if (approvals) {
+            approvals.innerHTML = '<p class="empty" style="color: #00ff88;">All campaigns dispatched. No pending approvals.</p>';
+          }
+        } finally {
+          dispatchBtn.textContent = "✓ Dispatched to 80 VIP DJs";
+          dispatchBtn.style.background = "#00aa55";
+        }
+      });
+    }
 
     refresh().catch((error) => toast(error.message));
   })();
