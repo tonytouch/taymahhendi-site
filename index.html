@@ -747,12 +747,6 @@
       box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(162, 56, 255, 0.35);
     }
 
-    /* SoundCloud Hover */
-    .stream-soundcloud:hover {
-      border-color: rgba(255, 85, 0, 0.75);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 85, 0, 0.35);
-    }
-
     .stream-icon-wrap {
       width: 44px;
       height: 44px;
@@ -776,7 +770,6 @@
     .amazon-icon-wrap  { background: rgba(0, 168, 225, 0.14); border-color: rgba(0, 168, 225, 0.3); }
     .tidal-icon-wrap   { background: rgba(0, 255, 255, 0.14); border-color: rgba(0, 255, 255, 0.3); }
     .deezer-icon-wrap  { background: rgba(162, 56, 255, 0.14); border-color: rgba(162, 56, 255, 0.3); }
-    .soundcloud-icon-wrap { background: rgba(255, 85, 0, 0.14); border-color: rgba(255, 85, 0, 0.3); }
     .hyperfollow-icon-wrap { background: rgba(255, 82, 149, 0.14); border-color: rgba(255, 82, 149, 0.3); }
 
     .cta-out-now {
@@ -2610,29 +2603,17 @@
               <span class="stream-arrow" aria-hidden="true">↗</span>
             </a>
 
-            <!-- SoundCloud -->
-            <a class="streaming-card stream-soundcloud" href="https://soundcloud.com/search?q=Taymah%20Hendi" target="_blank" rel="noopener noreferrer" id="streamSoundcloudLink">
-              <div class="stream-icon-wrap soundcloud-icon-wrap">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="#FF5500"><path d="M11.56 8.87V17h9.09c1.85 0 3.35-1.5 3.35-3.35 0-1.79-1.41-3.25-3.18-3.34-.33-2.61-2.54-4.64-5.26-4.64-1.63 0-3.1.73-4 1.88v1.32zm-1.82 2.14v5.99h.91V10.3c-.34.21-.65.45-.91.71zm-1.82 1.48v4.51h.91v-4.88c-.34.1-.64.22-.91.37zm-1.82.72v3.79h.91V12.7c-.32.14-.62.31-.91.51zm-1.82.9v2.89h.91v-3.48c-.31.18-.61.37-.91.59zm-1.82.9v1.99h.91V16.7c-.31.22-.61.46-.91.71zm-1.82.8v1.19h.91v-1.83c-.31.19-.62.4-.91.64z"/></svg>
-              </div>
-              <div class="stream-info">
-                <span class="stream-service-name">SoundCloud</span>
-                <span class="stream-service-cta">Stream Audio →</span>
-              </div>
-              <span class="stream-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <!-- All Platforms (HyperFollow) -->
-            <a class="streaming-card stream-hyperfollow" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer" id="streamHyperfollowLink">
+            <!-- More Platforms Tab -->
+            <button class="streaming-card stream-hyperfollow" type="button" id="morePlatformsBtn" aria-haspopup="dialog" aria-controls="platformModal">
               <div class="stream-icon-wrap hyperfollow-icon-wrap">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="#FF5295"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
               </div>
               <div class="stream-info">
                 <span class="stream-service-name">More Platforms</span>
-                <span class="stream-service-cta">SmartLink (All 15+) →</span>
+                <span class="stream-service-cta">All Platforms Tab (6 Stores) ▾</span>
               </div>
-              <span class="stream-arrow" aria-hidden="true">↗</span>
-            </a>
+              <span class="stream-arrow" aria-hidden="true">▾</span>
+            </button>
           </div>
 
           <!-- Instant In-Browser Audio Player Bar -->
@@ -2848,8 +2829,23 @@
           </a>
         </li>
         <li>
+          <a class="platform-btn" href="https://music.amazon.co.uk/search/Taymah+Hendi+Zero+To+40" target="_blank" rel="noopener noreferrer">
+            <span>🎵 Amazon Music</span>
+          </a>
+        </li>
+        <li>
+          <a class="platform-btn" href="https://listen.tidal.com/search?q=Taymah+Hendi" target="_blank" rel="noopener noreferrer">
+            <span>💎 Tidal</span>
+          </a>
+        </li>
+        <li>
+          <a class="platform-btn" href="https://www.deezer.com/search/Taymah%20Hendi" target="_blank" rel="noopener noreferrer">
+            <span>🎧 Deezer</span>
+          </a>
+        </li>
+        <li>
           <a class="platform-btn" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
-            <span>⚡ HyperFollow (All)</span>
+            <span>⚡ All Stores (HyperFollow)</span>
           </a>
         </li>
       </ul>
@@ -3538,12 +3534,14 @@
       // Platform Modal
       var platformModal = document.getElementById('platformModal');
       var platformBtn = document.getElementById('platformPickerBtn');
+      var morePlatformsBtn = document.getElementById('morePlatformsBtn');
       var closePlatformBtn = document.getElementById('closePlatformBtn');
 
       function openPlatform() { if (platformModal) platformModal.classList.add('active'); }
       function closePlatform() { if (platformModal) platformModal.classList.remove('active'); }
 
       if (platformBtn) platformBtn.addEventListener('click', openPlatform);
+      if (morePlatformsBtn) morePlatformsBtn.addEventListener('click', openPlatform);
       if (closePlatformBtn) closePlatformBtn.addEventListener('click', closePlatform);
 
       // Video Teaser Reel Modal
