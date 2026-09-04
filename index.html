@@ -3526,6 +3526,13 @@
             stored.push({ name: name, email: email, date: new Date().toISOString() });
             localStorage.setItem('th_vip_members', JSON.stringify(stored));
           } catch (err) {}
+          try {
+            fetch('/api/fans/vip', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: name, email: email, source: 'website-vip-modal' })
+            }).catch(function () {});
+          } catch (e) {}
           vipForm.style.display = 'none';
           if (vipSuccess) vipSuccess.style.display = 'block';
         });
@@ -3600,6 +3607,13 @@
             stored.push({ name: name, station: station, email: email, date: new Date().toISOString() });
             localStorage.setItem('th_dj_roster', JSON.stringify(stored));
           } catch (err) {}
+          try {
+            fetch('/api/djs/feedback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: name, station: station, email: email })
+            }).catch(function () {});
+          } catch (e) {}
           
           djForm.style.display = 'none';
           if (djSuccess) djSuccess.style.display = 'block';
@@ -3623,6 +3637,15 @@
             reactions.push({ reaction: react, date: new Date().toISOString() });
             localStorage.setItem('th_dj_reactions', JSON.stringify(reactions));
           } catch (err) {}
+          var djEmail = document.getElementById('djEmail') ? document.getElementById('djEmail').value : '';
+          var djName = document.getElementById('djName') ? document.getElementById('djName').value : '';
+          try {
+            fetch('/api/djs/feedback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: djName, email: djEmail, reaction: react })
+            }).catch(function () {});
+          } catch (e) {}
           if (djFeedbackConfirm) djFeedbackConfirm.style.display = 'block';
         });
       }
