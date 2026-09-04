@@ -8,8 +8,8 @@
   <!-- ============================================================
        PRIMARY SEO
   ============================================================ -->
-  <title>Taymah Hendi | Zero To 40 — New Single · UK Singer-Songwriter</title>
-  <meta name="description" content="Taymah Hendi is a London-based independent singer-songwriter. Pre-save her new single Zero To 40 — Dancehall, R&B & Afro-Fusion. Live at Sofar Sounds, London, 4 September 2026.">
+  <title>Taymah Hendi | Zero To 40 — Out Now · UK Singer-Songwriter</title>
+  <meta name="description" content="Taymah Hendi is a London-based independent singer-songwriter. Stream her new single Zero To 40 out now — Dancehall, R&B & Afro-Fusion. Live at Sofar Sounds, London, 4 September 2026.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Taymah Hendi">
   <meta name="generator" content="Taymah Hendi Official Site">
@@ -26,8 +26,8 @@
   <meta property="og:locale" content="en_GB">
   <meta property="og:site_name" content="Taymah Hendi">
   <meta property="og:url" content="https://www.taymahhendi.com/">
-  <meta property="og:title" content="Zero To 40 — Taymah Hendi | New Single">
-  <meta property="og:description" content="Pre-save Zero To 40 now. New Dancehall / R&B / Afro-Fusion single from London singer-songwriter Taymah Hendi.">
+  <meta property="og:title" content="Zero To 40 — Taymah Hendi | Out Now">
+  <meta property="og:description" content="Stream Zero To 40 out now. New Dancehall / R&B / Afro-Fusion single from London singer-songwriter Taymah Hendi.">
   <meta property="og:image" content="https://www.taymahhendi.com/assets/artwork.jpg">
   <meta property="og:image:alt" content="Zero To 40 single artwork by Taymah Hendi">
   <meta property="og:image:width" content="600">
@@ -40,8 +40,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@Taymahhendi">
   <meta name="twitter:creator" content="@Taymahhendi">
-  <meta name="twitter:title" content="Zero To 40 — Taymah Hendi | New Single">
-  <meta name="twitter:description" content="Pre-save Zero To 40 now. New single from London singer-songwriter Taymah Hendi. Live at Sofar Sounds, 4 Sep 2026.">
+  <meta name="twitter:title" content="Zero To 40 — Taymah Hendi | Out Now">
+  <meta name="twitter:description" content="Stream Zero To 40 out now. New single from London singer-songwriter Taymah Hendi. Live at Sofar Sounds, 4 Sep 2026.">
   <meta name="twitter:image" content="https://www.taymahhendi.com/assets/artwork.jpg">
   <meta name="twitter:image:alt" content="Zero To 40 single artwork by Taymah Hendi">
 
@@ -1991,13 +1991,17 @@
 
   // Automatic High-Intent Music Fan Conversion Tracking
   document.addEventListener('DOMContentLoaded', function() {
-    // 1. Pre-Save Clicks (HyperFollow / DistroKid)
+    // 1. Stream & Pre-Save Clicks (HyperFollow / DistroKid)
     document.querySelectorAll('a[href*="hyperfollow.com"], a[href*="distrokid.com"]').forEach(function(link) {
       link.addEventListener('click', function() {
         if (window.fbq) {
           fbq('track', 'Lead', {
-            content_name: 'Zero To 40 Pre-Save',
+            content_name: 'Zero To 40 Stream',
             content_category: 'Music Release'
+          });
+          fbq('trackCustom', 'StreamClick', {
+            content_name: 'Zero To 40',
+            destination: link.href
           });
           fbq('trackCustom', 'PreSaveClick', {
             content_name: 'Zero To 40',
@@ -2068,12 +2072,12 @@
     <div class="banner-inner">
       <img class="banner-art" src="assets/artwork.jpg" alt="Zero To 40 single artwork — Taymah Hendi" width="600" height="600">
       <div class="banner-text">
-        <p class="banner-eyebrow">✦ Upcoming release</p>
+        <p class="banner-eyebrow">✦ Official Single</p>
         <p class="banner-title">Zero To <em>40</em></p>
       </div>
       <div class="banner-meta">
         <div>Taymah Hendi</div>
-        <div>Pre-save open now</div>
+        <div>Out now everywhere</div>
       </div>
     </div>
   </div>
@@ -2083,7 +2087,7 @@
     <header>
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
-        <span class="status">New release incoming</span>
+        <span class="status">Out now everywhere</span>
         <button class="btn-pill-sm dj-pill-btn" id="headerDjBtn" type="button">🎧 DJ Promo</button>
         <button class="btn-pill-sm" id="headerVipBtn" type="button">VIP Club ✦</button>
       </div>
@@ -2097,13 +2101,13 @@
 
         <div class="name-rule" aria-hidden="true"></div>
 
-        <p class="release-kicker">✧ The new single ✧</p>
+        <p class="release-kicker">✧ Out Now Everywhere ✧</p>
         <h2 class="release-title">Zero To <span>40</span></h2>
 
         <div class="release-row">
           <div class="cta-group">
             <a class="cta" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">
-              <span>Pre-save now</span>
+              <span>Stream now</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <button class="cta-secondary" id="platformPickerBtn" type="button">
@@ -2142,9 +2146,9 @@
         <div class="player-body">
           <div class="player-head">
             <h3 class="player-title">Zero To 40</h3>
-            <span class="player-tag">Preview</span>
+            <span class="player-tag">Out Now</span>
           </div>
-          <p class="player-sub">Taymah Hendi · 30-second preview</p>
+          <p class="player-sub">Taymah Hendi · Official single preview</p>
 
           <div class="player-controls">
             <button class="play-btn" id="playBtn" type="button" aria-label="Play Zero To 40">
@@ -2294,8 +2298,8 @@
   <div class="modal-overlay" id="platformModal" role="dialog" aria-modal="true" aria-labelledby="platformTitle">
     <div class="modal-card">
       <button class="modal-close" id="closePlatformBtn" type="button" aria-label="Close modal">✕</button>
-      <h3 class="modal-title" id="platformTitle">Stream & Pre-Save ✦</h3>
-      <p class="modal-desc">Choose your preferred music platform to pre-save Zero To 40.</p>
+      <h3 class="modal-title" id="platformTitle">Stream Zero To 40 ✦</h3>
+      <p class="modal-desc">Choose your preferred music platform to stream Zero To 40 out now.</p>
       
       <ul class="platform-list">
         <li>
@@ -3282,7 +3286,7 @@
         if (q.includes('contact') || q.includes('book') || q.includes('email') || q.includes('press') || q.includes('label')) {
           return "For press, bookings, and sync inquiries, reach out to <strong>Hendi Records</strong> at <a href='mailto:hendirecords@gmail.com' style='color:#ff7aa8; text-decoration:underline;'>hendirecords@gmail.com</a>.";
         }
-        return "That’s love! <em>Zero To 40</em> represents moving forward with conviction—whether that's music, London life, or relationships. If you haven't pre-saved yet, hit the Pre-Save button to be first when it drops!";
+        return "That’s love! <em>Zero To 40</em> is out now everywhere! Hit the Stream Now button to listen on Spotify, Apple Music, or your favorite platform.";
       }
 
       if (chips) {
