@@ -189,6 +189,79 @@
       color: rgba(255, 255, 255, 0.5);
     }
   </style>
+  <!-- Meta Pixel Code (Taymah Hendi - Zero To 40) -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '25911943');
+  fbq('track', 'PageView');
+
+  // Automatic High-Intent Music Fan Conversion Tracking
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. Pre-Save Clicks (HyperFollow / DistroKid)
+    document.querySelectorAll('a[href*="hyperfollow.com"], a[href*="distrokid.com"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.fbq) {
+          fbq('track', 'Lead', {
+            content_name: 'Zero To 40 Pre-Save',
+            content_category: 'Music Release'
+          });
+          fbq('trackCustom', 'PreSaveClick', {
+            content_name: 'Zero To 40',
+            destination: link.href
+          });
+        }
+      });
+    });
+
+    // 2. Audio Player Starts (Preview Listening)
+    document.querySelectorAll('#playBtn, .play-btn, .mini-play-btn, #livePreviewPlayBtn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (window.fbq) {
+          fbq('trackCustom', 'AudioPlay', {
+            content_name: 'Zero To 40',
+            content_type: 'Audio Preview',
+            duration: 28
+          });
+        }
+      });
+    });
+
+    // 3. DJ Master 320kbps MP3 Downloads
+    document.querySelectorAll('a[href*=".mp3"], #openDjModalBtn, a[download]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (window.fbq) {
+          fbq('trackCustom', 'DownloadMP3', {
+            content_name: 'Zero To 40 Master 320kbps',
+            content_category: 'DJ Master'
+          });
+        }
+      });
+    });
+
+    // 4. Outbound Social Links (TikTok, Instagram, YouTube, Spotify)
+    document.querySelectorAll('a[href*="tiktok.com"], a[href*="instagram.com"], a[href*="youtube.com"], a[href*="spotify.com"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.fbq) {
+          fbq('trackCustom', 'OutboundSocial', {
+            destination: link.href
+          });
+        }
+      });
+    });
+  });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=25911943&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
