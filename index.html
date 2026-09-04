@@ -729,6 +729,30 @@
       box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 82, 149, 0.35);
     }
 
+    /* Amazon Hover */
+    .stream-amazon:hover {
+      border-color: rgba(0, 168, 225, 0.75);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(0, 168, 225, 0.35);
+    }
+
+    /* Tidal Hover */
+    .stream-tidal:hover {
+      border-color: rgba(0, 255, 255, 0.75);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(0, 255, 255, 0.35);
+    }
+
+    /* Deezer Hover */
+    .stream-deezer:hover {
+      border-color: rgba(162, 56, 255, 0.75);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(162, 56, 255, 0.35);
+    }
+
+    /* SoundCloud Hover */
+    .stream-soundcloud:hover {
+      border-color: rgba(255, 85, 0, 0.75);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 85, 0, 0.35);
+    }
+
     .stream-icon-wrap {
       width: 44px;
       height: 44px;
@@ -749,7 +773,26 @@
     .spotify-icon-wrap { background: rgba(29, 185, 84, 0.14); border-color: rgba(29, 185, 84, 0.3); }
     .apple-icon-wrap   { background: rgba(250, 36, 60, 0.14); border-color: rgba(250, 36, 60, 0.3); }
     .youtube-icon-wrap { background: rgba(255, 0, 0, 0.14); border-color: rgba(255, 0, 0, 0.3); }
+    .amazon-icon-wrap  { background: rgba(0, 168, 225, 0.14); border-color: rgba(0, 168, 225, 0.3); }
+    .tidal-icon-wrap   { background: rgba(0, 255, 255, 0.14); border-color: rgba(0, 255, 255, 0.3); }
+    .deezer-icon-wrap  { background: rgba(162, 56, 255, 0.14); border-color: rgba(162, 56, 255, 0.3); }
+    .soundcloud-icon-wrap { background: rgba(255, 85, 0, 0.14); border-color: rgba(255, 85, 0, 0.3); }
     .hyperfollow-icon-wrap { background: rgba(255, 82, 149, 0.14); border-color: rgba(255, 82, 149, 0.3); }
+
+    .cta-out-now {
+      font-size: 13.5px;
+      padding: 19px 36px;
+      min-width: min(100%, 310px);
+      letter-spacing: 0.22em;
+    }
+
+    .cta-pulse-dot {
+      color: #00ff88;
+      margin-right: 6px;
+      font-size: 14px;
+      text-shadow: 0 0 10px #00ff88;
+      animation: liveDotBlink 1.8s ease-in-out infinite;
+    }
 
     .stream-info {
       display: flex;
@@ -2475,12 +2518,23 @@
           <span class="genre-pill">Dancehall · R&B · Afro-Fusion</span>
         </p>
 
+        <!-- Primary Out Now CTA Button -->
+        <div class="release-row" style="margin-top: clamp(20px, 3.5vh, 32px); margin-bottom: 6px;">
+          <div class="cta-group">
+            <a class="cta cta-out-now" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer" id="mainOutNowCta">
+              <span class="cta-pulse-dot">●</span>
+              <span>Out Now — Stream</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
         <p class="microcopy">“Believe it or not, this song is about a car.”</p>
 
-        <!-- VISIBLE STREAMING PLATFORMS HUB (Spotify, Apple, YouTube, All Platforms) -->
+        <!-- VISIBLE STREAMING PLATFORMS HUB (All Available Services) -->
         <div class="streaming-hub" id="streamingHub">
           <div class="streaming-hub-header">
-            <span class="streaming-hub-label">✦ Stream Full Track On Your Platform ✦</span>
+            <span class="streaming-hub-label">✦ Stream Full Single On Your Platform ✦</span>
           </div>
 
           <div class="streaming-grid">
@@ -2520,14 +2574,62 @@
               <span class="stream-arrow" aria-hidden="true">↗</span>
             </a>
 
+            <!-- Amazon Music -->
+            <a class="streaming-card stream-amazon" href="https://music.amazon.co.uk/search/Taymah+Hendi+Zero+To+40" target="_blank" rel="noopener noreferrer" id="streamAmazonLink">
+              <div class="stream-icon-wrap amazon-icon-wrap">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#00A8E1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/></svg>
+              </div>
+              <div class="stream-info">
+                <span class="stream-service-name">Amazon Music</span>
+                <span class="stream-service-cta">Stream on Amazon →</span>
+              </div>
+              <span class="stream-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <!-- Tidal -->
+            <a class="streaming-card stream-tidal" href="https://listen.tidal.com/search?q=Taymah+Hendi" target="_blank" rel="noopener noreferrer" id="streamTidalLink">
+              <div class="stream-icon-wrap tidal-icon-wrap">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#00FFFF"><path d="M12.012 3.992L8.008 7.996l4.004 4.004 4.004-4.004-4.004-4.004zm-8.004 8.004L0 7.996l4.008-4.004 4.004 4.004-4.004 4.004zm8.004 0L8.008 16l4.004 4.004L16.016 16l-4.004-4.004zm8.004-8.004l-4.004 4.004 4.004 4.004 4.008-4.004-4.008-4.004z"/></svg>
+              </div>
+              <div class="stream-info">
+                <span class="stream-service-name">Tidal</span>
+                <span class="stream-service-cta">HiFi Lossless Audio →</span>
+              </div>
+              <span class="stream-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <!-- Deezer -->
+            <a class="streaming-card stream-deezer" href="https://www.deezer.com/search/Taymah%20Hendi" target="_blank" rel="noopener noreferrer" id="streamDeezerLink">
+              <div class="stream-icon-wrap deezer-icon-wrap">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#A238FF"><path d="M18.8 6h3.2v2.4h-3.2zm0 3.6h3.2V12h-3.2zm0 3.6h3.2v2.4h-3.2zm0 3.6h3.2V19h-3.2zm-4.7-3.6h3.2v2.4h-3.2zm0 3.6h3.2V19h-3.2zm-4.7 0h3.2V19H9.4zm-4.7 0h3.2V19H4.7zm0-3.6h3.2v2.4H4.7zm-4.7 3.6h3.2V19H0z"/></svg>
+              </div>
+              <div class="stream-info">
+                <span class="stream-service-name">Deezer</span>
+                <span class="stream-service-cta">Play on Deezer →</span>
+              </div>
+              <span class="stream-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <!-- SoundCloud -->
+            <a class="streaming-card stream-soundcloud" href="https://soundcloud.com/search?q=Taymah%20Hendi" target="_blank" rel="noopener noreferrer" id="streamSoundcloudLink">
+              <div class="stream-icon-wrap soundcloud-icon-wrap">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#FF5500"><path d="M11.56 8.87V17h9.09c1.85 0 3.35-1.5 3.35-3.35 0-1.79-1.41-3.25-3.18-3.34-.33-2.61-2.54-4.64-5.26-4.64-1.63 0-3.1.73-4 1.88v1.32zm-1.82 2.14v5.99h.91V10.3c-.34.21-.65.45-.91.71zm-1.82 1.48v4.51h.91v-4.88c-.34.1-.64.22-.91.37zm-1.82.72v3.79h.91V12.7c-.32.14-.62.31-.91.51zm-1.82.9v2.89h.91v-3.48c-.31.18-.61.37-.91.59zm-1.82.9v1.99h.91V16.7c-.31.22-.61.46-.91.71zm-1.82.8v1.19h.91v-1.83c-.31.19-.62.4-.91.64z"/></svg>
+              </div>
+              <div class="stream-info">
+                <span class="stream-service-name">SoundCloud</span>
+                <span class="stream-service-cta">Stream Audio →</span>
+              </div>
+              <span class="stream-arrow" aria-hidden="true">↗</span>
+            </a>
+
             <!-- All Platforms (HyperFollow) -->
             <a class="streaming-card stream-hyperfollow" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer" id="streamHyperfollowLink">
               <div class="stream-icon-wrap hyperfollow-icon-wrap">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="#FF5295"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
               </div>
               <div class="stream-info">
-                <span class="stream-service-name">All Platforms</span>
-                <span class="stream-service-cta">Amazon, Tidal, Deezer →</span>
+                <span class="stream-service-name">More Platforms</span>
+                <span class="stream-service-cta">SmartLink (All 15+) →</span>
               </div>
               <span class="stream-arrow" aria-hidden="true">↗</span>
             </a>
