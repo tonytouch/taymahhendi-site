@@ -9,7 +9,7 @@
        PRIMARY SEO
   ============================================================ -->
   <title>Taymah Hendi | Zero To 40 — Out Now · UK Singer-Songwriter</title>
-  <meta name="description" content="Taymah Hendi is a London-based independent singer-songwriter. Stream her new single Zero To 40 out now — Dancehall, R&B & Afro-Fusion. Live at Sofar Sounds, London, 4 September 2026.">
+  <meta name="description" content="Taymah Hendi is a London-based independent singer-songwriter. Stream her new single Zero To 40 out now — Dancehall, R&B & Afro-Fusion. Listen to all songs, explore full discography, and stream on Spotify, Apple Music & YouTube.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Taymah Hendi">
   <meta name="generator" content="Taymah Hendi Official Site">
@@ -41,7 +41,7 @@
   <meta name="twitter:site" content="@Taymahhendi">
   <meta name="twitter:creator" content="@Taymahhendi">
   <meta name="twitter:title" content="Zero To 40 — Taymah Hendi | Out Now">
-  <meta name="twitter:description" content="Stream Zero To 40 out now. New single from London singer-songwriter Taymah Hendi. Live at Sofar Sounds, 4 Sep 2026.">
+  <meta name="twitter:description" content="Stream Zero To 40 and explore all songs by London singer-songwriter Taymah Hendi. Available now across all streaming platforms.">
   <meta name="twitter:image" content="https://www.taymahhendi.com/assets/artwork.jpg">
   <meta name="twitter:image:alt" content="Zero To 40 single artwork by Taymah Hendi">
 
@@ -922,6 +922,11 @@
 
     @media (max-width: 820px) {
       .header-stream-pill { display: none; }
+      .header-stream-pill.all-songs-pill {
+        display: inline-flex;
+        font-size: 11px;
+        padding: 5px 12px;
+      }
     }
 
     /* ---------------------------------------------------------------
@@ -1542,11 +1547,143 @@
       font-weight: 600;
     }
 
-    .calendar-actions {
+    /* Discography Showcase & All Songs */
+    .discography-header-row {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .discography-main-title {
+      margin: 0 0 6px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(32px, 4.2vw, 48px);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      line-height: 1;
+      color: var(--paper);
+    }
+    .discography-quick-links {
+      display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
+    }
+    .all-songs-spotify-btn {
+      background: rgba(29, 185, 84, 0.18) !important;
+      border-color: rgba(29, 185, 84, 0.45) !important;
+      color: #fff !important;
+      font-weight: 600;
+    }
+    .all-songs-spotify-btn:hover {
+      background: rgba(29, 185, 84, 0.35) !important;
+      box-shadow: 0 4px 14px rgba(29, 185, 84, 0.35) !important;
+    }
+    .all-songs-apple-btn {
+      background: rgba(250, 36, 60, 0.16) !important;
+      border-color: rgba(250, 36, 60, 0.4) !important;
+      color: #fff !important;
+      font-weight: 600;
+    }
+    .all-songs-apple-btn:hover {
+      background: rgba(250, 36, 60, 0.3) !important;
+      box-shadow: 0 4px 14px rgba(250, 36, 60, 0.35) !important;
+    }
+    .all-songs-yt-btn {
+      background: rgba(255, 0, 0, 0.14) !important;
+      border-color: rgba(255, 0, 0, 0.35) !important;
+      color: #fff !important;
+      font-weight: 600;
+    }
+    .all-songs-yt-btn:hover {
+      background: rgba(255, 0, 0, 0.28) !important;
+      box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35) !important;
+    }
+    .discography-tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+    .discography-track-item {
+      background: rgba(13, 6, 11, 0.65);
+      border: 1px solid rgba(255, 205, 230, 0.18);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .discography-track-item:hover {
+      border-color: rgba(255, 205, 230, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 122, 168, 0.1);
+    }
+    .discography-track-item.current-lead {
+      border-color: rgba(255, 122, 168, 0.45);
+      background: linear-gradient(135deg, rgba(255, 122, 168, 0.15) 0%, rgba(13, 6, 11, 0.75) 100%);
+    }
+    .track-badge {
+      align-self: flex-start;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--rose);
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 122, 168, 0.15);
+      border: 1px solid rgba(255, 205, 230, 0.25);
+    }
+    .track-meta { min-width: 0; }
+    .track-title {
+      margin: 6px 0 2px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--paper);
+    }
+    .track-genre {
+      margin: 0;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .track-actions { margin-top: auto; }
+    .track-stream-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--champagne);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .track-stream-btn:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .live-updates-bar {
+      border-top: 1px solid rgba(255, 205, 230, 0.15);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .live-updates-sub {
+      margin: 8px 0 0;
+      font-size: 12px;
+      color: var(--champagne);
+      opacity: 0.85;
     }
 
     .btn-pill-sm {
@@ -2333,22 +2470,6 @@
         "member": { "@id": "https://www.taymahhendi.com/#person" }
       },
       {
-        "@type": "MusicEvent",
-        "name": "Taymah Hendi Live at Sofar Sounds London",
-        "startDate": "2026-09-04T19:00:00+00:00",
-        "endDate": "2026-09-04T22:00:00+00:00",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Sofar Sounds London",
-          "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB", "description": "Secret Shoreditch venue" }
-        },
-        "performer": { "@id": "https://www.taymahhendi.com/#person" },
-        "image": "https://www.taymahhendi.com/assets/artwork.jpg",
-        "description": "Taymah Hendi plays 'Zero To 40' live for the first time in an intimate Sofar Sounds London show."
-      },
-      {
         "@type": "VideoObject",
         "name": "Taymah Hendi — Shoreditch Teaser",
         "description": "Video teaser for Zero To 40 by Taymah Hendi.",
@@ -2482,7 +2603,7 @@
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
         <span class="status">Out everywhere</span>
-        <a class="header-stream-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 122, 168, 0.22); border-color: rgba(255, 205, 230, 0.5); font-weight: 700;">🎵 All Songs</a>
+        <a class="header-stream-pill all-songs-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 122, 168, 0.22); border-color: rgba(255, 205, 230, 0.5); font-weight: 700;">🎵 All Songs</a>
         <a class="header-stream-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">🟢 Spotify</a>
         <a class="header-stream-pill" href="https://music.apple.com/artist/taymah-hendi/1493340597" target="_blank" rel="noopener noreferrer">🍎 Apple</a>
         <a class="header-stream-pill" href="https://www.youtube.com/@TAYMAHHENDI" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
@@ -2745,46 +2866,100 @@
       </div>
     </section>
 
-    <!-- Live show with Countdown Timer & Calendar Sync -->
-    <section class="live" aria-labelledby="live-label">
-      <p class="section-label" id="live-label">✦ Live Show</p>
+    <!-- All Songs & Discography Section -->
+    <section class="live discography-showcase" id="all-songs" aria-labelledby="discography-label">
+      <p class="section-label" id="discography-label">✦ All Songs &amp; Discography</p>
 
-      <div class="show">
-        <div class="show-main-row">
-          <div class="show-date">
-            <strong>04</strong>
-            <small>Sep 26</small>
+      <div class="show discography-card">
+        <div class="discography-header-row">
+          <div>
+            <h2 class="discography-main-title">Explore All Songs</h2>
+            <p class="show-line">Complete Catalog · Singles, Collaborations &amp; Releases</p>
+            <p class="show-note">From late-night London anthems to soulful acoustic storytelling. Stream Taymah Hendi's complete discography on your favorite platform.</p>
           </div>
-          <div class="show-body">
-            <h3 class="show-venue">Sofar Sounds London</h3>
-            <p class="show-line">Friday 4 September 2026 · London · Secret location</p>
-            <p class="show-note">An intimate room, no barrier, no setlist safety net. Zero To 40 played live for the first time.</p>
-            <div class="radar-badge">
-              <span class="radar-dot"></span>
-              <span>51.5246° N, 0.0784° W · Secret Shoreditch Venue</span>
+          <div class="discography-quick-links">
+            <a class="btn-pill-sm all-songs-spotify-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">
+              <span>🟢 All Songs on Spotify ↗</span>
+            </a>
+            <a class="btn-pill-sm all-songs-apple-btn" href="https://music.apple.com/artist/taymah-hendi/1493340597" target="_blank" rel="noopener noreferrer">
+              <span>🍎 Apple Music ↗</span>
+            </a>
+            <a class="btn-pill-sm all-songs-yt-btn" href="https://www.youtube.com/@TAYMAHHENDI" target="_blank" rel="noopener noreferrer">
+              <span>▶️ YouTube Channel ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Discography Track Grid -->
+        <div class="discography-tracks-grid">
+          <div class="discography-track-item current-lead">
+            <div class="track-badge">Latest Single</div>
+            <div class="track-meta">
+              <h4 class="track-title">Zero To 40</h4>
+              <p class="track-genre">Dancehall · R&amp;B · Afro-Fusion (2026)</p>
+            </div>
+            <div class="track-actions">
+              <a class="track-stream-btn" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer">Stream Single ↗</a>
+            </div>
+          </div>
+
+          <div class="discography-track-item">
+            <div class="track-badge">Fan Favorite</div>
+            <div class="track-meta">
+              <h4 class="track-title">Carnage</h4>
+              <p class="track-genre">High-Energy UK R&amp;B / Afro-Fusion</p>
+            </div>
+            <div class="track-actions">
+              <a class="track-stream-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+            </div>
+          </div>
+
+          <div class="discography-track-item">
+            <div class="track-badge">Single</div>
+            <div class="track-meta">
+              <h4 class="track-title">Warring Me</h4>
+              <p class="track-genre">Contemporary UK R&amp;B</p>
+            </div>
+            <div class="track-actions">
+              <a class="track-stream-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+            </div>
+          </div>
+
+          <div class="discography-track-item">
+            <div class="track-badge">Debut Single</div>
+            <div class="track-meta">
+              <h4 class="track-title">Baby</h4>
+              <p class="track-genre">Independent R&amp;B</p>
+            </div>
+            <div class="track-actions">
+              <a class="track-stream-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+            </div>
+          </div>
+
+          <div class="discography-track-item">
+            <div class="track-badge">Collaboration</div>
+            <div class="track-meta">
+              <h4 class="track-title">Boomin</h4>
+              <p class="track-genre">Taymah Hendi ft. Nae Brown</p>
+            </div>
+            <div class="track-actions">
+              <a class="track-stream-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
             </div>
           </div>
         </div>
 
-        <div class="countdown-box">
-          <div>
-            <p class="countdown-title">Countdown to Live Show</p>
-            <div class="countdown-grid" id="countdownGrid">
-              <div class="countdown-item"><span class="countdown-val" id="cdDays">00</span><span class="countdown-lbl">Days</span></div>
-              <div class="countdown-item"><span class="countdown-val" id="cdHours">00</span><span class="countdown-lbl">Hours</span></div>
-              <div class="countdown-item"><span class="countdown-val" id="cdMins">00</span><span class="countdown-lbl">Mins</span></div>
-              <div class="countdown-item"><span class="countdown-val" id="cdSecs">00</span><span class="countdown-lbl">Secs</span></div>
+        <!-- Live Updates & VIP Presale Teaser -->
+        <div class="live-updates-bar">
+          <div class="live-updates-text">
+            <div class="radar-badge" style="margin-top:0;">
+              <span class="radar-dot"></span>
+              <span>Next Live Shows &amp; Secret London Sessions · In Planning</span>
             </div>
+            <p class="live-updates-sub">Want first access to secret intimate shows, venue pin drops, and VIP tickets?</p>
           </div>
-
-          <div class="calendar-actions">
-            <a class="btn-pill-sm" id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Taymah+Hendi+-+Zero+To+40+Live+at+Sofar+Sounds&dates=20260904T190000Z/20260904T220000Z&details=Live+at+Sofar+Sounds+London.+Intimate+acoustic+and+live+set.&location=London,+Secret+Location" target="_blank" rel="noopener noreferrer">
-              <span>📅 Google Cal</span>
-            </a>
-            <button class="btn-pill-sm" id="icsCalBtn" type="button">
-              <span>💾 Apple / iCal (.ics)</span>
-            </button>
-          </div>
+          <button class="btn-pill-sm vip-trigger-btn" id="discographyVipBtn" type="button">
+            <span>🎟️ Join VIP Guestlist</span>
+          </button>
         </div>
       </div>
     </section>
@@ -2809,7 +2984,7 @@
     <div class="modal-card">
       <button class="modal-close" id="closeVipBtn" type="button" aria-label="Close modal">✕</button>
       <h3 class="modal-title" id="vipTitle">The Inner Circle ✦</h3>
-      <p class="modal-desc">Join for secret Sofar Sounds pin drop, unreleased voice notes, and private listening sessions.</p>
+      <p class="modal-desc">Join for exclusive presale alerts, unreleased voice notes, VIP secret show drops, and private listening sessions.</p>
       
       <form class="vip-form" id="vipForm">
         <input class="vip-input" type="text" id="vipName" placeholder="Your name (optional)">
@@ -2952,15 +3127,16 @@
 
     <div class="ai-messages" id="aiMessages">
       <div class="ai-bubble ai-bubble-bot">
-        Hey! I'm Taymah's interactive storyteller. Ask me anything about <em>Zero To 40</em>, the lyrics, the London night drive inspiration, or our upcoming Sofar Sounds secret show! ✦
+        Hey! I'm Taymah's interactive storyteller. Ask me anything about <em>Zero To 40</em>, my other releases, lyrics, or the London night drive inspiration! ✦
       </div>
     </div>
 
     <div class="ai-chips" id="aiChips">
+      <button class="ai-chip" type="button" data-question="Where can I listen to all your songs?">🎵 All Songs &amp; Discography</button>
       <button class="ai-chip" type="button" data-question="What inspired Zero To 40?">✦ What inspired the track?</button>
       <button class="ai-chip" type="button" data-question="Why 40 mph?">🚗 Why 40 mph?</button>
       <button class="ai-chip" type="button" data-question="What genre is this?">🎵 What genre is this?</button>
-      <button class="ai-chip" type="button" data-question="Tell me about the Sofar Sounds show">🎟️ Sofar Sounds show</button>
+      <button class="ai-chip" type="button" data-question="When are your next live shows?">🎟️ Upcoming live shows</button>
       <button class="ai-chip" type="button" data-question="How can DJs support this track?">🎧 DJ &amp; Radio info</button>
     </div>
 
@@ -3454,76 +3630,6 @@
       durTime.textContent = fmt(duration());
     }
 
-    /* ===============================================================
-       LIVE SHOW COUNTDOWN TIMER & CALENDAR (.ICS)
-    =============================================================== */
-    function initCountdownAndCalendar() {
-      // Event Target: Friday 4 September 2026, 20:00:00 BST (UTC+1)
-      var targetDate = new Date('2026-09-04T19:00:00Z').getTime();
-
-      var cdDays = document.getElementById('cdDays');
-      var cdHours = document.getElementById('cdHours');
-      var cdMins = document.getElementById('cdMins');
-      var cdSecs = document.getElementById('cdSecs');
-
-      function updateCountdown() {
-        var now = new Date().getTime();
-        var diff = targetDate - now;
-
-        if (diff <= 0) {
-          if (cdDays) cdDays.textContent = '00';
-          if (cdHours) cdHours.textContent = '00';
-          if (cdMins) cdMins.textContent = '00';
-          if (cdSecs) cdSecs.textContent = '00';
-          return;
-        }
-
-        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        var secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-        if (cdDays) cdDays.textContent = days < 10 ? '0' + days : String(days);
-        if (cdHours) cdHours.textContent = hours < 10 ? '0' + hours : String(hours);
-        if (cdMins) cdMins.textContent = mins < 10 ? '0' + mins : String(mins);
-        if (cdSecs) cdSecs.textContent = secs < 10 ? '0' + secs : String(secs);
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-
-      // .ics File Generator
-      var icsBtn = document.getElementById('icsCalBtn');
-      if (icsBtn) {
-        icsBtn.addEventListener('click', function () {
-          var icsData = [
-            'BEGIN:VCALENDAR',
-            'VERSION:2.0',
-            'PRODID:-//Taymah Hendi//Zero To 40 Live//EN',
-            'CALSCALE:GREGORIAN',
-            'BEGIN:VEVENT',
-            'UID:sofar-sounds-taymah-hendi-20260904@taymahhendi.com',
-            'DTSTAMP:20260824T000000Z',
-            'DTSTART:20260904T190000Z',
-            'DTEND:20260904T220000Z',
-            'SUMMARY:Taymah Hendi — Zero To 40 Live at Sofar Sounds',
-            'DESCRIPTION:Live at Sofar Sounds London. An intimate room, no barrier, no setlist safety net. Zero To 40 played live.',
-            'LOCATION:Secret London Location (51.5246° N, 0.0784° W)',
-            'STATUS:CONFIRMED',
-            'END:VEVENT',
-            'END:VCALENDAR'
-          ].join('\r\n');
-
-          var blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-          var link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.setAttribute('download', 'Taymah-Hendi-Sofar-Sounds-Live.ics');
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        });
-      }
-    }
 
     /* ===============================================================
        MODAL CONTROLLER (VIP Backstage, Platforms, Video Reel)
@@ -3532,6 +3638,7 @@
       // VIP Modal
       var vipModal = document.getElementById('vipModal');
       var headerVipBtn = document.getElementById('headerVipBtn');
+      var discographyVipBtn = document.getElementById('discographyVipBtn');
       var closeVipBtn = document.getElementById('closeVipBtn');
       var vipForm = document.getElementById('vipForm');
       var vipSuccess = document.getElementById('vipSuccess');
@@ -3540,6 +3647,7 @@
       function closeVip() { if (vipModal) vipModal.classList.remove('active'); }
 
       if (headerVipBtn) headerVipBtn.addEventListener('click', openVip);
+      if (discographyVipBtn) discographyVipBtn.addEventListener('click', openVip);
       if (closeVipBtn) closeVipBtn.addEventListener('click', closeVip);
 
       if (vipForm) {
@@ -3852,8 +3960,11 @@
         if (q.includes('genre') || q.includes('sound') || q.includes('style') || q.includes('afro') || q.includes('dancehall')) {
           return "The sound is an unapologetic blend of <strong>Dancehall, contemporary R&amp;B, and Afro-Fusion</strong>. Think soulful UK vocal storytelling paired with heavy club-ready basslines and syncopated percussion.";
         }
-        if (q.includes('live') || q.includes('show') || q.includes('ticket') || q.includes('sofar') || q.includes('september')) {
-          return "We're performing live at <strong>Sofar Sounds London on Friday, 4 September 2026</strong>! It's a secret, intimate Shoreditch room with zero barriers. You can sync the date to your Apple or Google Calendar right from the live section of the site!";
+        if (q.includes('all songs') || q.includes('discography') || q.includes('catalog') || q.includes('other songs') || q.includes('tracks') || q.includes('more music') || q.includes('listen to all')) {
+          return "You can stream my entire music catalog on <a href='https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE' target='_blank' rel='noopener' style='color:#1DB954; font-weight:bold; text-decoration:underline;'>Spotify</a>, <a href='https://music.apple.com/artist/taymah-hendi/1493340597' target='_blank' rel='noopener' style='color:#FA243C; font-weight:bold; text-decoration:underline;'>Apple Music</a>, and <a href='https://www.youtube.com/@TAYMAHHENDI' target='_blank' rel='noopener' style='color:#FF0000; font-weight:bold; text-decoration:underline;'>YouTube</a>! Highlights include <strong>Zero To 40</strong>, <strong>Carnage</strong>, <strong>Warring Me</strong>, and <strong>Baby</strong>. You can also explore the <em>All Songs &amp; Discography</em> section on this page!";
+        }
+        if (q.includes('live') || q.includes('show') || q.includes('ticket') || q.includes('tour') || q.includes('gig')) {
+          return "New live show dates and secret intimate London sessions are currently in planning! Join our <strong>VIP Guestlist</strong> on this page to get secret venue pin drops and presale ticket alerts before anyone else.";
         }
         if (q.includes('dj') || q.includes('radio') || q.includes('download') || q.includes('serato') || q.includes('320') || q.includes('stem')) {
           return "Calling all DJs and tastemakers! You can download the official <strong>320kbps MP3 promo master</strong> right now via the <em>DJ Promo</em> button in the header or the cue bar on the audio player. It’s Serato and Rekordbox ready.";
@@ -3894,7 +4005,6 @@
     renderSocials();
     initBackgroundVideo();
     initPlayer();
-    initCountdownAndCalendar();
     initModals();
     initParallaxTilt();
     initStardust();
