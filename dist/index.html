@@ -2456,7 +2456,7 @@
   <!-- Background video with ambient lighting -->
   <div class="bg-layer" id="bgLayer">
     <video class="bg-video" id="bgVideo" autoplay muted loop playsinline preload="auto" poster="assets/artwork.jpg" aria-hidden="true" tabindex="-1">
-      <source src="assets/background.mp4" type="video/mp4">
+      <source src="assets/5 shoreditch web.mp4" type="video/mp4">
     </video>
   </div>
   <div class="bg-scrim" id="bgScrim" aria-hidden="true"></div>
@@ -2482,6 +2482,7 @@
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
         <span class="status">Out everywhere</span>
+        <a class="header-stream-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="background: rgba(255, 122, 168, 0.22); border-color: rgba(255, 205, 230, 0.5); font-weight: 700;">🎵 All Songs</a>
         <a class="header-stream-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">🟢 Spotify</a>
         <a class="header-stream-pill" href="https://music.apple.com/artist/taymah-hendi/1493340597" target="_blank" rel="noopener noreferrer">🍎 Apple</a>
         <a class="header-stream-pill" href="https://www.youtube.com/@TAYMAHHENDI" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
@@ -2518,6 +2519,10 @@
               <span class="cta-pulse-dot">●</span>
               <span>Out Now — Stream</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="cta-secondary" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" id="allSongsHeroCta">
+              <span>🎵 All Songs &amp; Discography</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:14px;height:14px;"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
         </div>
@@ -2614,6 +2619,18 @@
               </div>
               <span class="stream-arrow" aria-hidden="true">▾</span>
             </button>
+
+            <!-- All Songs / Full Discography Featured Card -->
+            <a class="streaming-card stream-all-songs" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" id="streamAllSongsLink" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(255, 122, 168, 0.18) 0%, rgba(29, 185, 84, 0.14) 100%); border: 1px solid rgba(255, 205, 230, 0.45); box-shadow: 0 8px 24px rgba(255, 82, 149, 0.15);">
+              <div class="stream-icon-wrap" style="background: rgba(255, 122, 168, 0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;">
+                <span style="font-size: 22px;">🎵</span>
+              </div>
+              <div class="stream-info">
+                <span class="stream-service-name" style="font-size: 15px; font-weight: 700; color: #fff;">Explore All Songs &amp; Releases</span>
+                <span class="stream-service-cta" style="color: var(--champagne); font-size: 12px;">Full Taymah Hendi Catalog on Spotify &amp; Apple Music →</span>
+              </div>
+              <span class="stream-arrow" aria-hidden="true" style="font-size: 18px; color: var(--paper);">↗</span>
+            </a>
           </div>
 
           <!-- Instant In-Browser Audio Player Bar -->
@@ -2720,7 +2737,7 @@
         <div class="polaroid-card" id="polaroid3">
           <div class="polaroid-img-wrap">
             <video autoplay muted loop playsinline poster="assets/artwork.jpg">
-              <source src="assets/background.mp4" type="video/mp4">
+              <source src="assets/5 shoreditch web.mp4" type="video/mp4">
             </video>
           </div>
           <p class="polaroid-caption">Velvet motion · Behind the scenes</p>
@@ -2779,6 +2796,10 @@
         <ul class="socials" id="socials"></ul>
       </nav>
 
+      <div style="display:flex; align-items:center; gap:16px; margin: 6px 0;">
+        <a href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="color:var(--gold); text-decoration:none; font-size:12px; font-weight:600; display:inline-flex; align-items:center; gap:5px; opacity:0.9; transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.9'">🎵 All Songs &amp; Discography ↗</a>
+      </div>
+
       <span class="footer-end"><a href="/growth/login.html" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; opacity:0.85; transition:color 0.2s, opacity 0.2s;" onmouseover="this.style.color='var(--rose)'; this.style.opacity='1'" onmouseout="this.style.color='var(--muted)'; this.style.opacity='0.85'">Artist Access 🔒</a></span>
     </footer>
   </div>
@@ -2813,6 +2834,11 @@
       <p class="modal-desc">Choose your preferred music platform to stream Zero To 40 out now.</p>
       
       <ul class="platform-list">
+        <li style="margin-bottom: 12px;">
+          <a class="platform-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, rgba(255,82,149,0.25), rgba(29,185,84,0.2)); border: 1px solid rgba(255,205,230,0.5);">
+            <span>🎵 Stream All Taymah Hendi Songs (Spotify)</span>
+          </a>
+        </li>
         <li>
           <a class="platform-btn" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">
             <span>🟢 Spotify</span>
@@ -3526,13 +3552,6 @@
             stored.push({ name: name, email: email, date: new Date().toISOString() });
             localStorage.setItem('th_vip_members', JSON.stringify(stored));
           } catch (err) {}
-          try {
-            fetch('/api/fans/vip', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name: name, email: email, source: 'website-vip-modal' })
-            }).catch(function () {});
-          } catch (e) {}
           vipForm.style.display = 'none';
           if (vipSuccess) vipSuccess.style.display = 'block';
         });
@@ -3607,13 +3626,6 @@
             stored.push({ name: name, station: station, email: email, date: new Date().toISOString() });
             localStorage.setItem('th_dj_roster', JSON.stringify(stored));
           } catch (err) {}
-          try {
-            fetch('/api/djs/feedback', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name: name, station: station, email: email })
-            }).catch(function () {});
-          } catch (e) {}
           
           djForm.style.display = 'none';
           if (djSuccess) djSuccess.style.display = 'block';
@@ -3637,15 +3649,6 @@
             reactions.push({ reaction: react, date: new Date().toISOString() });
             localStorage.setItem('th_dj_reactions', JSON.stringify(reactions));
           } catch (err) {}
-          var djEmail = document.getElementById('djEmail') ? document.getElementById('djEmail').value : '';
-          var djName = document.getElementById('djName') ? document.getElementById('djName').value : '';
-          try {
-            fetch('/api/djs/feedback', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name: djName, email: djEmail, reaction: react })
-            }).catch(function () {});
-          } catch (e) {}
           if (djFeedbackConfirm) djFeedbackConfirm.style.display = 'block';
         });
       }
