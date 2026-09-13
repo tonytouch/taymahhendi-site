@@ -24,11 +24,11 @@ This workspace operates under a unified two-agent collaborative system pairing *
   - Artwork: `assets/cover-art.jpg`
 * **Official YouTube**: `https://www.youtube.com/@TAYMAHHENDI`
 * **Live Site**: `https://tonytouch.github.io/taymahhendi-site/`
-* **Growth Control Engine**: LOCAL-ONLY — launch with `scripts/start-growth-dashboard.cmd` (serves 127.0.0.1:8240). Removed from the public internet 2026-09-13; never re-publish `growth/*`
-* **Mailchimp Audience**: `7d217c5c74` (us10 datacenter, 72 VIP DJs & tastemakers)
-* **Track Catalog & Curator CRM**: `growth/catalog.json` (Zero To 40 seeded), `growth/curators.json` (20 curators across Groover, DailyPlaylists, SubmitHub, Spotify editorial & direct email)
+* **Growth Control Engine**: STANDALONE DESKTOP APPLICATION (`C:\Users\tony\taymah-growth-engine`). Extracted completely from the website on 2026-09-13. Runs locally via its own dedicated FastAPI backend (`server.py` on `http://127.0.0.1:8240`) with full REST API execution, native app window (`launch-growth-engine.cmd`), and desktop shortcut. The website repo (`taymahhendi-site`) contains NO private growth files, curator CRM, or backend cron scripts.
+* **Mailchimp Audience**: `7d217c5c74` (us10 datacenter, 80 VIP DJs & tastemakers)
+* **Track Catalog & Curator CRM**: `C:\Users\tony\taymah-growth-engine\data\` (`catalog.json`, `curators.json` with 39+ curators across Groover, DailyPlaylists, SubmitHub, Spotify editorial & direct email)
 * **Secrets policy**: API keys are read from the environment (`GEMINI_API_KEY`, `MAILCHIMP_API_KEY`, `GITHUB_TOKEN`) — never hardcoded in scripts
-* **Artist Access is LOCAL-ONLY (2026-09-13, owner decision)**: the growth dashboard is no longer published anywhere. `dist/growth/` is deleted (Cloudflare Pages publishes `dist/`), `push-growth-github.ps1` no longer lists growth files (with a hard guard that blocks them), and `take-growth-offline.ps1` purges the already-published `growth/` copies from the GitHub repo. To use the dashboard: `scripts/start-growth-dashboard.cmd` (or `.ps1`) — serves `127.0.0.1:8240` and opens the login page; nothing leaves this PC. The login still verifies a SHA-256 hash (`PASSWORD_HASH` const, plaintext nowhere in the repo); change it with `python scripts/set_growth_password.py "newpass" --apply`. Engine, cron, digests, and Telegram delivery are unaffected — they run locally via Hermes. Never re-add `growth/*` or `dist/growth/*` to any deploy; `verify-live-pages.ps1` / `check-live-login.ps1` FAIL if growth pages ever reappear online.
+* **Artist Access is LOCAL STANDALONE**: The growth engine is an isolated desktop app. To launch: double-click the "Growth Engine" shortcut on your Desktop (or run `C:\Users\tony\taymah-growth-engine\launch-growth-engine.cmd`), which starts the backend server and opens Edge/Chrome in Native App Window mode. Daily scheduled 09:00 UTC Hermes automation runs directly inside `C:\Users\tony\taymah-growth-engine\engine\growth_daily_run.py`. Never re-add `growth/*` to website deploys.
 
 ---
 
