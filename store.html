@@ -101,10 +101,13 @@
     .brand-title {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.18em;
+      font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #fff;
+      display: inline-block;
+      white-space: nowrap;
+      padding-right: 0.12em;
     }
 
     .nav-back-link {
@@ -187,15 +190,25 @@
 
     .main-title {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-size: clamp(1.8rem, 6.2vw, 3.8rem);
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 1.1;
       margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, #fff 0%, #fde68a 50%, #f59e0b 100%);
+      text-align: center;
+      width: 100%;
+    }
+
+    .title-word {
+      display: inline-block;
+      background: linear-gradient(135deg, #ffffff 0%, #fde68a 50%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-right: 0.14em; /* Guaranteed zero clipping on trailing 'E' in WebKit */
+      white-space: nowrap;
+      max-width: 100%;
     }
 
     .main-subtitle {
@@ -313,6 +326,30 @@
     }
 
     @media (max-width: 540px) {
+      .main-container {
+        padding: 2.5rem 1rem 4rem;
+      }
+      .coming-soon-card {
+        padding: 2.5rem 1.25rem;
+      }
+      .main-title {
+        font-size: clamp(1.5rem, 7.5vw, 2.2rem);
+        letter-spacing: 0.02em;
+      }
+      .title-word {
+        padding-right: 0.1em;
+      }
+      .nav-bar {
+        padding: 0.85rem 1rem;
+      }
+      .brand-title {
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-back-link {
+        padding: 6px 14px;
+        font-size: 0.78rem;
+      }
       .notify-form {
         flex-direction: column;
         border-radius: var(--radius-md);
@@ -324,6 +361,16 @@
       .notify-btn {
         width: 100%;
         border-radius: var(--radius-sm);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .coming-soon-card {
+        padding: 2rem 0.85rem;
+      }
+      .main-title {
+        font-size: 1.35rem;
+        letter-spacing: 0.01em;
       }
     }
   </style>
@@ -355,7 +402,7 @@
         <span>Coming Soon</span>
       </div>
 
-      <h1 class="main-title" id="store-heading">UNTAYMAHBLE</h1>
+      <h1 class="main-title" id="store-heading"><span class="title-word">UNTAYMAHBLE</span></h1>
 
       <p class="main-subtitle">
         The exclusive archive collection is currently being curated in London. Sign up below to receive early VIP drop access when the store opens.
