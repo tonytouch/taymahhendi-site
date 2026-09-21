@@ -2969,22 +2969,17 @@
             <span>🎟️ Join VIP Guestlist</span>
           </button>
         </div>
-    <!-- UNTAYMAHBLE Streetwear Store Showcase Banner -->
+    <!-- UNTAYMAHBLE Store Showcase Banner -->
     <section class="live untaymahble-store-section" id="store-banner" aria-labelledby="store-section-label" style="margin-top: clamp(40px, 6vw, 80px); margin-bottom: clamp(30px, 4vw, 60px);">
-      <div class="show store-feature-card" style="background: linear-gradient(135deg, rgba(28, 11, 30, 0.9), rgba(16, 6, 17, 0.85)); border: 1px solid rgba(253, 230, 138, 0.25); border-radius: var(--radius-xl); padding: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; box-shadow: 0 30px 80px rgba(0,0,0,0.6);">
+      <div class="show store-feature-card" style="background: linear-gradient(135deg, rgba(28, 11, 30, 0.9), rgba(16, 6, 17, 0.85)); border: 1px solid rgba(253, 230, 138, 0.25); border-radius: var(--radius-xl); padding: clamp(32px, 5vw, 54px); text-align: center; max-width: 680px; margin: 0 auto; box-shadow: 0 30px 80px rgba(0,0,0,0.6);">
+        <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #34d399; display: inline-block; margin-bottom: 10px;">Coming Soon</span>
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; background: linear-gradient(135deg, #fff, #fde68a, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">UNTAYMAHBLE</h2>
+        <p style="color: var(--paper-muted); font-size: 0.95rem; margin-bottom: 24px;">The 1-of-1 archive collection is coming soon.</p>
         <div>
-          <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #34d399; display: inline-block; margin-bottom: 8px;">Like New</span>
-          <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #fde68a, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">UNTAYMAHBLE</h2>
-          <div>
-            <a href="store.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 38px; border-radius: 999px; background: linear-gradient(135deg, #fbbf24, #d97706); color: #0b050d; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; box-shadow: 0 10px 30px rgba(245,158,11,0.4); transition: transform 0.2s ease;">
-              <span>SHOP NOW</span>
-              <span>➔</span>
-            </a>
-          </div>
-        </div>
-        <div style="display: flex; gap: 12px;">
-          <img src="assets/untaymahble-hoodie.jpg" alt="UNTAYMAHBLE Hoodie" style="width: clamp(100px, 12vw, 150px); aspect-ratio: 1; border-radius: var(--radius-lg); object-fit: cover; border: 1px solid rgba(253, 230, 138, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
-          <img src="assets/untaymahble-tee.jpg" alt="UNTAYMAHBLE Tee" style="width: clamp(100px, 12vw, 150px); aspect-ratio: 1; border-radius: var(--radius-lg); object-fit: cover; border: 1px solid rgba(253, 230, 138, 0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
+          <a href="store.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 38px; border-radius: 999px; background: linear-gradient(135deg, #fbbf24, #d97706); color: #0b050d; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; box-shadow: 0 10px 30px rgba(245,158,11,0.4); transition: transform 0.2s ease;">
+            <span>COMING SOON</span>
+            <span>➔</span>
+          </a>
         </div>
       </div>
     </section>
@@ -3653,44 +3648,6 @@
       window.addEventListener('resize', layout);
       layout();
       durTime.textContent = fmt(duration());
-
-      // Auto-play Zero To 40 straight away on entering site
-      function autoPlayZeroTo40() {
-        setupAudioReactive();
-        if (audioCtx && audioCtx.state === 'suspended') {
-          audioCtx.resume().catch(function () {});
-        }
-        audio.muted = false;
-        var p = audio.play();
-        if (p !== undefined) {
-          p.then(function () {
-            player.classList.add('is-playing');
-          }).catch(function () {
-            // If browser autoplay policy blocks unmuted audio before gesture,
-            // start immediately on first user touch, click, scroll or keydown
-            var startOnUserGesture = function () {
-              ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown', 'scroll'].forEach(function (evt) {
-                window.removeEventListener(evt, startOnUserGesture, true);
-                document.removeEventListener(evt, startOnUserGesture, true);
-              });
-              setupAudioReactive();
-              if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume().catch(function () {});
-              }
-              audio.play().then(function () {
-                player.classList.add('is-playing');
-              }).catch(function () {});
-            };
-
-            ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown', 'scroll'].forEach(function (evt) {
-              window.addEventListener(evt, startOnUserGesture, { capture: true, once: true });
-              document.addEventListener(evt, startOnUserGesture, { capture: true, once: true });
-            });
-          });
-        }
-      }
-
-      autoPlayZeroTo40();
 
       // Pause local player when user interacts with the embedded Spotify player
       window.addEventListener('blur', function () {
