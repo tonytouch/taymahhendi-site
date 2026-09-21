@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNTAYMAHBLE — Official Streetwear by Taymah Hendi</title>
+  <meta name="description" content="UNTAYMAHBLE — The official luxury streetwear capsule collection by UK artist Taymah Hendi. Heavyweight hoodies, vintage acid-wash tees, midnight racer bombers, and limited edition drops.">
+  <meta name="theme-color" content="#0b050d">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UNTAYMAHBLE — Official Streetwear by Taymah Hendi">
+  <meta property="og:description" content="Limited debut streetwear capsule by Taymah Hendi. Heavyweight 450GSM hoodies, London acid-wash tees, and racing bombers.">
+  <meta property="og:image" content="https://www.taymahhendi.com/assets/untaymahble-hoodie.jpg">
+  <meta property="og:url" content="https://www.taymahhendi.com/store.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       DESIGN TOKENS & RESET (Apple HIG & Luxury Streetwear Aesthetic)
+    ------------------------------------------------------------- */
+    :root {
+      --bg-dark: #09040b;
+      --bg-card: rgba(22, 10, 24, 0.72);
+      --bg-card-hover: rgba(32, 15, 36, 0.85);
+      --glass-border: rgba(253, 230, 138, 0.16);
+      --glass-border-hover: rgba(245, 158, 11, 0.45);
+      --paper: #fefcfb;
+      --paper-muted: rgba(254, 252, 251, 0.65);
+      --gold: #f59e0b;
+      --gold-bright: #fbbf24;
+      --gold-glow: rgba(245, 158, 11, 0.28);
+      --accent-lilac: #dfbfff;
+      --accent-green: #10b981;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 32px;
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--paper);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: radial-gradient(circle at 50% 0%, rgba(55, 18, 50, 0.45) 0%, rgba(9, 4, 11, 1) 65%);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* -------------------------------------------------------------
+       NAVBAR (Apple-Inspired Liquid Glass)
+    ------------------------------------------------------------- */
+    .store-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5vw;
+      background: rgba(9, 4, 11, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(253, 230, 138, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-text {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff 0%, #fde68a 50%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-bright);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--paper-muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--paper);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-to-music-btn {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--paper-muted);
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.2s ease;
+    }
+
+    .back-to-music-btn:hover {
+      color: var(--paper);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cart-trigger-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(245, 158, 11, 0.08));
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--gold-bright);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.25s var(--transition-smooth);
+    }
+
+    .cart-trigger-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--gold-glow);
+      border-color: var(--gold-bright);
+    }
+
+    .cart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold-bright);
+      color: #000;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    /* -------------------------------------------------------------
+       HERO SECTION WITH MULTI-LAYER SCROLL PARALLAX
+    ------------------------------------------------------------- */
+    .hero-parallax-wrapper {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      view-timeline: --store-hero;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* Layer 0: Ambient Lighting & Fog */
+    .parallax-bg-glow {
+      background: radial-gradient(ellipse at 50% 45%, rgba(139, 44, 120, 0.28) 0%, rgba(9, 4, 11, 0.95) 75%);
+      z-index: 1;
+    }
+
+    /* Layer 1: Giant Floating Brand Typography */
+    .parallax-typography {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      opacity: 0.88;
+    }
+
+    .giant-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3.5rem, 14vw, 13rem);
+      letter-spacing: 0.12em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 158, 11, 0.4) 60%, rgba(20, 8, 22, 0) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: translateY(0px);
+      transition: transform 0.1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.4rem);
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--paper-muted);
+      margin-top: 1rem;
+    }
+
+    /* Layer 2: Hero Foreground Content & CTAs */
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 720px;
+      padding: 0 1.5rem;
+      margin-top: 14rem;
+      pointer-events: auto;
+    }
+
+    .hero-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(22, 10, 24, 0.85);
+      border: 1px solid var(--glass-border);
+      color: var(--gold-bright);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .hero-lead {
+      font-size: clamp(1rem, 1.3vw, 1.25rem);
+      color: var(--paper-muted);
+      margin-bottom: 2.25rem;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+      color: #0b050d;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      transition: all 0.3s var(--transition-smooth);
+      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-primary-store:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 45px rgba(245, 158, 11, 0.5);
+    }
+
+    .btn-secondary-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--paper);
+      font-weight: 600;
+      font-size: 0.95rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary-store:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Native CSS Scroll-driven animations for parallax */
+    @supports ((animation-timeline: view()) and (animation-range: entry)) {
+      .parallax-bg-glow {
+        animation: parallaxGlow linear both;
+        animation-timeline: --store-hero;
+        animation-range: entry 0% exit 100%;
+      }
+      .parallax-typography {
+        animation: parallaxTitle linear both;
+        animation-timeline: --store-hero;
+        animation-range: entry 0% exit 100%;
+      }
+      .hero-content {
+        animation: parallaxContent linear both;
+        animation-timeline: --store-hero;
+        animation-range: entry 0% exit 80%;
+      }
+    }
+
+    @keyframes parallaxGlow {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(180px) scale(1.15); opacity: 0.4; }
+    }
+    @keyframes parallaxTitle {
+      from { transform: translateY(0); }
+      to { transform: translateY(260px); opacity: 0.15; }
+    }
+    @keyframes parallaxContent {
+      from { transform: translateY(0); }
+      to { transform: translateY(100px); }
+    }
+
+    /* -------------------------------------------------------------
+       LOOKBOOK & EDITORIAL HIGHLIGHT (Horizontal Glide)
+    ------------------------------------------------------------- */
+    .editorial-section {
+      padding: 5rem 5vw;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .lookbook-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s var(--transition-smooth);
+    }
+
+    .lookbook-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--glass-border-hover);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 30px var(--gold-glow);
+    }
+
+    .lookbook-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--transition-smooth);
+    }
+
+    .lookbook-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .lookbook-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(9, 4, 11, 0.92) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+
+    .lookbook-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 0.25rem;
+    }
+
+    .lookbook-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    /* -------------------------------------------------------------
+       PRODUCT CATALOG & FILTER BAR
+    ------------------------------------------------------------- */
+    .catalog-section {
+      padding: 5rem 5vw 8rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .filter-pill {
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--paper-muted);
+      background: rgba(22, 10, 24, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.25s ease;
+    }
+
+    .filter-pill:hover {
+      color: var(--paper);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .filter-pill.is-active {
+      color: #0b050d;
+      background: var(--gold-bright);
+      border-color: var(--gold-bright);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.35s var(--transition-smooth);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--glass-border-hover);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.15);
+    }
+
+    .product-media {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: #110714;
+      margin-bottom: 1.25rem;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--transition-smooth);
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.05);
+    }
+
+    .product-badge-pill {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(9, 4, 11, 0.85);
+      border: 1px solid var(--glass-border);
+      color: var(--gold-bright);
+      backdrop-filter: blur(8px);
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--paper-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .product-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--paper-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: auto;
+      margin-bottom: 1rem;
+    }
+
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--paper);
+    }
+
+    .size-selector {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1.25rem;
+    }
+
+    .size-btn {
+      flex: 1;
+      padding: 6px 0;
+      text-align: center;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--paper-muted);
+      transition: all 0.2s ease;
+    }
+
+    .size-btn:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--paper);
+    }
+
+    .size-btn.is-selected {
+      background: var(--gold-bright);
+      color: #0b050d;
+      border-color: var(--gold-bright);
+    }
+
+    .add-to-bag-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.12));
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: var(--gold-bright);
+      transition: all 0.25s var(--transition-smooth);
+    }
+
+    .add-to-bag-btn:hover {
+      background: var(--gold-bright);
+      color: #0b050d;
+      box-shadow: 0 8px 24px var(--gold-glow);
+      transform: translateY(-2px);
+    }
+
+    /* -------------------------------------------------------------
+       SLIDE-OUT SHOPPING BAG DRAWER
+    ------------------------------------------------------------- */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .drawer-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 100%;
+      background: #110714;
+      border-left: 1px solid var(--glass-border);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s var(--transition-smooth);
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .drawer-overlay.is-open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .drawer-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .close-drawer-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--paper-muted);
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    .close-drawer-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--paper);
+    }
+
+    .shipping-progress-wrap {
+      padding: 1rem 1.5rem;
+      background: rgba(245, 158, 11, 0.06);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.12);
+    }
+
+    .shipping-text {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gold-bright);
+      margin-bottom: 6px;
+    }
+
+    .shipping-bar-bg {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .shipping-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    .drawer-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .cart-empty-state {
+      margin: auto;
+      text-align: center;
+      color: var(--paper-muted);
+      padding: 2rem;
+    }
+
+    .cart-empty-state svg {
+      margin-bottom: 1rem;
+      opacity: 0.35;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background: #190b1e;
+    }
+
+    .cart-item-details h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-meta {
+      font-size: 0.75rem;
+      color: var(--paper-muted);
+      margin-bottom: 8px;
+    }
+
+    .cart-stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 2px 8px;
+    }
+
+    .step-btn {
+      font-size: 0.85rem;
+      color: var(--paper-muted);
+      padding: 2px 4px;
+    }
+
+    .step-btn:hover { color: var(--paper); }
+
+    .step-val { font-size: 0.8rem; font-weight: 600; min-width: 16px; text-align: center; }
+
+    .cart-item-price {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: right;
+    }
+
+    .remove-item-btn {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: #ef4444;
+      text-align: right;
+    }
+
+    .drawer-footer {
+      padding: 1.5rem;
+      background: #160a18;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .drawer-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--paper-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .drawer-summary-row.total {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--paper);
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      color: #0b050d;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 30px var(--gold-glow);
+      transition: all 0.25s ease;
+    }
+
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+    }
+
+    /* -------------------------------------------------------------
+       CHECKOUT & "SWIPE TO PAY" MODAL
+    ------------------------------------------------------------- */
+    .checkout-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .checkout-modal-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .checkout-modal {
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #130717;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(245, 158, 11, 0.15);
+    }
+
+    .checkout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .checkout-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .payment-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .pay-tab-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--paper-muted);
+      transition: all 0.2s ease;
+    }
+
+    .pay-tab-btn.is-active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .express-pay-box {
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 10px;
+    }
+
+    .apple-pay-btn, .google-pay-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .apple-pay-btn {
+      background: #000;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .google-pay-btn {
+      background: #fff;
+      color: #3c4043;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--paper-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--paper);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 0 2px var(--gold-glow);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Tactile "Swipe to Pay" Slider */
+    .swipe-pay-container {
+      margin-top: 1.5rem;
+      position: relative;
+    }
+
+    .swipe-track {
+      position: relative;
+      height: 60px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1b0c1e, #29122f);
+      border: 2px solid var(--glass-border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .swipe-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper-muted);
+      animation: swipePulse 2s infinite;
+    }
+
+    @keyframes swipePulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .swipe-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.4), rgba(251, 191, 36, 0.7));
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .swipe-thumb {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b050d;
+      font-size: 1.2rem;
+      cursor: grab;
+      touch-action: none;
+      transition: transform 0.05s linear;
+    }
+
+    .swipe-thumb:active { cursor: grabbing; }
+
+    /* Success State */
+    .order-success-box {
+      text-align: center;
+      padding: 3rem 1rem;
+      display: none;
+    }
+
+    .success-icon-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--accent-green);
+      color: var(--accent-green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      animation: scalePop 0.4s var(--transition-smooth);
+    }
+
+    @keyframes scalePop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* -------------------------------------------------------------
+       CONFIG / GATEWAY HELPER COLLAPSIBLE (For Tony)
+    ------------------------------------------------------------- */
+    .gateway-helper-card {
+      margin-top: 5rem;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: rgba(18, 8, 20, 0.5);
+      border: 1px dashed rgba(245, 158, 11, 0.3);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gateway-helper-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gateway-code-snippet {
+      background: #060207;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #a7f3d0;
+      margin-top: 10px;
+      overflow-x: auto;
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+    ------------------------------------------------------------- */
+    .store-footer {
+      padding: 4rem 5vw 3rem;
+      background: #060207;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--paper-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .lookbook-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================================
+       NAVBAR
+  ============================================================= -->
+  <nav class="store-nav" aria-label="UNTAYMAHBLE Store Navigation">
+    <div class="nav-brand">
+      <a href="index.html" class="brand-logo-text">UNTAYMAHBLE</a>
+      <span class="brand-badge">Official Store</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#collection" class="nav-link">Collection</a></li>
+      <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
+      <li><a href="#story" class="nav-link">About</a></li>
+      <li><a href="index.html" class="nav-link">Music &amp; Release</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="index.html" class="back-to-music-btn">← Zero To 40</a>
+      <button class="cart-trigger-btn" id="openCartBtn" type="button" aria-label="Open shopping bag">
+        <span>Bag</span>
+        <span class="cart-badge" id="navCartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =============================================================
+       HERO WITH MULTI-LAYER PARALLAX
+  ============================================================= -->
+  <header class="hero-parallax-wrapper" id="heroWrapper">
+    <div class="parallax-layer parallax-bg-glow" id="parallaxBg"></div>
+
+    <div class="parallax-layer parallax-typography" id="parallaxType">
+      <h1 class="giant-title">UNTAYMAHBLE</h1>
+      <p class="hero-subtitle">The Debut Streetwear Capsule · London</p>
+    </div>
+
+    <div class="hero-content" id="heroForeground">
+      <span class="hero-pill-tag">✦ Designed in London by Taymah Hendi</span>
+      <p class="hero-lead">
+        Born from late-night studio sessions and the speed of Shoreditch. Engineered in 450GSM organic heavyweights, vintage washes, and bespoke racing cuts.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#collection" class="btn-primary-store">
+          <span>Shop The Drop</span>
+          <span>↓</span>
+        </a>
+        <a href="#lookbook" class="btn-secondary-store">
+          <span>View Lookbook</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================
+       EDITORIAL LOOKBOOK (Parallax & Depth)
+  ============================================================= -->
+  <section class="editorial-section" id="lookbook" aria-label="Lookbook">
+    <div class="section-header">
+      <p class="section-eyebrow">✦ Autumn / Winter 2026</p>
+      <h2 class="section-heading">Zero To 40 Aesthetic</h2>
+    </div>
+
+    <div class="lookbook-grid">
+      <div class="lookbook-card">
+        <img src="assets/untaymahble-hoodie.jpg" alt="UNTAYMAHBLE 450GSM Heavyweight Hoodie" loading="lazy">
+        <div class="lookbook-overlay">
+          <span class="lookbook-tag">Signature Piece</span>
+          <h3 class="lookbook-title">450GSM Heavyweight Fleece</h3>
+        </div>
+      </div>
+
+      <div class="lookbook-card">
+        <img src="assets/untaymahble-tee.jpg" alt="Zero To 40 Soho Night Drive Boxy Tee" loading="lazy">
+        <div class="lookbook-overlay">
+          <span class="lookbook-tag">Vintage Finish</span>
+          <h3 class="lookbook-title">Soho Night Drive Tee</h3>
+        </div>
+      </div>
+
+      <div class="lookbook-card">
+        <img src="assets/untaymahble-bomber.jpg" alt="Midnight Racer Varsity Bomber" loading="lazy">
+        <div class="lookbook-overlay">
+          <span class="lookbook-tag">Limited Edition</span>
+          <h3 class="lookbook-title">Midnight Racer Bomber</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       CAPSULE COLLECTION CATALOG
+  ============================================================= -->
+  <section class="catalog-section" id="collection" aria-label="Product Catalog">
+    <div class="section-header">
+      <p class="section-eyebrow">✦ Capsule 01</p>
+      <h2 class="section-heading">UNTAYMAHBLE Pieces</h2>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filter-bar">
+      <button class="filter-pill is-active" data-filter="all">All Items (5)</button>
+      <button class="filter-pill" data-filter="tops">Hoodies &amp; Tops</button>
+      <button class="filter-pill" data-filter="outerwear">Outerwear</button>
+      <button class="filter-pill" data-filter="accessories">Accessories</button>
+    </div>
+
+    <!-- Product Cards -->
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Item 1: Hoodie -->
+      <article class="product-card" data-category="tops">
+        <div class="product-media">
+          <span class="product-badge-pill">Best Seller</span>
+          <img src="assets/untaymahble-hoodie.jpg" alt="UNTAYMAHBLE 450GSM Heavyweight Hoodie">
+        </div>
+        <div class="product-info">
+          <span class="product-category">Heavyweight Fleece</span>
+          <h3 class="product-title">UNTAYMAHBLE 450GSM Hoodie</h3>
+          <p class="product-desc">Ultra-dense brushed organic cotton with minimal metallic champagne-gold chest embroidery.</p>
+          <div class="size-selector" data-item-id="untaymahble-hoodie">
+            <button class="size-btn is-selected" type="button" data-size="S">S</button>
+            <button class="size-btn" type="button" data-size="M">M</button>
+            <button class="size-btn" type="button" data-size="L">L</button>
+            <button class="size-btn" type="button" data-size="XL">XL</button>
+          </div>
+          <div class="product-price-row">
+            <span class="product-price">£85.00</span>
+          </div>
+          <button class="add-to-bag-btn" type="button" 
+                  data-id="untaymahble-hoodie" 
+                  data-name="UNTAYMAHBLE 450GSM Hoodie" 
+                  data-price="85.00" 
+                  data-img="assets/untaymahble-hoodie.jpg">
+            Add to Bag
+          </button>
+        </div>
+      </article>
+
+      <!-- Item 2: Tee -->
+      <article class="product-card" data-category="tops">
+        <div class="product-media">
+          <span class="product-badge-pill">Vintage Acid-Wash</span>
+          <img src="assets/untaymahble-tee.jpg" alt="Zero To 40 Soho Night Drive Boxy Tee">
+        </div>
+        <div class="product-info">
+          <span class="product-category">Boxy Oversized Tee</span>
+          <h3 class="product-title">Zero To 40 Night Drive Tee</h3>
+          <p class="product-desc">Hand-washed mineral charcoal tee featuring cinematic Soho neon racer graphic and gold typography.</p>
+          <div class="size-selector" data-item-id="zero-40-tee">
+            <button class="size-btn is-selected" type="button" data-size="S">S</button>
+            <button class="size-btn" type="button" data-size="M">M</button>
+            <button class="size-btn" type="button" data-size="L">L</button>
+            <button class="size-btn" type="button" data-size="XL">XL</button>
+          </div>
+          <div class="product-price-row">
+            <span class="product-price">£42.00</span>
+          </div>
+          <button class="add-to-bag-btn" type="button" 
+                  data-id="zero-40-tee" 
+                  data-name="Zero To 40 Night Drive Tee" 
+                  data-price="42.00" 
+                  data-img="assets/untaymahble-tee.jpg">
+            Add to Bag
+          </button>
+        </div>
+      </article>
+
+      <!-- Item 3: Bomber -->
+      <article class="product-card" data-category="outerwear">
+        <div class="product-media">
+          <span class="product-badge-pill">Limited 100 Pieces</span>
+          <img src="assets/untaymahble-bomber.jpg" alt="Midnight Racer Varsity Bomber Jacket">
+        </div>
+        <div class="product-info">
+          <span class="product-category">Luxury Outerwear</span>
+          <h3 class="product-title">Midnight Racer Bomber</h3>
+          <p class="product-desc">Satin nylon shell with diamond quilted insulation, solid brass hardware, and embroidered UNTAYMAHBLE racer patch.</p>
+          <div class="size-selector" data-item-id="midnight-bomber">
+            <button class="size-btn" type="button" data-size="S">S</button>
+            <button class="size-btn is-selected" type="button" data-size="M">M</button>
+            <button class="size-btn" type="button" data-size="L">L</button>
+            <button class="size-btn" type="button" data-size="XL">XL</button>
+          </div>
+          <div class="product-price-row">
+            <span class="product-price">£140.00</span>
+          </div>
+          <button class="add-to-bag-btn" type="button" 
+                  data-id="midnight-bomber" 
+                  data-name="Midnight Racer Bomber" 
+                  data-price="140.00" 
+                  data-img="assets/untaymahble-bomber.jpg">
+            Add to Bag
+          </button>
+        </div>
+      </article>
+
+      <!-- Item 4: Cap -->
+      <article class="product-card" data-category="accessories">
+        <div class="product-media">
+          <span class="product-badge-pill">Everyday Essential</span>
+          <img src="assets/untaymahble-cap.jpg" alt="Shoreditch Nights Distressed Dad Cap">
+        </div>
+        <div class="product-info">
+          <span class="product-category">Headwear</span>
+          <h3 class="product-title">Shoreditch Nights Cap</h3>
+          <p class="product-desc">Vintage stone-washed twill with micro-distressing, tonal embroidery, and antique brass closure.</p>
+          <div class="size-selector" data-item-id="shoreditch-cap">
+            <button class="size-btn is-selected" type="button" data-size="OS">One Size</button>
+          </div>
+          <div class="product-price-row">
+            <span class="product-price">£32.00</span>
+          </div>
+          <button class="add-to-bag-btn" type="button" 
+                  data-id="shoreditch-cap" 
+                  data-name="Shoreditch Nights Cap" 
+                  data-price="32.00" 
+                  data-img="assets/untaymahble-cap.jpg">
+            Add to Bag
+          </button>
+        </div>
+      </article>
+
+      <!-- Item 5: Vinyl Bundle -->
+      <article class="product-card" data-category="accessories">
+        <div class="product-media">
+          <span class="product-badge-pill">Collector's Edition</span>
+          <img src="assets/artwork.jpg" alt="Zero To 40 Vinyl & Silk Scarf Bundle">
+        </div>
+        <div class="product-info">
+          <span class="product-category">Music &amp; Silk Bundle</span>
+          <h3 class="product-title">Zero To 40 Vinyl + Scarf</h3>
+          <p class="product-desc">Heavyweight 180g transparent gold 7" vinyl single packaged inside a 100% printed mulberry silk bandeau scarf.</p>
+          <div class="size-selector" data-item-id="vinyl-bundle">
+            <button class="size-btn is-selected" type="button" data-size="OS">Box Set</button>
+          </div>
+          <div class="product-price-row">
+            <span class="product-price">£55.00</span>
+          </div>
+          <button class="add-to-bag-btn" type="button" 
+                  data-id="vinyl-bundle" 
+                  data-name="Zero To 40 Vinyl + Silk Scarf" 
+                  data-price="55.00" 
+                  data-img="assets/artwork.jpg">
+            Add to Bag
+          </button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Gateway / Payment Setup helper for Tony -->
+    <div class="gateway-helper-card" id="gatewaySetupGuide">
+      <h4 class="gateway-helper-title">
+        <span>⚙️ Payment Gateway Setup &amp; Configuration</span>
+      </h4>
+      <p style="font-size:0.85rem; color:var(--paper-muted); line-height:1.5;">
+        This store includes a tactile <strong>Swipe to Pay</strong> slider and is ready to link directly to your <strong>Stripe Account</strong> (Cards, Apple Pay, Google Pay) or <strong>Swipe payment gateway</strong>. To connect your live merchant payout:
+      </p>
+      <div class="gateway-code-snippet">
+// In store.html or backend environment:
+const STRIPE_PUBLISHABLE_KEY = "pk_live_your_key_here"; // or pk_test_...
+// Or drop in your direct Stripe Payment Link:
+const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SLIDE-OUT SHOPPING BAG DRAWER
+  ============================================================= -->
+  <div class="drawer-overlay" id="drawerOverlay">
+    <div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Shopping Bag">
+      <div class="drawer-header">
+        <h3 class="drawer-title">
+          <span>Your Bag</span>
+          <span style="font-size:0.9rem; color:var(--gold-bright);" id="drawerItemCountText">(0 items)</span>
+        </h3>
+        <button class="close-drawer-btn" id="closeDrawerBtn" type="button" aria-label="Close bag">&times;</button>
+      </div>
+
+      <div class="shipping-progress-wrap">
+        <p class="shipping-text" id="shippingProgressText">Free UK shipping on orders over £75</p>
+        <div class="shipping-bar-bg">
+          <div class="shipping-bar-fill" id="shippingBarFill"></div>
+        </div>
+      </div>
+
+      <div class="drawer-items" id="drawerItemsList">
+        <!-- Injected via JavaScript -->
+        <div class="cart-empty-state" id="cartEmptyState">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <p>Your bag is currently empty.</p>
+        </div>
+      </div>
+
+      <div class="drawer-footer" id="drawerFooter">
+        <div class="drawer-summary-row">
+          <span>Subtotal</span>
+          <span id="drawerSubtotal">£0.00</span>
+        </div>
+        <div class="drawer-summary-row">
+          <span>Estimated UK Delivery</span>
+          <span id="drawerShipping">£4.99</span>
+        </div>
+        <div class="drawer-summary-row total">
+          <span>Total</span>
+          <span id="drawerTotal">£0.00</span>
+        </div>
+        <button class="checkout-btn" id="triggerCheckoutBtn" type="button">
+          Proceed to Checkout →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       CHECKOUT & "SWIPE TO PAY" MODAL
+  ============================================================= -->
+  <div class="checkout-modal-overlay" id="checkoutModalOverlay">
+    <div class="checkout-modal" role="dialog" aria-label="Secure Checkout">
+      
+      <!-- Checkout Form View -->
+      <div id="checkoutFormView">
+        <div class="checkout-header">
+          <h3 class="checkout-title">Secure Checkout</h3>
+          <button class="close-drawer-btn" id="closeCheckoutBtn" type="button">&times;</button>
+        </div>
+
+        <!-- 1-Tap Express Pay -->
+        <div class="express-pay-box">
+          <button class="apple-pay-btn" type="button" id="applePayBtn">
+            <span>Pay Express</span>
+          </button>
+          <button class="google-pay-btn" type="button" id="googlePayBtn">
+            <span>GPay</span>
+          </button>
+        </div>
+
+        <div style="text-align:center; font-size:0.75rem; color:var(--paper-muted); margin-bottom:1.5rem; text-transform:uppercase; letter-spacing:0.1em;">
+          — Or Pay With Card &amp; Swipe —
+        </div>
+
+        <form id="storeCheckoutForm" onsubmit="return false;">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" type="text" placeholder="Taymah Hendi" required id="custName">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="you@example.com" required id="custEmail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Shipping Address</label>
+            <input class="form-input" type="text" placeholder="128 Shoreditch High St, London" required id="custAddress">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex:2;">
+              <label class="form-label">City</label>
+              <input class="form-input" type="text" placeholder="London" required id="custCity">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Postcode</label>
+              <input class="form-input" type="text" placeholder="E1 6JE" required id="custPostcode">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Card Details (Stripe Protected)</label>
+            <input class="form-input" type="text" placeholder="4242 •••• •••• 4242" required id="custCard">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Expiry</label>
+              <input class="form-input" type="text" placeholder="MM / YY" required id="custExp">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">CVC</label>
+              <input class="form-input" type="password" maxlength="4" placeholder="CVC" required id="custCvc">
+            </div>
+          </div>
+
+          <!-- Tactile "Swipe to Pay" Slider -->
+          <div class="swipe-pay-container">
+            <div class="swipe-track" id="swipeTrack">
+              <div class="swipe-fill" id="swipeFill"></div>
+              <span class="swipe-text" id="swipeText">👉 Swipe To Pay <span id="swipeAmountDisplay">£0.00</span></span>
+              <div class="swipe-thumb" id="swipeThumb">
+                <span>➔</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Order Confirmed State -->
+      <div class="order-success-box" id="orderSuccessBox">
+        <div class="success-icon-badge">✓</div>
+        <h3 style="font-family:var(--font-display); font-size:1.75rem; margin-bottom:0.5rem;">Order Confirmed!</h3>
+        <p style="color:var(--paper-muted); font-size:0.9rem; margin-bottom:1.5rem;" id="successOrderDetails">
+          Thank you! Your UNTAYMAHBLE capsule pieces are being packaged in London. A tracking number will be sent to your email.
+        </p>
+        <button class="btn-primary-store" id="doneShoppingBtn" type="button">Back to Store</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="store-footer">
+    <div class="footer-brand">UNTAYMAHBLE</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Music</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="https://open.spotify.com/track/0Z3w5RpSye9vMaKZ6tPVao" target="_blank" rel="noopener">Zero To 40</a></li>
+      <li><a href="https://www.instagram.com/taymah_hendi/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <p class="footer-copy">
+      &copy; 2026 UNTAYMAHBLE &amp; Taymah Hendi. All rights reserved. London, UK.
+    </p>
+  </footer>
+
+  <!-- =============================================================
+       JAVASCRIPT: CART, PARALLAX, & SWIPE TO PAY
+  ============================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. STATE & STORAGE
+      var cart = [];
+      try {
+        var saved = localStorage.getItem('untaymahble_cart');
+        if (saved) cart = JSON.parse(saved);
+      } catch (e) {}
+
+      var selectedSizes = {
+        'untaymahble-hoodie': 'S',
+        'zero-40-tee': 'S',
+        'midnight-bomber': 'M',
+        'shoreditch-cap': 'OS',
+        'vinyl-bundle': 'OS'
+      };
+
+      // 2. PARALLAX FALLBACK (For browsers without full scroll-driven CSS)
+      var heroWrapper = document.getElementById('heroWrapper');
+      var parallaxType = document.getElementById('parallaxType');
+      var parallaxBg = document.getElementById('parallaxBg');
+
+      function updateParallax() {
+        if (!heroWrapper) return;
+        var scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY < window.innerHeight * 1.5) {
+          if (parallaxType) {
+            parallaxType.style.transform = 'translateY(' + (scrollY * 0.35) + 'px)';
+          }
+          if (parallaxBg) {
+            parallaxBg.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
+          }
+        }
+      }
+
+      window.addEventListener('scroll', updateParallax, { passive: true });
+
+      // 3. SIZE SELECTORS
+      document.querySelectorAll('.size-selector').forEach(function (container) {
+        var itemId = container.getAttribute('data-item-id');
+        container.querySelectorAll('.size-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            container.querySelectorAll('.size-btn').forEach(function (b) { b.classList.remove('is-selected'); });
+            btn.classList.add('is-selected');
+            selectedSizes[itemId] = btn.getAttribute('data-size');
+          });
+        });
+      });
+
+      // 4. CATEGORY FILTERS
+      document.querySelectorAll('.filter-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          document.querySelectorAll('.filter-pill').forEach(function (p) { p.classList.remove('is-active'); });
+          pill.classList.add('is-active');
+          var filter = pill.getAttribute('data-filter');
+
+          document.querySelectorAll('.product-card').forEach(function (card) {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 5. CART CALCULATIONS & UI
+      function saveCart() {
+        try {
+          localStorage.setItem('untaymahble_cart', JSON.stringify(cart));
+        } catch (e) {}
+      }
+
+      function updateCartUI() {
+        var count = cart.reduce(function (acc, item) { return acc + item.qty; }, 0);
+        var subtotal = cart.reduce(function (acc, item) { return acc + (item.price * item.qty); }, 0);
+        var shipping = subtotal >= 75 || subtotal === 0 ? 0 : 4.99;
+        var total = subtotal + shipping;
+
+        // Nav Badge
+        var navBadge = document.getElementById('navCartCount');
+        if (navBadge) navBadge.textContent = count;
+
+        var countText = document.getElementById('drawerItemCountText');
+        if (countText) countText.textContent = '(' + count + ' ' + (count === 1 ? 'item' : 'items') + ')';
+
+        // Shipping Progress
+        var shippingBar = document.getElementById('shippingBarFill');
+        var shippingText = document.getElementById('shippingProgressText');
+        if (shippingBar && shippingText) {
+          if (subtotal >= 75) {
+            shippingBar.style.width = '100%';
+            shippingText.textContent = '🎉 You have unlocked Free UK Express Shipping!';
+          } else {
+            var pct = Math.min(100, Math.round((subtotal / 75) * 100));
+            shippingBar.style.width = pct + '%';
+            shippingText.textContent = 'Add £' + (75 - subtotal).toFixed(2) + ' more for Free UK Delivery';
+          }
+        }
+
+        // List
+        var list = document.getElementById('drawerItemsList');
+        var emptyState = document.getElementById('cartEmptyState');
+        if (list) {
+          list.innerHTML = '';
+          if (cart.length === 0) {
+            list.appendChild(emptyState);
+            emptyState.style.display = 'block';
+          } else {
+            emptyState.style.display = 'none';
+            cart.forEach(function (item, idx) {
+              var el = document.createElement('div');
+              el.className = 'cart-item';
+              el.innerHTML =
+                '<img class="cart-item-img" src="' + item.img + '" alt="' + item.name + '">' +
+                '<div class="cart-item-details">' +
+                  '<h4>' + item.name + '</h4>' +
+                  '<p class="cart-item-meta">Size: ' + item.size + '</p>' +
+                  '<div class="cart-stepper">' +
+                    '<button class="step-btn" type="button" data-action="dec" data-index="' + idx + '">−</button>' +
+                    '<span class="step-val">' + item.qty + '</span>' +
+                    '<button class="step-btn" type="button" data-action="inc" data-index="' + idx + '">+</button>' +
+                  '</div>' +
+                '</div>' +
+                '<div>' +
+                  '<div class="cart-item-price">£' + (item.price * item.qty).toFixed(2) + '</div>' +
+                  '<button class="remove-item-btn" type="button" data-action="remove" data-index="' + idx + '">Remove</button>' +
+                '</div>';
+              list.appendChild(el);
+            });
+          }
+        }
+
+        // Totals
+        var subEl = document.getElementById('drawerSubtotal');
+        var shipEl = document.getElementById('drawerShipping');
+        var totEl = document.getElementById('drawerTotal');
+        var swipeAmt = document.getElementById('swipeAmountDisplay');
+        if (subEl) subEl.textContent = '£' + subtotal.toFixed(2);
+        if (shipEl) shipEl.textContent = shipping === 0 ? 'FREE' : '£' + shipping.toFixed(2);
+        if (totEl) totEl.textContent = '£' + total.toFixed(2);
+        if (swipeAmt) swipeAmt.textContent = '£' + total.toFixed(2);
+
+        saveCart();
+      }
+
+      // Add to Bag Handlers
+      document.querySelectorAll('.add-to-bag-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-id');
+          var name = btn.getAttribute('data-name');
+          var price = parseFloat(btn.getAttribute('data-price'));
+          var img = btn.getAttribute('data-img');
+          var size = selectedSizes[id] || 'M';
+
+          var existing = cart.find(function (item) { return item.id === id && item.size === size; });
+          if (existing) {
+            existing.qty += 1;
+          } else {
+            cart.push({ id: id, name: name, price: price, img: img, size: size, qty: 1 });
+          }
+
+          updateCartUI();
+          openDrawer();
+
+          btn.textContent = 'Added ✓';
+          setTimeout(function () { btn.textContent = 'Add to Bag'; }, 1200);
+        });
+      });
+
+      // Stepper & Remove Click Delegator
+      var itemsList = document.getElementById('drawerItemsList');
+      if (itemsList) {
+        itemsList.addEventListener('click', function (e) {
+          var target = e.target;
+          var action = target.getAttribute('data-action');
+          if (!action) return;
+          var idx = parseInt(target.getAttribute('data-index'), 10);
+
+          if (action === 'inc') {
+            cart[idx].qty += 1;
+          } else if (action === 'dec') {
+            cart[idx].qty -= 1;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+          } else if (action === 'remove') {
+            cart.splice(idx, 1);
+          }
+          updateCartUI();
+        });
+      }
+
+      // 6. DRAWER OVERLAYS
+      var drawerOverlay = document.getElementById('drawerOverlay');
+      var openCartBtn = document.getElementById('openCartBtn');
+      var closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+      function openDrawer() {
+        if (drawerOverlay) drawerOverlay.classList.add('is-open');
+      }
+      function closeDrawer() {
+        if (drawerOverlay) drawerOverlay.classList.remove('is-open');
+      }
+
+      if (openCartBtn) openCartBtn.addEventListener('click', openDrawer);
+      if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener('click', function (e) {
+          if (e.target === drawerOverlay) closeDrawer();
+        });
+      }
+
+      // 7. CHECKOUT MODAL
+      var checkoutModal = document.getElementById('checkoutModalOverlay');
+      var triggerCheckoutBtn = document.getElementById('triggerCheckoutBtn');
+      var closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
+      var doneShoppingBtn = document.getElementById('doneShoppingBtn');
+      var checkoutFormView = document.getElementById('checkoutFormView');
+      var orderSuccessBox = document.getElementById('orderSuccessBox');
+
+      function openCheckout() {
+        if (cart.length === 0) {
+          alert('Your bag is empty. Please add items to checkout.');
+          return;
+        }
+        closeDrawer();
+        if (checkoutModal) checkoutModal.classList.add('is-open');
+      }
+
+      function closeCheckout() {
+        if (checkoutModal) checkoutModal.classList.remove('is-open');
+        resetSwipeThumb();
+      }
+
+      if (triggerCheckoutBtn) triggerCheckoutBtn.addEventListener('click', openCheckout);
+      if (closeCheckoutBtn) closeCheckoutBtn.addEventListener('click', closeCheckout);
+      if (doneShoppingBtn) {
+        doneShoppingBtn.addEventListener('click', function () {
+          cart = [];
+          updateCartUI();
+          closeCheckout();
+          if (checkoutFormView) checkoutFormView.style.display = 'block';
+          if (orderSuccessBox) orderSuccessBox.style.display = 'none';
+        });
+      }
+
+      // 8. TACTILE "SWIPE TO PAY" GESTURE SLIDER
+      var swipeTrack = document.getElementById('swipeTrack');
+      var swipeThumb = document.getElementById('swipeThumb');
+      var swipeFill = document.getElementById('swipeFill');
+      var isDragging = false;
+      var startX = 0;
+      var currentX = 0;
+      var maxSlide = 0;
+
+      function resetSwipeThumb() {
+        if (swipeThumb) swipeThumb.style.transform = 'translateX(0px)';
+        if (swipeFill) swipeFill.style.width = '0px';
+        isDragging = false;
+      }
+
+      function onDragStart(e) {
+        if (!swipeTrack || !swipeThumb) return;
+        isDragging = true;
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        maxSlide = swipeTrack.clientWidth - swipeThumb.clientWidth - 8;
+        swipeThumb.style.transition = 'none';
+        if (swipeFill) swipeFill.style.transition = 'none';
+      }
+
+      function onDragMove(e) {
+        if (!isDragging || !swipeTrack || !swipeThumb) return;
+        var clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        var delta = clientX - startX;
+        currentX = Math.max(0, Math.min(delta, maxSlide));
+
+        swipeThumb.style.transform = 'translateX(' + currentX + 'px)';
+        if (swipeFill) swipeFill.style.width = (currentX + 24) + 'px';
+
+        // Unlock threshold: 88% of slide
+        if (currentX >= maxSlide * 0.88) {
+          isDragging = false;
+          executeOrderPayment();
+        }
+      }
+
+      function onDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        if (swipeThumb) {
+          swipeThumb.style.transition = 'transform 0.3s ease';
+          swipeThumb.style.transform = 'translateX(0px)';
+        }
+        if (swipeFill) {
+          swipeFill.style.transition = 'width 0.3s ease';
+          swipeFill.style.width = '0px';
+        }
+      }
+
+      if (swipeThumb) {
+        swipeThumb.addEventListener('mousedown', onDragStart);
+        swipeThumb.addEventListener('touchstart', onDragStart, { passive: true });
+      }
+      window.addEventListener('mousemove', onDragMove);
+      window.addEventListener('touchmove', onDragMove, { passive: true });
+      window.addEventListener('mouseup', onDragEnd);
+      window.addEventListener('touchend', onDragEnd);
+
+      function executeOrderPayment() {
+        if (swipeThumb) {
+          swipeThumb.style.transform = 'translateX(' + maxSlide + 'px)';
+          swipeThumb.innerHTML = '✓';
+        }
+        if (swipeFill) swipeFill.style.width = '100%';
+
+        setTimeout(function () {
+          if (checkoutFormView) checkoutFormView.style.display = 'none';
+          if (orderSuccessBox) orderSuccessBox.style.display = 'block';
+        }, 500);
+      }
+
+      // Initial Render
+      updateCartUI();
+    })();
+  </script>
+</body>
+</html>
