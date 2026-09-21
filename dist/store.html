@@ -839,6 +839,108 @@
       padding: 2px 8px;
     }
 
+    .one-of-one-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--gold-bright);
+    }
+
+    /* -------------------------------------------------------------
+       ARCHIVE STORY & PROVENANCE PHILOSOPHY
+    ------------------------------------------------------------- */
+    .archive-story-section {
+      padding: 6rem 5vw;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .archive-story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      position: relative;
+      transition: all 0.35s var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--glass-border-hover);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .story-card-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1.25rem;
+      display: inline-block;
+    }
+
+    .story-card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 0.75rem;
+    }
+
+    .story-card-text {
+      font-size: 0.9rem;
+      color: var(--paper-muted);
+      line-height: 1.65;
+    }
+
+    .artist-quote-banner {
+      margin-top: 3.5rem;
+      background: linear-gradient(135deg, rgba(30, 12, 34, 0.85) 0%, rgba(18, 6, 20, 0.95) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-xl);
+      padding: 3rem 5vw;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 158, 11, 0.1);
+    }
+
+    .artist-quote-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--paper);
+      max-width: 900px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .artist-quote-author {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+    }
+
     .step-btn {
       font-size: 0.85rem;
       color: var(--paper-muted);
@@ -1253,40 +1355,40 @@
 
     <div class="parallax-layer parallax-typography" id="parallaxType">
       <h1 class="giant-title">UNTAYMAHBLE</h1>
-      <p class="hero-subtitle">The Debut Streetwear Capsule · London</p>
+      <p class="hero-subtitle">The Wardrobe Archive · Worn Once · London</p>
     </div>
 
     <div class="hero-content" id="heroForeground">
-      <span class="hero-pill-tag">✦ Designed in London by Taymah Hendi</span>
+      <span class="hero-pill-tag">✦ 1-of-1 Pieces Worn Once by Taymah Hendi</span>
       <p class="hero-lead">
-        Born from late-night studio sessions and the speed of Shoreditch. Engineered in 450GSM organic heavyweights, vintage washes, and bespoke racing cuts.
+        Authentic 1-of-1 garments straight from Taymah's personal styling collection — worn once on-camera for the "Zero To 40" video shoot, studio recording sessions, and Shoreditch launch nights. Every piece is professionally dry-cleaned, hand-numbered, and comes with a signed Certificate of Authenticity.
       </p>
       <div class="hero-cta-group">
         <a href="#collection" class="btn-primary-store">
-          <span>Shop The Drop</span>
+          <span>Shop The Archive</span>
           <span>↓</span>
         </a>
         <a href="#lookbook" class="btn-secondary-store">
-          <span>View Lookbook</span>
+          <span>View Provenance</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- =============================================================
-       EDITORIAL LOOKBOOK (Parallax & Depth)
+       EDITORIAL LOOKBOOK (Parallax & Provenance)
   ============================================================= -->
   <section class="editorial-section" id="lookbook" aria-label="Lookbook">
     <div class="section-header">
       <p class="section-eyebrow">✦ Autumn / Winter 2026</p>
-      <h2 class="section-heading">Zero To 40 Aesthetic</h2>
+      <h2 class="section-heading">Shoot &amp; Studio Provenance</h2>
     </div>
 
     <div class="lookbook-grid">
       <div class="lookbook-card">
         <img src="assets/untaymahble-hoodie.jpg" alt="UNTAYMAHBLE 450GSM Heavyweight Hoodie" loading="lazy">
         <div class="lookbook-overlay">
-          <span class="lookbook-tag">Signature Piece</span>
+          <span class="lookbook-tag">Worn Once · Studio Playback</span>
           <h3 class="lookbook-title">450GSM Heavyweight Fleece</h3>
         </div>
       </div>
@@ -1294,7 +1396,7 @@
       <div class="lookbook-card">
         <img src="assets/untaymahble-tee.jpg" alt="Zero To 40 Soho Night Drive Boxy Tee" loading="lazy">
         <div class="lookbook-overlay">
-          <span class="lookbook-tag">Vintage Finish</span>
+          <span class="lookbook-tag">Worn Once · Music Video Shoot</span>
           <h3 class="lookbook-title">Soho Night Drive Tee</h3>
         </div>
       </div>
@@ -1302,10 +1404,56 @@
       <div class="lookbook-card">
         <img src="assets/untaymahble-bomber.jpg" alt="Midnight Racer Varsity Bomber" loading="lazy">
         <div class="lookbook-overlay">
-          <span class="lookbook-tag">Limited Edition</span>
+          <span class="lookbook-tag">Worn Once · Cover Shoot</span>
           <h3 class="lookbook-title">Midnight Racer Bomber</h3>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       ARCHIVE STORY & PROVENANCE PHILOSOPHY
+  ============================================================= -->
+  <section class="archive-story-section" id="story" aria-label="Archive Story">
+    <div class="section-header">
+      <p class="section-eyebrow">✦ The Concept</p>
+      <h2 class="section-heading">Pre-Loved. Worn Once. 1-of-1.</h2>
+      <p style="max-width: 780px; margin: 1rem auto 0; color: var(--paper-muted); font-size: 1rem; line-height: 1.6;">
+        UNTAYMAHBLE is not mass-produced merchandise. Every garment in this collection is a 1-of-1 pre-loved original worn exactly once by Taymah Hendi during the creation, video shoots, and studio sessions of <em>Zero To 40</em>.
+      </p>
+    </div>
+
+    <div class="archive-story-grid">
+      <div class="story-card">
+        <span class="story-card-icon">🎬</span>
+        <h3 class="story-card-title">Worn Once On Set &amp; Studio</h3>
+        <p class="story-card-text">
+          Each piece was hand-picked for Taymah's official wardrobe — worn during the Shoreditch night-drive visualizer, cover artwork photography, or late-night mixing playback sessions. No replicas or re-prints exist.
+        </p>
+      </div>
+
+      <div class="story-card">
+        <span class="story-card-icon">🌿</span>
+        <h3 class="story-card-title">Eco Cleaned &amp; Sealed</h3>
+        <p class="story-card-text">
+          Immediately following their single on-camera or studio wear, each garment was professionally eco-dry-cleaned, hand-steamed, and vacuum-sealed in bespoke archival garment bags to preserve pristine 9.8 to 10/10 condition.
+        </p>
+      </div>
+
+      <div class="story-card">
+        <span class="story-card-icon">📜</span>
+        <h3 class="story-card-title">Signed Certificate &amp; Provenance</h3>
+        <p class="story-card-text">
+          Every piece arrives with an official, embossed Certificate of Authenticity personally signed and numbered by Taymah Hendi, detailing the exact shoot location, date worn, and single-piece catalog number.
+        </p>
+      </div>
+    </div>
+
+    <div class="artist-quote-banner">
+      <p class="artist-quote-text">
+        &ldquo;Every piece I wore while creating Zero To 40 carries the energy of the music and the late London nights. I wanted to put the real archive directly into the hands of listeners.&rdquo;
+      </p>
+      <p class="artist-quote-author">— Taymah Hendi</p>
     </div>
   </section>
 
@@ -1326,34 +1474,57 @@
       <button class="filter-pill" data-filter="accessories">Accessories</button>
     </div>
 
+    <!-- 1-of-1 Authenticity Banner -->
+    <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.28); border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <span style="font-size: 2rem;">✨</span>
+        <div>
+          <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--gold-bright); margin-bottom: 4px;">100% Authentic Worn-Once Archive</h4>
+          <p style="font-size: 0.82rem; color: var(--paper-muted); line-height: 1.5;">Every garment has been worn once by Taymah Hendi for shoots, rehearsals, or studio sessions. Professionally dry-cleaned, sanitized, and accompanied by a signed Certificate of Authenticity.</p>
+        </div>
+      </div>
+      <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-bright); background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 999px; padding: 6px 14px; white-space: nowrap;">1-of-1 Originals Only</span>
+    </div>
+
     <!-- Product Cards -->
     <div class="products-grid" id="productsGrid">
 
       <!-- Item 1: Hoodie -->
       <article class="product-card" data-category="tops">
         <div class="product-media">
-          <span class="product-badge-pill">Best Seller</span>
+          <span class="product-badge-pill">✦ Worn Once · 1-of-1</span>
           <img src="assets/untaymahble-hoodie.jpg" alt="UNTAYMAHBLE 450GSM Heavyweight Hoodie">
         </div>
         <div class="product-info">
-          <span class="product-category">Heavyweight Fleece</span>
+          <span class="product-category">Studio Archive · Worn Once</span>
           <h3 class="product-title">UNTAYMAHBLE 450GSM Hoodie</h3>
-          <p class="product-desc">Ultra-dense brushed organic cotton with minimal metallic champagne-gold chest embroidery.</p>
-          <div class="size-selector" data-item-id="untaymahble-hoodie">
-            <button class="size-btn is-selected" type="button" data-size="S">S</button>
-            <button class="size-btn" type="button" data-size="M">M</button>
-            <button class="size-btn" type="button" data-size="L">L</button>
-            <button class="size-btn" type="button" data-size="XL">XL</button>
+          <p class="product-desc">Worn once by Taymah during late-night studio playback of Zero To 40. Heavyweight 450GSM organic fleece. Dry-cleaned.</p>
+          
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-sm); padding:8px 12px; margin-bottom:1rem; font-size:0.78rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <span style="color:var(--paper-muted);">Exact Size:</span>
+              <strong style="color:var(--paper);">Medium (Boxy Streetwear Fit)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--paper-muted);">Condition:</span>
+              <span style="color:#10b981; font-weight:600;">9.9/10 (Pristine / Like New)</span>
+            </div>
           </div>
+
+          <div style="font-size:0.72rem; color:#f59e0b; font-weight:700; margin-bottom:0.75rem; letter-spacing:0.05em; text-transform:uppercase;">
+            🔴 1 of 1 · Only 1 Piece Exists Worldwide
+          </div>
+
           <div class="product-price-row">
             <span class="product-price">£85.00</span>
           </div>
           <button class="add-to-bag-btn" type="button" 
                   data-id="untaymahble-hoodie" 
-                  data-name="UNTAYMAHBLE 450GSM Hoodie" 
+                  data-name="UNTAYMAHBLE 450GSM Hoodie (1-of-1 Archive)" 
+                  data-size="M"
                   data-price="85.00" 
                   data-img="assets/untaymahble-hoodie.jpg">
-            Add to Bag
+            Claim 1-of-1 Piece
           </button>
         </div>
       </article>
@@ -1361,28 +1532,39 @@
       <!-- Item 2: Tee -->
       <article class="product-card" data-category="tops">
         <div class="product-media">
-          <span class="product-badge-pill">Vintage Acid-Wash</span>
+          <span class="product-badge-pill">✦ Worn Once · 1-of-1</span>
           <img src="assets/untaymahble-tee.jpg" alt="Zero To 40 Soho Night Drive Boxy Tee">
         </div>
         <div class="product-info">
-          <span class="product-category">Boxy Oversized Tee</span>
+          <span class="product-category">Music Video Wardrobe</span>
           <h3 class="product-title">Zero To 40 Night Drive Tee</h3>
-          <p class="product-desc">Hand-washed mineral charcoal tee featuring cinematic Soho neon racer graphic and gold typography.</p>
-          <div class="size-selector" data-item-id="zero-40-tee">
-            <button class="size-btn is-selected" type="button" data-size="S">S</button>
-            <button class="size-btn" type="button" data-size="M">M</button>
-            <button class="size-btn" type="button" data-size="L">L</button>
-            <button class="size-btn" type="button" data-size="XL">XL</button>
+          <p class="product-desc">Worn on-set by Taymah in the Shoreditch night-drive visualizer shoot. Vintage mineral acid-wash cotton. Hand-washed &amp; pristine.</p>
+          
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-sm); padding:8px 12px; margin-bottom:1rem; font-size:0.78rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <span style="color:var(--paper-muted);">Exact Size:</span>
+              <strong style="color:var(--paper);">Large (Oversized Drape)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--paper-muted);">Condition:</span>
+              <span style="color:#10b981; font-weight:600;">9.8/10 (Flawless Vintage Finish)</span>
+            </div>
           </div>
+
+          <div style="font-size:0.72rem; color:#f59e0b; font-weight:700; margin-bottom:0.75rem; letter-spacing:0.05em; text-transform:uppercase;">
+            🔴 1 of 1 · Only 1 Piece Exists Worldwide
+          </div>
+
           <div class="product-price-row">
             <span class="product-price">£42.00</span>
           </div>
           <button class="add-to-bag-btn" type="button" 
                   data-id="zero-40-tee" 
-                  data-name="Zero To 40 Night Drive Tee" 
+                  data-name="Zero To 40 Night Drive Tee (1-of-1 Archive)" 
+                  data-size="L"
                   data-price="42.00" 
                   data-img="assets/untaymahble-tee.jpg">
-            Add to Bag
+            Claim 1-of-1 Piece
           </button>
         </div>
       </article>
@@ -1390,28 +1572,39 @@
       <!-- Item 3: Bomber -->
       <article class="product-card" data-category="outerwear">
         <div class="product-media">
-          <span class="product-badge-pill">Limited 100 Pieces</span>
+          <span class="product-badge-pill">✦ Worn Once · 1-of-1</span>
           <img src="assets/untaymahble-bomber.jpg" alt="Midnight Racer Varsity Bomber Jacket">
         </div>
         <div class="product-info">
-          <span class="product-category">Luxury Outerwear</span>
+          <span class="product-category">Cover Artwork Archive</span>
           <h3 class="product-title">Midnight Racer Bomber</h3>
-          <p class="product-desc">Satin nylon shell with diamond quilted insulation, solid brass hardware, and embroidered UNTAYMAHBLE racer patch.</p>
-          <div class="size-selector" data-item-id="midnight-bomber">
-            <button class="size-btn" type="button" data-size="S">S</button>
-            <button class="size-btn is-selected" type="button" data-size="M">M</button>
-            <button class="size-btn" type="button" data-size="L">L</button>
-            <button class="size-btn" type="button" data-size="XL">XL</button>
+          <p class="product-desc">Worn by Taymah for the official Zero To 40 single artwork photoshoot. Quilted satin lining, brass hardware, and embroidered crest.</p>
+          
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-sm); padding:8px 12px; margin-bottom:1rem; font-size:0.78rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <span style="color:var(--paper-muted);">Exact Size:</span>
+              <strong style="color:var(--paper);">Medium (Tailored Bomber)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--paper-muted);">Condition:</span>
+              <span style="color:#10b981; font-weight:600;">10/10 (Mint / Like New)</span>
+            </div>
           </div>
+
+          <div style="font-size:0.72rem; color:#f59e0b; font-weight:700; margin-bottom:0.75rem; letter-spacing:0.05em; text-transform:uppercase;">
+            🔴 1 of 1 · Only 1 Piece Exists Worldwide
+          </div>
+
           <div class="product-price-row">
             <span class="product-price">£140.00</span>
           </div>
           <button class="add-to-bag-btn" type="button" 
                   data-id="midnight-bomber" 
-                  data-name="Midnight Racer Bomber" 
+                  data-name="Midnight Racer Bomber (1-of-1 Archive)" 
+                  data-size="M"
                   data-price="140.00" 
                   data-img="assets/untaymahble-bomber.jpg">
-            Add to Bag
+            Claim 1-of-1 Piece
           </button>
         </div>
       </article>
@@ -1419,25 +1612,39 @@
       <!-- Item 4: Cap -->
       <article class="product-card" data-category="accessories">
         <div class="product-media">
-          <span class="product-badge-pill">Everyday Essential</span>
+          <span class="product-badge-pill">✦ Worn Once · 1-of-1</span>
           <img src="assets/untaymahble-cap.jpg" alt="Shoreditch Nights Distressed Dad Cap">
         </div>
         <div class="product-info">
-          <span class="product-category">Headwear</span>
+          <span class="product-category">Live Rehearsal Archive</span>
           <h3 class="product-title">Shoreditch Nights Cap</h3>
-          <p class="product-desc">Vintage stone-washed twill with micro-distressing, tonal embroidery, and antique brass closure.</p>
-          <div class="size-selector" data-item-id="shoreditch-cap">
-            <button class="size-btn is-selected" type="button" data-size="OS">One Size</button>
+          <p class="product-desc">Worn once by Taymah during live acoustic rehearsals. Distressed twill with tonal embroidery and antique brass clasp.</p>
+          
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-sm); padding:8px 12px; margin-bottom:1rem; font-size:0.78rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <span style="color:var(--paper-muted);">Exact Size:</span>
+              <strong style="color:var(--paper);">One Size (Adjustable Brass Strap)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--paper-muted);">Condition:</span>
+              <span style="color:#10b981; font-weight:600;">9.9/10 (Pristine)</span>
+            </div>
           </div>
+
+          <div style="font-size:0.72rem; color:#f59e0b; font-weight:700; margin-bottom:0.75rem; letter-spacing:0.05em; text-transform:uppercase;">
+            🔴 1 of 1 · Only 1 Piece Exists Worldwide
+          </div>
+
           <div class="product-price-row">
             <span class="product-price">£32.00</span>
           </div>
           <button class="add-to-bag-btn" type="button" 
                   data-id="shoreditch-cap" 
-                  data-name="Shoreditch Nights Cap" 
+                  data-name="Shoreditch Nights Cap (1-of-1 Archive)" 
+                  data-size="One Size"
                   data-price="32.00" 
                   data-img="assets/untaymahble-cap.jpg">
-            Add to Bag
+            Claim 1-of-1 Piece
           </button>
         </div>
       </article>
@@ -1445,25 +1652,39 @@
       <!-- Item 5: Vinyl Bundle -->
       <article class="product-card" data-category="accessories">
         <div class="product-media">
-          <span class="product-badge-pill">Collector's Edition</span>
+          <span class="product-badge-pill">✦ Worn Once · 1-of-1</span>
           <img src="assets/artwork.jpg" alt="Zero To 40 Vinyl & Silk Scarf Bundle">
         </div>
         <div class="product-info">
-          <span class="product-category">Music &amp; Silk Bundle</span>
+          <span class="product-category">Visual Teaser Archive</span>
           <h3 class="product-title">Zero To 40 Vinyl + Scarf</h3>
-          <p class="product-desc">Heavyweight 180g transparent gold 7" vinyl single packaged inside a 100% printed mulberry silk bandeau scarf.</p>
-          <div class="size-selector" data-item-id="vinyl-bundle">
-            <button class="size-btn is-selected" type="button" data-size="OS">Box Set</button>
+          <p class="product-desc">100% mulberry silk scarf worn once as styling hair wrap in the video teaser, bundled with mint unplayed transparent gold 7" vinyl.</p>
+          
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-sm); padding:8px 12px; margin-bottom:1rem; font-size:0.78rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+              <span style="color:var(--paper-muted);">Exact Spec:</span>
+              <strong style="color:var(--paper);">Silk Wrap + 7" Gold Vinyl Box</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="color:var(--paper-muted);">Condition:</span>
+              <span style="color:#10b981; font-weight:600;">Mint (Scarf Cleaned / Vinyl Unplayed)</span>
+            </div>
           </div>
+
+          <div style="font-size:0.72rem; color:#f59e0b; font-weight:700; margin-bottom:0.75rem; letter-spacing:0.05em; text-transform:uppercase;">
+            🔴 1 of 1 · Only 1 Piece Exists Worldwide
+          </div>
+
           <div class="product-price-row">
             <span class="product-price">£55.00</span>
           </div>
           <button class="add-to-bag-btn" type="button" 
                   data-id="vinyl-bundle" 
-                  data-name="Zero To 40 Vinyl + Silk Scarf" 
+                  data-name="Zero To 40 Vinyl + Silk Scarf (1-of-1 Archive)" 
+                  data-size="Box Set"
                   data-price="55.00" 
                   data-img="assets/artwork.jpg">
-            Add to Bag
+            Claim 1-of-1 Piece
           </button>
         </div>
       </article>
@@ -1603,6 +1824,10 @@ const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
               <label class="form-label">CVC</label>
               <input class="form-input" type="password" maxlength="4" placeholder="CVC" required id="custCvc">
             </div>
+          </div>
+
+          <div style="background:rgba(245, 158, 11, 0.08); border:1px solid rgba(245, 158, 11, 0.25); border-radius:var(--radius-sm); padding:10px 14px; margin-bottom:1.25rem; font-size:0.75rem; color:var(--paper-muted); line-height:1.45;">
+            🔒 <strong>Archive Exclusivity Notice:</strong> All garments in this order are authentic 1-of-1 pieces worn once by Taymah Hendi. Orders include a signed Certificate of Authenticity with shoot provenance. All sales are final.
           </div>
 
           <!-- Tactile "Swipe to Pay" Slider -->
@@ -1769,21 +1994,22 @@ const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
                 '<img class="cart-item-img" src="' + item.img + '" alt="' + item.name + '">' +
                 '<div class="cart-item-details">' +
                   '<h4>' + item.name + '</h4>' +
-                  '<p class="cart-item-meta">Size: ' + item.size + '</p>' +
-                  '<div class="cart-stepper">' +
-                    '<button class="step-btn" type="button" data-action="dec" data-index="' + idx + '">−</button>' +
-                    '<span class="step-val">' + item.qty + '</span>' +
-                    '<button class="step-btn" type="button" data-action="inc" data-index="' + idx + '">+</button>' +
+                  '<p class="cart-item-meta">Exact Size: ' + item.size + '</p>' +
+                  '<div style="margin-top:6px;">' +
+                    '<span class="one-of-one-pill">✦ 1-of-1 Archive Original</span>' +
                   '</div>' +
                 '</div>' +
                 '<div>' +
-                  '<div class="cart-item-price">£' + (item.price * item.qty).toFixed(2) + '</div>' +
-                  '<button class="remove-item-btn" type="button" data-action="remove" data-index="' + idx + '">Remove</button>' +
+                  '<div class="cart-item-price">£' + item.price.toFixed(2) + '</div>' +
+                  '<button class="remove-item-btn" type="button" data-action="remove" data-index="' + idx + '">Release Piece</button>' +
                 '</div>';
               list.appendChild(el);
             });
           }
         }
+
+        // Update product card buttons state
+        updateProductButtons();
 
         // Totals
         var subEl = document.getElementById('drawerSubtotal');
@@ -1798,6 +2024,24 @@ const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
         saveCart();
       }
 
+      function updateProductButtons() {
+        document.querySelectorAll('.add-to-bag-btn').forEach(function (btn) {
+          var id = btn.getAttribute('data-id');
+          var isInCart = cart.some(function (item) { return item.id === id; });
+          if (isInCart) {
+            btn.textContent = 'In Bag · 1 of 1 Reserved';
+            btn.style.background = 'rgba(245, 158, 11, 0.2)';
+            btn.style.color = '#fbbf24';
+            btn.style.borderColor = 'rgba(245, 158, 11, 0.5)';
+          } else {
+            btn.textContent = 'Claim 1-of-1 Piece';
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }
+        });
+      }
+
       // Add to Bag Handlers
       document.querySelectorAll('.add-to-bag-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -1805,20 +2049,22 @@ const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
           var name = btn.getAttribute('data-name');
           var price = parseFloat(btn.getAttribute('data-price'));
           var img = btn.getAttribute('data-img');
-          var size = selectedSizes[id] || 'M';
+          var size = btn.getAttribute('data-size') || selectedSizes[id] || 'M';
 
-          var existing = cart.find(function (item) { return item.id === id && item.size === size; });
+          var existing = cart.find(function (item) { return item.id === id; });
           if (existing) {
-            existing.qty += 1;
-          } else {
-            cart.push({ id: id, name: name, price: price, img: img, size: size, qty: 1 });
+            btn.textContent = 'Already in Bag (1 of 1)';
+            setTimeout(function () { updateProductButtons(); }, 1200);
+            openDrawer();
+            return;
           }
 
+          cart.push({ id: id, name: name, price: price, img: img, size: size, qty: 1 });
           updateCartUI();
           openDrawer();
 
-          btn.textContent = 'Added ✓';
-          setTimeout(function () { btn.textContent = 'Add to Bag'; }, 1200);
+          btn.textContent = 'Claimed ✓';
+          setTimeout(function () { updateProductButtons(); }, 1200);
         });
       });
 
@@ -1831,15 +2077,10 @@ const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
           if (!action) return;
           var idx = parseInt(target.getAttribute('data-index'), 10);
 
-          if (action === 'inc') {
-            cart[idx].qty += 1;
-          } else if (action === 'dec') {
-            cart[idx].qty -= 1;
-            if (cart[idx].qty <= 0) cart.splice(idx, 1);
-          } else if (action === 'remove') {
+          if (action === 'remove') {
             cart.splice(idx, 1);
+            updateCartUI();
           }
-          updateCartUI();
         });
       }
 
@@ -1965,6 +2206,12 @@ const DIRECT_PAYMENT_LINK = "https://buy.stripe.com/your_product_link";
           swipeThumb.innerHTML = '✓';
         }
         if (swipeFill) swipeFill.style.width = '100%';
+
+        var itemsSummary = cart.map(function (item) { return item.name + ' (' + item.size + ')'; }).join(', ');
+        var successDetails = document.getElementById('successOrderDetails');
+        if (successDetails) {
+          successDetails.innerHTML = 'Thank you! Your 1-of-1 archive items (<strong>' + (itemsSummary || 'Selected pieces') + '</strong>) are now permanently reserved and being packaged with your signed Certificate of Authenticity in London. A tracking dispatch email will be sent shortly.';
+        }
 
         setTimeout(function () {
           if (checkoutFormView) checkoutFormView.style.display = 'none';
