@@ -2592,7 +2592,7 @@
       </div>
       <div class="banner-meta">
         <div>Taymah Hendi</div>
-        <div>Out now everywhere</div>
+        <div>Zero To 40</div>
       </div>
     </div>
   </div>
@@ -2602,7 +2602,6 @@
     <header>
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
-        <span class="status">Out everywhere</span>
         <a class="header-stream-pill all-songs-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="background: rgba(245, 158, 11, 0.22); border-color: rgba(253, 230, 138, 0.5); font-weight: 700;">🎵 All Songs</a>
         <a class="header-stream-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">🟢 Spotify</a>
         <a class="header-stream-pill" href="https://music.apple.com/artist/taymah-hendi/1493340597" target="_blank" rel="noopener noreferrer">🍎 Apple</a>
@@ -2614,12 +2613,6 @@
 
     <main>
       <section class="hero" aria-labelledby="track-title">
-        <!-- Live Release Beacon -->
-        <div class="hero-live-pill">
-          <span class="live-dot-pulse"></span>
-          <span>OUT EVERYWHERE NOW</span>
-        </div>
-
         <!-- Dominant Track Heading -->
         <h1 class="hero-release-title" id="track-title">Zero To <span>40</span></h1>
 
@@ -2632,12 +2625,12 @@
           <span class="genre-pill">Dancehall · R&B · Afro-Fusion</span>
         </p>
 
-        <!-- Primary Out Now CTA Button -->
+        <!-- Primary CTA Button -->
         <div class="release-row" style="margin-top: clamp(20px, 3.5vh, 32px); margin-bottom: 6px;">
           <div class="cta-group">
             <a class="cta cta-out-now" href="https://distrokid.com/hyperfollow/taymahhendi/zero-to-40/" target="_blank" rel="noopener noreferrer" id="mainOutNowCta">
               <span class="cta-pulse-dot">●</span>
-              <span>Out Now — Stream</span>
+              <span>Stream Zero To 40</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <a class="cta-secondary" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" id="allSongsHeroCta">
@@ -2646,6 +2639,7 @@
             </a>
           </div>
         </div>
+
 
         <p class="microcopy">“Believe it or not, this song is about a car.”</p>
 
@@ -2794,9 +2788,8 @@
         <div class="player-body">
           <div class="player-head">
             <h3 class="player-title">Zero To 40</h3>
-            <span class="player-tag">Out Now</span>
           </div>
-          <p class="player-sub">Taymah Hendi · Official single preview</p>
+          <p class="player-sub">Taymah Hendi · Official single</p>
 
           <div class="player-controls">
             <button class="play-btn" id="playBtn" type="button" aria-label="Play Zero To 40">
@@ -2828,12 +2821,14 @@
 
           <p class="player-note" id="playerNote"></p>
 
-          <audio id="audio" preload="none" crossorigin="anonymous">
+          <audio id="audio" preload="auto" autoplay playsinline crossorigin="anonymous">
+            <source src="assets/zero-to-40.mp3" type="audio/mpeg">
             <source src="assets/zero-to-40-preview.mp3" type="audio/mpeg">
           </audio>
         </div>
       </div>
     </section>
+
 
     <!-- Visual Lookbook / Polaroid Strip -->
     <section class="lookbook-section" aria-labelledby="lookbook-label">
@@ -3627,7 +3622,46 @@
       window.addEventListener('resize', layout);
       layout();
       durTime.textContent = fmt(duration());
+
+      // Auto-play Zero To 40 straight away on entering site
+      function autoPlayZeroTo40() {
+        setupAudioReactive();
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume().catch(function () {});
+        }
+        audio.muted = false;
+        var p = audio.play();
+        if (p !== undefined) {
+          p.then(function () {
+            player.classList.add('is-playing');
+          }).catch(function () {
+            // If browser autoplay policy blocks unmuted audio before gesture,
+            // start immediately on first user touch, click, scroll or keydown
+            var startOnUserGesture = function () {
+              ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown', 'scroll'].forEach(function (evt) {
+                window.removeEventListener(evt, startOnUserGesture, true);
+                document.removeEventListener(evt, startOnUserGesture, true);
+              });
+              setupAudioReactive();
+              if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume().catch(function () {});
+              }
+              audio.play().then(function () {
+                player.classList.add('is-playing');
+              }).catch(function () {});
+            };
+
+            ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown', 'scroll'].forEach(function (evt) {
+              window.addEventListener(evt, startOnUserGesture, { capture: true, once: true });
+              document.addEventListener(evt, startOnUserGesture, { capture: true, once: true });
+            });
+          });
+        }
+      }
+
+      autoPlayZeroTo40();
     }
+
 
 
     /* ===============================================================
