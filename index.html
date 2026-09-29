@@ -1547,6 +1547,112 @@
       font-weight: 600;
     }
 
+    /* ---------------------------------------------------------------
+       Live Shows Grid & Action Buttons
+    --------------------------------------------------------------- */
+    .shows-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    .show-card-featured {
+      border: 1px solid rgba(251, 191, 36, 0.45);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(15, 19, 30, 0.85) 60%);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.55), 0 0 35px rgba(245, 158, 11, 0.18);
+    }
+
+    .show-card-featured::before {
+      background: linear-gradient(to bottom, #fbbf24, #f59e0b, #d97706);
+      width: 5px;
+    }
+
+    .show-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .show-ticket-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #fde68a, #f59e0b);
+      color: #0d060b;
+      font-weight: 800;
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.25s ease;
+    }
+
+    .show-ticket-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 28px rgba(245, 158, 11, 0.5);
+      background: linear-gradient(135deg, #ffffff, #fbbf24);
+      color: #000;
+    }
+
+    .show-ticket-btn-green {
+      background: linear-gradient(135deg, #00ff88, #059669);
+      color: #031d10;
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
+    }
+
+    .show-ticket-btn-green:hover {
+      background: linear-gradient(135deg, #a7f3d0, #00ff88);
+      color: #021a0e;
+      box-shadow: 0 10px 28px rgba(0, 255, 136, 0.5);
+    }
+
+    .show-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 20px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(253, 230, 138, 0.25);
+      color: var(--champagne);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .show-map-btn:hover {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: rgba(253, 230, 138, 0.5);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .show-time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 11px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(253, 230, 138, 0.2);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blush);
+      letter-spacing: 0.04em;
+    }
+
     /* Discography Showcase & All Songs */
     .discography-header-row {
       display: flex;
@@ -2476,6 +2582,65 @@
         "thumbnailUrl": "https://www.taymahhendi.com/assets/artwork.jpg",
         "uploadDate": "2026-09-04",
         "contentUrl": "https://www.taymahhendi.com/assets/5%20shoreditch%20web.mp4"
+      },
+      {
+        "@type": "MusicEvent",
+        "name": "Taymah Hendi — Code Network Live",
+        "startDate": "2026-10-01T20:00:00+01:00",
+        "endDate": "2026-10-02T01:30:00+01:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Energy Club",
+          "address": {
+            "@type": "PostalAddress",
+            "postalCode": "CR0 1YB",
+            "addressLocality": "London",
+            "addressCountry": "GB"
+          }
+        },
+        "performer": {
+          "@type": "Person",
+          "name": "Taymah Hendi",
+          "url": "https://www.taymahhendi.com/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.eventbrite.com/e/code-netwerk-ent-tickets-2000891699937?aff=ebdssbdestsearch",
+          "availability": "https://schema.org/InStock"
+        },
+        "description": "Taymah Hendi live club performance at Code Network, Energy Club London."
+      },
+      {
+        "@type": "MusicEvent",
+        "name": "Taymah Hendi — Sofar Sounds London",
+        "startDate": "2026-10-02T19:00:00+01:00",
+        "endDate": "2026-10-02T22:00:00+01:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Old House",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "23 Clerkenwell Green",
+            "postalCode": "EC1R 0NA",
+            "addressLocality": "London",
+            "addressCountry": "GB"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.sofarsounds.com/events/66841?utm_medium=email&utm_source=transactional&utm_campaign=ArtistReminder",
+          "availability": "https://schema.org/InStock"
+        },
+        "performer": {
+          "@type": "Person",
+          "name": "Taymah Hendi",
+          "url": "https://www.taymahhendi.com/"
+        },
+        "description": "Taymah Hendi live intimate acoustic and Afro-Fusion session at Sofar Sounds London (Old House, Clerkenwell)."
       }
     ]
   }
@@ -2561,6 +2726,52 @@
         }
       });
     });
+
+    // 5. Live Show Ticket Clicks & High-Intent Purchase Tracking (Eventbrite & Sofar Sounds)
+    var ticketTracking = [
+      {
+        sel: 'a[href*="eventbrite.com"]',
+        name: 'Code Network @ Energy Club',
+        platform: 'Eventbrite'
+      },
+      {
+        sel: 'a[href*="sofarsounds.com"]',
+        name: 'Sofar Sounds London @ Old House',
+        platform: 'Sofar Sounds'
+      }
+    ];
+
+    ticketTracking.forEach(function(item) {
+      document.querySelectorAll(item.sel).forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.fbq) {
+            // Standard InitiateCheckout event for Meta Pixel
+            fbq('track', 'InitiateCheckout', {
+              content_name: item.name,
+              content_category: 'Live Tickets',
+              currency: 'GBP'
+            });
+            // Custom TicketClick event
+            fbq('trackCustom', 'TicketClick', {
+              show: item.name,
+              platform: item.platform,
+              destination: link.href
+            });
+          }
+          // Log click locally in browser storage
+          try {
+            var stats = JSON.parse(localStorage.getItem('th_ticket_clicks') || '[]');
+            stats.push({
+              show: item.name,
+              platform: item.platform,
+              url: link.href,
+              timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('th_ticket_clicks', JSON.stringify(stats));
+          } catch(e) {}
+        });
+      });
+    });
   });
   </script>
   <noscript><img height="1" width="1" style="display:none"
@@ -2602,6 +2813,7 @@
     <header>
       <a class="artist-mark" href="/">Taymah Hendi</a>
       <div class="header-actions">
+        <a class="header-stream-pill all-songs-pill" href="#live-shows" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.45), rgba(217, 119, 6, 0.35)); border-color: rgba(253, 230, 138, 0.7); color: #fff; font-weight: 800; box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);">🎟️ Live Shows (Oct 1 &amp; 2)</a>
         <a class="header-stream-pill all-songs-pill" href="store.html" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(245, 158, 11, 0.15)); border-color: rgba(253, 230, 138, 0.6); color: #fde68a; font-weight: 800;">🛍️ UNTAYMAHBLE Store</a>
         <a class="header-stream-pill all-songs-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer" style="background: rgba(245, 158, 11, 0.22); border-color: rgba(253, 230, 138, 0.5); font-weight: 700;">🎵 All Songs</a>
         <a class="header-stream-pill" href="https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE" target="_blank" rel="noopener noreferrer">🟢 Spotify</a>
@@ -2874,6 +3086,115 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         LIVE SHOWS & TOUR DATES
+    ============================================================ -->
+    <section class="live live-shows-section" id="live-shows" aria-labelledby="live-shows-label">
+      <p class="section-label" id="live-shows-label">✦ Live Performances &amp; Shows</p>
+
+      <div class="shows-wrapper">
+        <!-- Show 1: Code Network (Thursday, 1st October 2026) -->
+        <article class="show show-card-featured" id="show-code-network" itemscope itemtype="https://schema.org/MusicEvent">
+          <meta itemprop="startDate" content="2026-10-01T20:00:00+01:00">
+          <meta itemprop="endDate" content="2026-10-02T01:30:00+01:00">
+          <div class="show-main-row">
+            <div class="show-date">
+              <strong>01</strong>
+              <small>Oct 2026 · Thu</small>
+            </div>
+            <div class="show-body">
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+                <span class="track-badge" style="background:rgba(245,158,11,0.25); color:#fde68a;">Club Performance</span>
+                <span class="show-time-pill">⏰ Doors 8:00 PM – 1:30 AM</span>
+                <span class="radar-badge" style="margin-top:0; padding:4px 10px; font-size:9px;">
+                  <span class="radar-dot"></span>
+                  <span>Next Up · This Thursday</span>
+                </span>
+              </div>
+              <h3 class="show-venue" itemprop="name">Code Network</h3>
+              <p class="show-line" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                <span itemprop="name">Energy Club</span> · <span itemprop="address">CR0 1YB, London</span>
+              </p>
+              <p class="show-note">
+                Taymah Hendi live club performance. Heavy Dancehall basslines, Afro-Fusion rhythms, and late-night energy featuring <em>Zero To 40</em> live on stage.
+              </p>
+              <div class="show-actions">
+                <a class="show-ticket-btn" href="https://www.eventbrite.com/e/code-netwerk-ent-tickets-2000891699937?aff=taymahhendiwebsite&utm_source=taymahhendi.com&utm_medium=website_live_shows&utm_campaign=code_network" target="_blank" rel="noopener noreferrer" itemprop="url" id="codeNetworkTicketBtn">
+                  <span>🎟️ Get Tickets (Eventbrite) ↗</span>
+                </a>
+                <button class="show-map-btn" type="button" onclick="document.getElementById('vipModal').classList.add('active')">
+                  <span>✦ VIP Guestlist</span>
+                </button>
+                <a class="show-map-btn" href="https://www.google.com/maps/search/?api=1&query=Energy+Club+CR0+1YB" target="_blank" rel="noopener noreferrer">
+                  <span>📍 Energy Club (CR0 1YB) ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Countdown to Code Network Doors Open -->
+          <div class="countdown-box" id="show1CountdownBox">
+            <div>
+              <p class="countdown-title">✦ Time Until Doors Open ✦</p>
+              <p style="margin:0; font-size:11px; color:var(--champagne); opacity:0.85;">Thursday 1 Oct 2026 · 8:00 PM BST · Energy Club London</p>
+            </div>
+            <div class="countdown-grid" id="codeNetworkCountdown" aria-label="Countdown to Code Network show">
+              <div class="countdown-item">
+                <span class="countdown-val" id="cntDays">00</span>
+                <span class="countdown-lbl">Days</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-val" id="cntHours">00</span>
+                <span class="countdown-lbl">Hours</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-val" id="cntMins">00</span>
+                <span class="countdown-lbl">Mins</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-val" id="cntSecs">00</span>
+                <span class="countdown-lbl">Secs</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Show 2: Sofar Sounds (Friday, 2nd October 2026) -->
+        <article class="show" id="show-sofar-sounds" itemscope itemtype="https://schema.org/MusicEvent">
+          <meta itemprop="startDate" content="2026-10-02T19:00:00+01:00">
+          <meta itemprop="endDate" content="2026-10-02T22:00:00+01:00">
+          <div class="show-main-row">
+            <div class="show-date">
+              <strong>02</strong>
+              <small>Oct 2026 · Fri</small>
+            </div>
+            <div class="show-body">
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+                <span class="track-badge" style="background:rgba(0,255,136,0.18); color:#00ff88; border-color:rgba(0,255,136,0.35);">Intimate Live Session</span>
+                <span class="show-time-pill">⏰ 19:00 – 22:00 (7:00 PM – 10:00 PM)</span>
+                <span class="show-time-pill" style="border-color:rgba(0,255,136,0.3); color:#00ff88;">🎟️ Tickets On Sale</span>
+              </div>
+              <h3 class="show-venue" itemprop="name">Sofar Sounds London</h3>
+              <p class="show-line" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                <span itemprop="name">Old House</span> · <span itemprop="address">23 Clerkenwell Green, London EC1R 0NA</span>
+              </p>
+              <p class="show-note">
+                An intimate, secret-vibe live session in the heart of Clerkenwell. Acoustic arrangements, raw vocal storytelling, and unreleased lore up close.
+              </p>
+              <div class="show-actions">
+                <a class="show-ticket-btn show-ticket-btn-green" href="https://www.sofarsounds.com/events/66841?utm_source=taymahhendi.com&utm_medium=website_live_shows&utm_campaign=artist_referral" target="_blank" rel="noopener noreferrer" itemprop="url" id="sofarSoundsTicketBtn">
+                  <span>🎟️ Get Tickets (Sofar Sounds) ↗</span>
+                </a>
+                <a class="show-map-btn" href="https://www.google.com/maps/search/?api=1&query=Old+House+23+Clerkenwell+Green+London+EC1R+0NA" target="_blank" rel="noopener noreferrer">
+                  <span>📍 Old House (Clerkenwell Green) ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- All Songs & Discography Section -->
     <section class="live discography-showcase" id="all-songs" aria-labelledby="discography-label">
       <p class="section-label" id="discography-label">✦ All Songs &amp; Discography</p>
@@ -2961,14 +3282,21 @@
           <div class="live-updates-text">
             <div class="radar-badge" style="margin-top:0;">
               <span class="radar-dot"></span>
-              <span>Next Live Shows &amp; Secret London Sessions · In Planning</span>
+              <span>Next Live Shows · Oct 1 (Code Network) &amp; Oct 2 (Sofar Sounds) Live!</span>
             </div>
             <p class="live-updates-sub">Want first access to secret intimate shows, venue pin drops, and VIP tickets?</p>
           </div>
-          <button class="btn-pill-sm vip-trigger-btn" id="discographyVipBtn" type="button">
-            <span>🎟️ Join VIP Guestlist</span>
-          </button>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn-pill-sm" href="#live-shows" style="text-decoration:none;">
+              <span>🎟️ View Show Dates</span>
+            </a>
+            <button class="btn-pill-sm vip-trigger-btn" id="discographyVipBtn" type="button">
+              <span>✦ VIP Guestlist</span>
+            </button>
+          </div>
         </div>
+      </div>
+    </section>
     <!-- UNTAYMAHBLE Store Showcase Banner -->
     <section class="live untaymahble-store-section" id="store-banner" aria-labelledby="store-section-label" style="margin-top: clamp(40px, 6vw, 80px); margin-bottom: clamp(30px, 4vw, 60px);">
       <div class="show store-feature-card" style="background: linear-gradient(135deg, rgba(28, 11, 30, 0.9), rgba(16, 6, 17, 0.85)); border: 1px solid rgba(253, 230, 138, 0.25); border-radius: var(--radius-xl); padding: clamp(32px, 5vw, 54px); text-align: center; max-width: 680px; margin: 0 auto; box-shadow: 0 30px 80px rgba(0,0,0,0.6);">
@@ -3992,7 +4320,7 @@
           return "You can stream my entire music catalog on <a href='https://open.spotify.com/artist/6GtIwIx0BF7CU68fuWHSqE' target='_blank' rel='noopener' style='color:#1DB954; font-weight:bold; text-decoration:underline;'>Spotify</a>, <a href='https://music.apple.com/artist/taymah-hendi/1493340597' target='_blank' rel='noopener' style='color:#FA243C; font-weight:bold; text-decoration:underline;'>Apple Music</a>, and <a href='https://www.youtube.com/@TAYMAHHENDI' target='_blank' rel='noopener' style='color:#FF0000; font-weight:bold; text-decoration:underline;'>YouTube</a>! Highlights include <strong>Zero To 40</strong>, <strong>Carnage</strong>, <strong>Warring Me</strong>, and <strong>Baby</strong>. You can also explore the <em>All Songs &amp; Discography</em> section on this page!";
         }
         if (q.includes('live') || q.includes('show') || q.includes('ticket') || q.includes('tour') || q.includes('gig')) {
-          return "New live show dates and secret intimate London sessions are currently in planning! Join our <strong>VIP Guestlist</strong> on this page to get secret venue pin drops and presale ticket alerts before anyone else.";
+          return "I have two upcoming London live shows this week! 🎤<br><br>✦ <strong>Thursday, 1 Oct 2026</strong>: <em>Code Network</em> @ Energy Club, Croydon (CR0 1YB) · Doors 8:00 PM – 1:30 AM. <a href='https://www.eventbrite.com/e/code-netwerk-ent-tickets-2000891699937?aff=ebdssbdestsearch' target='_blank' rel='noopener' style='color:#fde68a; font-weight:bold; text-decoration:underline;'>Get Code Network Tickets (Eventbrite) ↗</a>.<br><br>✦ <strong>Friday, 2 Oct 2026</strong>: <em>Sofar Sounds</em> @ Old House, 23 Clerkenwell Green (EC1R 0NA) · 19:00 – 22:00. <a href='https://www.sofarsounds.com/events/66841?utm_medium=email&utm_source=transactional&utm_campaign=ArtistReminder' target='_blank' rel='noopener' style='color:#00ff88; font-weight:bold; text-decoration:underline;'>Get Sofar Sounds Tickets ↗</a>.<br><br>Check out the <strong>Live Shows</strong> section on this page for countdowns, venue coordinates, and guestlist entry!";
         }
         if (q.includes('dj') || q.includes('radio') || q.includes('download') || q.includes('serato') || q.includes('320') || q.includes('stem')) {
           return "Calling all DJs and tastemakers! You can download the official <strong>320kbps MP3 promo master</strong> right now via the <em>DJ Promo</em> button in the header or the cue bar on the audio player. It’s Serato and Rekordbox ready.";
@@ -4027,6 +4355,48 @@
     }
 
     /* ===============================================================
+       LIVE SHOWS COUNTDOWN TIMER (Code Network - Oct 1, 2026)
+    =============================================================== */
+    function initShowCountdown() {
+      // 1st October 2026 at 20:00 BST (UTC+1)
+      var targetDate = new Date('2026-10-01T20:00:00+01:00').getTime();
+      var daysEl = document.getElementById('cntDays');
+      var hoursEl = document.getElementById('cntHours');
+      var minsEl = document.getElementById('cntMins');
+      var secsEl = document.getElementById('cntSecs');
+
+      if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+      function update() {
+        var now = new Date().getTime();
+        var diff = targetDate - now;
+
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minsEl.textContent = '00';
+          secsEl.textContent = '00';
+          var title = document.querySelector('#show1CountdownBox .countdown-title');
+          if (title) title.textContent = '✦ DOORS OPEN / TONIGHT ✦';
+          return;
+        }
+
+        var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        daysEl.textContent = d < 10 ? '0' + d : String(d);
+        hoursEl.textContent = h < 10 ? '0' + h : String(h);
+        minsEl.textContent = m < 10 ? '0' + m : String(m);
+        secsEl.textContent = s < 10 ? '0' + s : String(s);
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    /* ===============================================================
        BOOTSTRAP APPLICATION
     =============================================================== */
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -4037,6 +4407,7 @@
     initParallaxTilt();
     initStardust();
     initAiStoryteller();
+    initShowCountdown();
   })();
   </script>
 </body>
